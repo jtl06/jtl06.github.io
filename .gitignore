@@ -1,0 +1,45 @@
+# Output directory (where Eleventy builds the site)
+# Common names for the build output folder
+_site/
+dist/
+public/ # Another common name, though _site is Eleventy's default
+
+# Node.js dependencies
+node_modules/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment variables file (if you were to use one for local development)
+# Never commit .env files if they contain sensitive API keys or secrets
+.env
+.env.local
+.env.*.local
+!.env.example # It's okay to commit an example .env file
+
+# Operating System generated files
+.DS_Store
+Thumbs.db
+._*
+
+# Editor/IDE specific files & folders (optional, but common)
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/PSScriptAnalyzerSettings.psd1 # Example for PowerShell specific settings
+
+# JetBrains (WebStorm, IntelliJ, etc.)
+.idea/
+*.iml
+
+# Other common files to ignore
+*.bak
+*.swp
+*~
