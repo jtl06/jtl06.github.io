@@ -33,11 +33,17 @@
         <div class="grid grid--two grid--stack">
           <article class="card">
             <span class="pill">Firmware &amp; Tooling</span>
-            <h2>BLT keyboard firmware suite</h2>
+            <h2>BLT latency measurement platform</h2>
             <p>
-              A modular firmware and tooling stack for custom keyboards — driving dynamic lighting, layered keymaps, and
-              streamlined flashing. Emphasis on maintainable C, portable abstractions, and developer-friendly UX.
+              Better Latency Tester (BLT) is a low-latency measurement rig that captures click-to-photon timings for PC games.
+              Built around an STM32 Nucleo board, it blends USB HID emulation, DMA-driven ADC sampling, and microsecond timing
+              to produce reproducible latency data.
             </p>
+            <ul class="list" style="margin-top: 1rem;">
+              <li class="list__item">Automatic or manual light-threshold calibration with photodiode and mic trigger modes.</li>
+              <li class="list__item">Batch USB-triggered runs with onboard logging, Python GUI, and CSV exports.</li>
+              <li class="list__item">Sample CS2 data shows Reflex shaving ~3 ms at 240 Hz; ideal for comparative testing.</li>
+            </ul>
             <p style="margin-top: 1.25rem;">
               <a href="https://github.com/jtl06/BLT" target="_blank" rel="noreferrer">View BLT on GitHub →</a>
             </p>

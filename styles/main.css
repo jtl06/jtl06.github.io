@@ -84,6 +84,7 @@ a:focus {
 .site-nav a:focus {
   color: var(--accent-pink);
   border-color: var(--accent-pink);
+  text-decoration: none;
 }
 
 main {
