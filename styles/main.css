@@ -107,21 +107,6 @@ main {
   padding: 3rem 1.5rem 4rem;
 }
 
-.hero__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.35rem 0.75rem;
-  border-radius: 999px;
-  background: var(--accent-pink-light);
-  color: var(--accent-pink);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 1.25rem;
-}
-
 .hero h1 {
   margin: 0 0 1rem;
   font-size: clamp(2.25rem, 4vw, 3rem);
@@ -282,6 +267,7 @@ main {
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  margin-bottom: 0.75rem;
 }
 
 .list {
