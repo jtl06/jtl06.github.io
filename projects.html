@@ -50,26 +50,36 @@
           </article>
           <article class="card">
             <span class="pill">Architecture</span>
-            <h2>Pipeline visualization toolkit</h2>
+            <h2>ARMv8 microarchitecture study</h2>
             <p>
-              Interactive models that surface pipeline hazards, cache misses, and branch behavior across ISA variants.
-              Built to help classmates and collaborators experiment with microarchitectural trade-offs.
+              Implemented an ARM-style RISC CPU in SystemVerilog, moving from single-cycle core to 5-stage pipeline with
+              hazard detection and forwarding. Integrated a direct-mapped cache and used ModelSim benches to measure CPI
+              impacts from branch penalties and cache misses.
             </p>
           </article>
           <article class="card">
             <span class="pill">Validation</span>
-            <h2>Hardware-in-the-loop harness</h2>
+            <h2>Air quality monitor</h2>
             <p>
-              Automated test bench for embedded targets, combining Python orchestration with on-board diagnostics to
-              reproduce edge cases, capture traces, and gate firmware releases.
+              Developed a CO₂/temperature/humidity monitor around the SCD41 sensor with SD card logging via FatFs.
+              Designed the SPI storage pipeline, handled calibration, and built a minimal UI for quick analytics.
             </p>
           </article>
           <article class="card">
             <span class="pill">Systems</span>
-            <h2>Scheduler microkernel experiment</h2>
+            <h2>Bare-metal Cortex-M0+</h2>
             <p>
-              Explorations in lightweight scheduling, context switching, and IPC primitives tuned for resource-constrained
-              devices — a proving ground for applying academic concepts to real hardware.
+              Crafted bare-metal firmware for the STM32G031: custom linker scripts, startup files, and peripheral
+              configuration without vendor HALs. Flashed/debugged with OpenOCD while characterising timer, GPIO, and clock
+              behaviour.
+            </p>
+          </article>
+          <article class="card">
+            <span class="pill">Performance</span>
+            <h2>PC extreme overclocking</h2>
+            <p>
+              Reprogrammed PWM controllers over I²C to overvolt GPU core/memory rails, measured stability with scopes, and
+              tuned decoupling capacitance. Documented findings to inform firmware-level power management experiments.
             </p>
           </article>
         </div>
@@ -77,7 +87,8 @@
         <div class="callout">
           <h3>More soon</h3>
           <p>
-            New projects land here once they have a README, reproducible setup, and test coverage worth sharing. Stay tuned.
+            New projects land here once they have reproducible setups, traceable measurements, and documentation that
+            meets my own lab notebook standards. Stay tuned.
           </p>
         </div>
       </section>
