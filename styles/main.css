@@ -4,7 +4,9 @@
   --text: #f8f8f2;
   --subtle: #a59f85;
   --accent: #a6e22e;
+  --accent-pink: #f92672;
   --accent-light: #3b3d30;
+  --accent-pink-light: rgba(249, 38, 114, 0.14);
   --border: #3f4136;
   --max-width: 960px;
 }
@@ -59,7 +61,7 @@ a:focus {
   font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: var(--accent);
+  color: var(--accent-pink);
 }
 
 .site-nav {
@@ -80,8 +82,8 @@ a:focus {
 .site-nav a.active,
 .site-nav a:hover,
 .site-nav a:focus {
-  color: var(--accent);
-  border-color: var(--accent);
+  color: var(--accent-pink);
+  border-color: var(--accent-pink);
 }
 
 main {
@@ -103,6 +105,21 @@ main {
   margin: 0 auto;
   max-width: var(--max-width);
   padding: 3rem 1.5rem 4rem;
+}
+
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: var(--accent-pink-light);
+  color: var(--accent-pink);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
 }
 
 .hero h1 {
@@ -157,8 +174,8 @@ main {
 
 .button--ghost:hover,
 .button--ghost:focus {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: var(--accent-pink);
+  color: var(--accent-pink);
 }
 
 .content-intro {
@@ -166,6 +183,10 @@ main {
   color: var(--subtle);
   max-width: 720px;
   line-height: 1.6;
+}
+
+.content-intro strong {
+  color: var(--accent-pink);
 }
 
 .grid {
@@ -197,6 +218,11 @@ main {
   padding: 1.75rem;
   box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
   transition: transform 0.24s ease, box-shadow 0.24s ease;
+}
+
+.card h2,
+.card h3 {
+  color: var(--accent);
 }
 
 .card:hover,
@@ -244,6 +270,20 @@ main {
   color: var(--subtle);
 }
 
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--accent-pink-light);
+  color: var(--accent-pink);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .list {
   margin: 1.5rem 0 0;
   padding: 0;
@@ -263,13 +303,14 @@ main {
   padding: 1.75rem;
   border-radius: 16px;
   border: 1px solid var(--border);
-  background: var(--accent-light);
+  background: linear-gradient(135deg, rgba(166, 226, 46, 0.12), rgba(249, 38, 114, 0.14));
   color: var(--text);
 }
 
 .callout h3 {
   margin: 0 0 0.5rem;
   font-size: 1.15rem;
+  color: var(--accent);
 }
 
 .callout p {
