@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Academics — Jacen Li</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="index.html">Jacen Li</a>
+        <nav class="site-nav">
+          <a href="index.html">Home</a>
+          <a href="keyboards.html">Keyboards</a>
+          <a href="projects.html">Projects</a>
+          <a class="active" aria-current="page" href="academics.html">Academics</a>
+          <a href="about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <h1>Academic highlights</h1>
+        <div class="content-intro">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae laoreet est, in mattis justo. Aliquam
+            suscipit arcu at lorem fermentum, nec vulputate leo interdum.
+          </p>
+        </div>
+
+        <div class="grid grid--stack">
+          <article class="card">
+            <h2>Education</h2>
+            <ul class="list">
+              <li class="list__item">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dictum ipsum quis diam gravida, vitae
+                pellentesque orci lacinia.
+              </li>
+              <li class="list__item">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet elit non mi gravida aliquet.
+              </li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h2>Research</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin tellus vitae orci fermentum
+              rutrum. Sed cursus, justo sit amet elementum aliquet, nisi nisl suscipit mi, nec tempor risus nisl non eros.
+            </p>
+          </article>
+
+          <article class="card">
+            <h2>Speaking &amp; mentorship</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id ante in arcu cursus laoreet vitae quis
+              velit. Integer porttitor nulla elit, nec varius tortor hendrerit a.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>© <span id="current-year"></span> Jacen Li. All rights reserved.</span>
+        <div class="site-footer__links">
+          <a href="mailto:hello@jacen.li">hello@jacen.li</a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const yearTarget = document.getElementById("current-year");
+      if (yearTarget) {
+        yearTarget.textContent = new Date().getFullYear();
+      }
+    </script>
+  </body>
+</html>

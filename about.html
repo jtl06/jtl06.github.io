@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About — Jacen Li</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="index.html">Jacen Li</a>
+        <nav class="site-nav">
+          <a href="index.html">Home</a>
+          <a href="keyboards.html">Keyboards</a>
+          <a href="projects.html">Projects</a>
+          <a href="academics.html">Academics</a>
+          <a class="active" aria-current="page" href="about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <h1>About me</h1>
+        <div class="content-intro">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus
+            ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.
+          </p>
+        </div>
+
+        <div class="grid grid--stack">
+          <article>
+            <h2>What I do</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed dui ac lorem vulputate tristique. Cras ut
+              feugiat lectus. Integer placerat, magna at tempor venenatis, massa sapien cursus leo, ac ultricies felis
+              ligula nec leo. Vivamus fermentum tristique nisi, sed facilisis massa porta quis.
+            </p>
+          </article>
+
+          <article>
+            <h2>How I work</h2>
+            <p>
+              Donec ac orci consequat, egestas lorem id, fermentum arcu. Nulla malesuada porttitor diam. Donec felis
+              erat, congue non, volutpat at, tincidunt tristique, libero. Pellentesque habitant morbi tristique senectus
+              et netus et malesuada fames ac turpis egestas.
+            </p>
+          </article>
+        </div>
+
+        <section class="callout">
+          <h3>Beyond the desk</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod.
+          </p>
+        </section>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>© <span id="current-year"></span> Jacen Li. All rights reserved.</span>
+        <div class="site-footer__links">
+          <a href="mailto:hello@jacen.li">hello@jacen.li</a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const yearTarget = document.getElementById("current-year");
+      if (yearTarget) {
+        yearTarget.textContent = new Date().getFullYear();
+      }
+    </script>
+  </body>
+</html>

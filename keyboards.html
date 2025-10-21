@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Keyboards — Jacen Li</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="index.html">Jacen Li</a>
+        <nav class="site-nav">
+          <a href="index.html">Home</a>
+          <a class="active" aria-current="page" href="keyboards.html">Keyboards</a>
+          <a href="projects.html">Projects</a>
+          <a href="academics.html">Academics</a>
+          <a href="about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <h1>Keyboard builds</h1>
+        <div class="content-intro">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vehicula sodales mi, a gravida tellus
+            imperdiet eget. Fusce in dignissim nibh, eget rhoncus magna. Suspendisse potenti.
+          </p>
+        </div>
+
+        <div class="grid grid--two grid--stack">
+          <article class="card media-card">
+            <img
+              class="media-card__image"
+              src="Media/AriaTKL/Aria_FrontThreeQuarters.png"
+              alt="Aria TKL keyboard three-quarter view"
+            />
+            <div class="media-card__body">
+              <h3>Aria TKL</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut quam sed nibh fringilla varius.</p>
+            </div>
+          </article>
+
+          <article class="card media-card">
+            <img
+              class="media-card__image"
+              src="Media/EXT65/EXT65Full.jpg"
+              alt="EXT65 keyboard full top view"
+            />
+            <div class="media-card__body">
+              <h3>EXT65</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer a tortor condimentum, vehicula purus at.</p>
+            </div>
+          </article>
+
+          <article class="card media-card">
+            <img
+              class="media-card__image"
+              src="Media/Hydaelyn/HydaelynTop.png"
+              alt="Hydaelyn keyboard top view"
+            />
+            <div class="media-card__body">
+              <h3>Hydaelyn</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse euismod sapien ut luctus ultrices.</p>
+            </div>
+          </article>
+
+          <article class="card media-card">
+            <img
+              class="media-card__image"
+              src="Media/Koi65/Koi65%20Rear.jpg"
+              alt="Koi65 keyboard rear angle"
+            />
+            <div class="media-card__body">
+              <h3>Koi65</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc magna elit, convallis quis pellentesque id.</p>
+            </div>
+          </article>
+
+          <article class="card media-card">
+            <img
+              class="media-card__image"
+              src="Media/LS70/LS70Front.png"
+              alt="LS70 keyboard front angle"
+            />
+            <div class="media-card__body">
+              <h3>LS70</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sollicitudin nisl at ipsum tempor, vel.</p>
+            </div>
+          </article>
+
+          <article class="card media-card">
+            <img
+              class="media-card__image"
+              src="Media/NV70/NV70_FrontView.png"
+              alt="NV70 keyboard front angle"
+            />
+            <div class="media-card__body">
+              <h3>NV70</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at lorem placerat, aliquet nunc vel.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>© <span id="current-year"></span> Jacen Li. All rights reserved.</span>
+        <div class="site-footer__links">
+          <a href="mailto:hello@jacen.li">hello@jacen.li</a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const yearTarget = document.getElementById("current-year");
+      if (yearTarget) {
+        yearTarget.textContent = new Date().getFullYear();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jacen Li — Portfolio</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="index.html">Jacen Li</a>
+        <nav class="site-nav">
+          <a class="active" aria-current="page" href="index.html">Home</a>
+          <a href="keyboards.html">Keyboards</a>
+          <a href="projects.html">Projects</a>
+          <a href="academics.html">Academics</a>
+          <a href="about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero__inner">
+          <h1>Designing interfaces and crafting custom keyboards.</h1>
+          <p>
+            I build thoughtful digital experiences and obsess over the tactility of every keyboard I touch.
+            Welcome to my portfolio — a snapshot of the projects, prototypes, and ideas keeping me up at night.
+          </p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="projects.html">Browse projects</a>
+            <a class="button button--ghost" href="keyboards.html">See keyboards</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="content-intro">
+          <p>
+            From minimal web experiences to highly tuned mechanical keyboards, I love translating curiosity into
+            tangible results. Here’s a quick tour of what you’ll find.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="grid grid--three">
+          <article class="card">
+            <h2>Projects</h2>
+            <p>
+              Explore a curated selection of work — shipped products, prototypes, and experiments that balance
+              polish with practicality.
+            </p>
+          </article>
+          <article class="card">
+            <h2>Keyboards</h2>
+            <p>
+              A gallery of custom builds and desk setups, complete with shots from every angle and notes on the tuning.
+            </p>
+          </article>
+          <article class="card">
+            <h2>Academics</h2>
+            <p>
+              Highlights from my academic journey — research, coursework, and milestones that shaped the way I build.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="callout">
+          <h3>Let’s collaborate</h3>
+          <p>
+            Have a project in mind or want to chat about your next build? Reach out and let’s make something great.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>© <span id="current-year"></span> Jacen Li. All rights reserved.</span>
+        <div class="site-footer__links">
+          <a href="mailto:hello@jacen.li">hello@jacen.li</a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const yearTarget = document.getElementById("current-year");
+      if (yearTarget) {
+        yearTarget.textContent = new Date().getFullYear();
+      }
+    </script>
+  </body>
+</html>
