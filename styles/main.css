@@ -6,7 +6,8 @@
   --accent: #a6e22e;
   --accent-pink: #f92672;
   --accent-light: #3b3d30;
-  --accent-blue: #66d9ef;
+  --accent-cyan: #66d9ef;
+  --accent-purple: #ae81ff;
   --accent-pink-light: rgba(249, 38, 114, 0.14);
   --border: #3f4136;
   --max-width: 960px;
@@ -368,7 +369,7 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  color: var(--accent-blue);
+  color: var(--accent-cyan);
   font-weight: 600;
 }
 
@@ -380,7 +381,7 @@ main {
 
 .cta-link:hover,
 .cta-link:focus {
-  color: var(--accent-pink);
+  color: var(--accent-purple);
   text-decoration: none;
 }
 
