@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EXT65 — Jacen Li</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="index.html">Jacen Li</a>
+        <nav class="site-nav">
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a class="active" aria-current="page" href="keyboards.html">Keyboards</a>
+          <a href="academics.html">Academics</a>
+          <a href="about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="page-intro">
+          <h1>EXT65</h1>
+          <p class="content-intro">
+            EXT65 is a 65% layout extended with dedicated nav keys. It was my testbed for machining tolerances and weight
+            stacking strategies, featuring exposed fasteners and a raw aluminum finish that showcases every chamfer.
+          </p>
+          <ul class="meta-list">
+            <li class="meta-list__item">65% + nav</li>
+            <li class="meta-list__item">Top-mount</li>
+            <li class="meta-list__item">Dual weight</li>
+            <li class="meta-list__item">Raw aluminum</li>
+          </ul>
+        </div>
+
+        <div class="gallery">
+          <img class="gallery__image" src="Media/EXT65/EXT65Full.jpg" alt="EXT65 top overview with keycaps installed" />
+          <img class="gallery__image" src="Media/EXT65/EXT65Rear.jpg" alt="EXT65 rear angle with exposed fasteners" />
+          <img class="gallery__image" src="Media/EXT65/EXT65CAD.png" alt="CAD render of EXT65 assembled chassis" />
+          <img class="gallery__image" src="Media/EXT65/EXT65CAD_exploded.png" alt="Exploded CAD view of EXT65 components" />
+          <img class="gallery__image" src="Media/EXT65/EXT65WEIGHT_THREADS.png" alt="Close-up of EXT65 weight mounting threads" />
+          <img class="gallery__image" src="Media/EXT65/EXT65_Bottom_Technical_Drawing.png" alt="Technical drawing of EXT65 bottom case" />
+        </div>
+
+        <div class="callout">
+          <h3>Manufacturing lessons</h3>
+          <p>
+            EXT65 drove updates to my CAM toolpaths and fixture strategy. The dual-weight stack taught me how different metal
+            compositions alter resonance—a lesson that feeds back into future firmware typing tests.
+          </p>
+        </div>
+
+        <p style="margin-top: 2rem;">
+          <a href="keyboards.html">← Back to keyboard gallery</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>© <span id="current-year"></span> Jacen Li. All rights reserved.</span>
+        <div class="site-footer__links">
+          <a href="mailto:hello@jacen.li">hello@jacen.li</a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const yearTarget = document.getElementById("current-year");
+      if (yearTarget) {
+        yearTarget.textContent = new Date().getFullYear();
+      }
+    </script>
+  </body>
+</html>

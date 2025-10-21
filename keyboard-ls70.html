@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LS70 — Jacen Li</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="index.html">Jacen Li</a>
+        <nav class="site-nav">
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a class="active" aria-current="page" href="keyboards.html">Keyboards</a>
+          <a href="academics.html">Academics</a>
+          <a href="about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="page-intro">
+          <h1>LS70</h1>
+          <p class="content-intro">
+            A low-profile 70% board machined from aluminum with a layered internal weight system. LS70 experiments with
+            south-facing LEDs, a custom plate cut, and a gasket isolation pattern tuned to even out signature frequencies
+            across the layout.
+          </p>
+          <ul class="meta-list">
+            <li class="meta-list__item">70% layout</li>
+            <li class="meta-list__item">Brass weight stack</li>
+            <li class="meta-list__item">Gasket mount</li>
+            <li class="meta-list__item">Dark navy anodize</li>
+          </ul>
+        </div>
+
+        <div class="gallery">
+          <img class="gallery__image" src="Media/LS70/LS70Front.png" alt="LS70 keyboard front angle on desk" />
+          <img class="gallery__image" src="Media/LS70/LS70CloseFront.png" alt="Close-up of LS70 keycaps and switches" />
+          <img class="gallery__image" src="Media/LS70/LS70Rear.png" alt="Rear view of LS70 showing weight and ports" />
+          <img class="gallery__image" src="Media/LS70/LS70CAD.png" alt="CAD render of LS70 internal weight stack" />
+        </div>
+
+        <div class="callout">
+          <h3>Firmware notes</h3>
+          <p>
+            LS70 runs QMK with layers customized for firmware testing. Southpaw macro layers make it a perfect daily driver
+            when validating USB HID and tap-hold behavior across firmware builds.
+          </p>
+        </div>
+
+        <p style="margin-top: 2rem;">
+          <a href="keyboards.html">← Back to keyboard gallery</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>© <span id="current-year"></span> Jacen Li. All rights reserved.</span>
+        <div class="site-footer__links">
+          <a href="mailto:hello@jacen.li">hello@jacen.li</a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const yearTarget = document.getElementById("current-year");
+      if (yearTarget) {
+        yearTarget.textContent = new Date().getFullYear();
+      }
+    </script>
+  </body>
+</html>

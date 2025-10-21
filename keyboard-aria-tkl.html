@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aria TKL — Jacen Li</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="index.html">Jacen Li</a>
+        <nav class="site-nav">
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a class="active" aria-current="page" href="keyboards.html">Keyboards</a>
+          <a href="academics.html">Academics</a>
+          <a href="about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="page-intro">
+          <h1>Aria TKL</h1>
+          <p class="content-intro">
+            Aria TKL is my daily driver for firmware prototyping. The leaf-spring plate and o-ring isolation deliver a
+            consistent typing feel while giving room to isolate switch and stabilizer acoustics for recorded comparisons.
+          </p>
+          <ul class="meta-list">
+            <li class="meta-list__item">Tenkeyless layout</li>
+            <li class="meta-list__item">Leaf-spring plate</li>
+            <li class="meta-list__item">O-ring isolation</li>
+            <li class="meta-list__item">Frost silver finish</li>
+          </ul>
+        </div>
+
+        <div class="gallery">
+          <img class="gallery__image" src="Media/AriaTKL/Aria_FrontThreeQuarters.png" alt="Aria TKL front three-quarter view" />
+          <img class="gallery__image" src="Media/AriaTKL/Aria_Front.png" alt="Aria TKL front profile on desk mat" />
+          <img class="gallery__image" src="Media/AriaTKL/Aria_Rear.png" alt="Rear of Aria TKL showing weight engraving" />
+          <img class="gallery__image" src="Media/AriaTKL/Aria_Side_DoF.png" alt="Side profile of Aria TKL highlighting o-ring mount" />
+          <img class="gallery__image" src="Media/AriaTKL/AriaTKLCAD.png" alt="CAD render of Aria TKL internals" />
+        </div>
+
+        <div class="callout">
+          <h3>Layout experiments</h3>
+          <p>
+            Aria TKL splits its function row and nav cluster across firmware layers, letting me validate tap-hold timings
+            and sticky key strategies used in BLT testing workflows.
+          </p>
+        </div>
+
+        <p style="margin-top: 2rem;">
+          <a href="keyboards.html">← Back to keyboard gallery</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>© <span id="current-year"></span> Jacen Li. All rights reserved.</span>
+        <div class="site-footer__links">
+          <a href="mailto:hello@jacen.li">hello@jacen.li</a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const yearTarget = document.getElementById("current-year");
+      if (yearTarget) {
+        yearTarget.textContent = new Date().getFullYear();
+      }
+    </script>
+  </body>
+</html>

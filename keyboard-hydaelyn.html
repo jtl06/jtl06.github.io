@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hydaelyn — Jacen Li</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="index.html">Jacen Li</a>
+        <nav class="site-nav">
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a class="active" aria-current="page" href="keyboards.html">Keyboards</a>
+          <a href="academics.html">Academics</a>
+          <a href="about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="page-intro">
+          <h1>Hydaelyn</h1>
+          <p class="content-intro">
+            Inspired by Final Fantasy XIV’s Hydaelyn arc, this board mixes frosted polycarbonate, polished blockers, and
+            diffuse per-key lighting. It’s tuned for softer acoustics that complement late-night firmware work sessions.
+          </p>
+          <ul class="meta-list">
+            <li class="meta-list__item">Alice-inspired</li>
+            <li class="meta-list__item">Frosted diffuser</li>
+            <li class="meta-list__item">Tray mount</li>
+            <li class="meta-list__item">Custom keycap set</li>
+          </ul>
+        </div>
+
+        <div class="gallery">
+          <img class="gallery__image" src="Media/Hydaelyn/HydaelynTop.png" alt="Hydaelyn keyboard top view" />
+          <img class="gallery__image" src="Media/Hydaelyn/Hydaelyn_Rear3Quarters.png" alt="Hydaelyn three-quarter rear view" />
+          <img class="gallery__image" src="Media/Hydaelyn/HydaelynSideDoF.png" alt="Side depth-of-field shot of Hydaelyn keyboard" />
+          <img class="gallery__image" src="Media/Hydaelyn/Hydaelyn_CloseTop.png" alt="Close-up of Hydaelyn keycaps and blockers" />
+          <img class="gallery__image" src="Media/Hydaelyn/HyaelynCAD.png" alt="CAD model of Hydaelyn layout and diffuser" />
+        </div>
+
+        <div class="callout">
+          <h3>Lighting story</h3>
+          <p>
+            Under-glow LEDs are firmware-controlled through the same tooling used in BLT testing. Hydaelyn served as a demo
+            platform for cross-board lighting macros and serial telemetry experiments.
+          </p>
+        </div>
+
+        <p style="margin-top: 2rem;">
+          <a href="keyboards.html">← Back to keyboard gallery</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>© <span id="current-year"></span> Jacen Li. All rights reserved.</span>
+        <div class="site-footer__links">
+          <a href="mailto:hello@jacen.li">hello@jacen.li</a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const yearTarget = document.getElementById("current-year");
+      if (yearTarget) {
+        yearTarget.textContent = new Date().getFullYear();
+      }
+    </script>
+  </body>
+</html>

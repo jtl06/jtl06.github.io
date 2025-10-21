@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Koi65 — Jacen Li</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="index.html">Jacen Li</a>
+        <nav class="site-nav">
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a class="active" aria-current="page" href="keyboards.html">Keyboards</a>
+          <a href="academics.html">Academics</a>
+          <a href="about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="page-intro">
+          <h1>Koi65</h1>
+          <p class="content-intro">
+            Koi65 reimagines the classic 65% layout with sweeping rear engravings and a serene teal palette. The build
+            is tuned for long-form writing sessions with medium tactiles and a dampened polycarbonate plate.
+          </p>
+          <ul class="meta-list">
+            <li class="meta-list__item">65% layout</li>
+            <li class="meta-list__item">Polycarbonate plate</li>
+            <li class="meta-list__item">Custom rear engraving</li>
+            <li class="meta-list__item">Teal finish</li>
+          </ul>
+        </div>
+
+        <div class="gallery">
+          <img class="gallery__image" src="Media/Koi65/Koi65%20Rear.jpg" alt="Rear view of Koi65 keyboard showing koi engraving" />
+          <img class="gallery__image" src="Media/Koi65/Koi65Closeback.jpg" alt="Close-up of Koi65 rear weight and finish" />
+        </div>
+
+        <div class="callout">
+          <h3>Sound profile</h3>
+          <p>
+            The polycarbonate plate and poron foam produce a muted, rounded sound signature—perfect for late-night firmware
+            debugging without distracting teammates on call.
+          </p>
+        </div>
+
+        <p style="margin-top: 2rem;">
+          <a href="keyboards.html">← Back to keyboard gallery</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>© <span id="current-year"></span> Jacen Li. All rights reserved.</span>
+        <div class="site-footer__links">
+          <a href="mailto:hello@jacen.li">hello@jacen.li</a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const yearTarget = document.getElementById("current-year");
+      if (yearTarget) {
+        yearTarget.textContent = new Date().getFullYear();
+      }
+    </script>
+  </body>
+</html>
