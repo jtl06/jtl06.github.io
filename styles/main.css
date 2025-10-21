@@ -6,6 +6,7 @@
   --accent: #a6e22e;
   --accent-pink: #f92672;
   --accent-light: #3b3d30;
+  --accent-blue: #66d9ef;
   --accent-pink-light: rgba(249, 38, 114, 0.14);
   --border: #3f4136;
   --max-width: 960px;
@@ -187,7 +188,7 @@ main {
 }
 
 .keyboard-grid {
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .grid--stack {
@@ -201,7 +202,7 @@ main {
   }
 
   .keyboard-grid {
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -361,6 +362,26 @@ main {
 .site-footer__links a:hover,
 .site-footer__links a:focus {
   color: var(--accent);
+}
+
+.cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--accent-blue);
+  font-weight: 600;
+}
+
+.cta-link::after {
+  content: "↗";
+  font-size: 0.85em;
+  transform: translateY(-0.05em);
+}
+
+.cta-link:hover,
+.cta-link:focus {
+  color: var(--accent-pink);
+  text-decoration: none;
 }
 
 .page-intro {
