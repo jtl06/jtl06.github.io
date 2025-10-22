@@ -78,6 +78,17 @@ a:focus {
   gap: 1.5rem;
 }
 
+.banner {
+  background: var(--accent-pink-light);
+  color: var(--accent-pink);
+  text-align: center;
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .site-nav a {
   font-size: 0.95rem;
   color: var(--subtle);
