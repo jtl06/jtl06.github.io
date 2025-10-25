@@ -484,3 +484,7 @@ main {
   display: block;
   background: #1c1d18;
 }
+
+.muted {
+  color: var(--subtle);
+}
