@@ -1,98 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Jacen Li — Portfolio</title>
-    <link rel="stylesheet" href="styles/main.css" />
-  </head>
-  <body>
-    <div class="banner">Work in progress: content in development.</div>
-    <header class="site-header">
-      <div class="site-header__inner">
-        <a class="brand" href="index.html">Jacen Li</a>
-        <nav class="site-nav">
-          <a class="active" aria-current="page" href="index.html">Home</a>
-          <a href="projects.html">Projects</a>
-          <a href="keyboards.html">Keyboards</a>
-          <a href="about.html">About</a>
-        </nav>
-      </div>
-    </header>
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Jacen Li — Portfolio</title>
+      <link rel="stylesheet" href="styles/main.css" />
+    </head>
+    <body>
+      <div class="banner">Work in progress: content in development.</div>
+      <header class="site-header">
+        <div class="site-header__inner">
+          <div class="brand-group">
+            <a class="brand" href="index.html">Jacen Li</a>
+            <div class="social-links">
+              <a href="https://www.linkedin.com/in/jacen-li/" target="_blank" rel="noreferrer">LinkedIn</a>
+              <span aria-hidden="true">·</span>
+              <a href="https://github.com/jtl06" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </div>
+          <nav class="site-nav">
+            <a class="active" aria-current="page" href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="keyboards.html">Keyboards</a>
+            <a href="about.html">About</a>
+          </nav>
+        </div>
+      </header>
 
-    <main>
-      <section class="hero">
-        <div class="hero__inner">
-          <h1>Designing resilient systems from silicon to firmware.</h1>
-          <p>
-            I’m an ECE student at the University of Washington, building tools that measure, validate, and delight.
-            From developing a high-density thermal monitoring rig at NIST to running Aeus Keyboards and crafting the BLT
-            latency platform, I live at the intersection of hardware, firmware, and user experience.
-          </p>
-          <div class="hero__actions">
-            <a class="button button--primary" href="projects.html">View technical projects</a>
-            <a class="button button--ghost" href="mailto:jacenli@icloud.com">Let’s talk</a>
+      <main>
+        <section class="hero">
+          <div class="hero__inner">
+            <h1>Designing resilient systems from silicon to firmware.</h1>
+            <p>
+              I’m an ECE student at the University of Washington, building tools that measure, validate, and delight.
+              From developing a high-density thermal monitoring rig at NIST to running Aeus Keyboards and crafting the BLT
+              latency platform, I live at the intersection of hardware, firmware, and user experience.
+            </p>
+            <div class="hero__actions">
+              <a class="button button--primary" href="projects.html">View technical projects</a>
+              <a class="button button--ghost" href="mailto:jacenli@icloud.com">Let’s talk</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="content-intro">
+            <p>
+              <strong>Core strengths</strong> span firmware bring-up, performance profiling, and hardware/software co-design.
+              I iterate quickly, test rigorously, and document relentlessly — whether I’m flashing STM32s, routing PCBs, or
+              negotiating manufacturing timelines.
+            </p>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="grid grid--two">
+            <article class="card">
+              <span class="pill">Projects</span>
+              <h2>Low-level engineering</h2>
+              <p>
+                I explore firmware, tooling, and design through my technical projects, including the BLT, a high precision end to end latency testing device for PCs, ARMv8 CPU work, and
+                bare-metal Cortex builds tuned for deterministic performance.
+
+                I'm currently interested in internship positions for spring or summer 2026.
+              </p>
+            </article>
+            <article class="card">
+              <span class="pill">Keyboards</span>
+              <h2>Hands-on craftsmanship</h2>
+              <p>
+                My keyboard builds show my passion for precision and quality, demonstrating my commitment to creating the best for my clients.
+              </p>
+            </article>
+          </div>
+        </section>
+
+      <footer class="site-footer">
+        <div class="site-footer__inner">
+          <span>© <span id="current-year"></span> Jacen Li. All rights reserved.</span>
+          <div class="site-footer__links">
+            <a href="mailto:jacenli@icloud.com">jacenli@icloud.com</a>
+            <a href="https://www.linkedin.com/in/jacen-li/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://github.com/jtl06" target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </div>
-      </section>
+      </footer>
 
-      <section class="section">
-        <div class="content-intro">
-          <p>
-            <strong>Core strengths</strong> span firmware bring-up, performance profiling, and hardware/software co-design.
-            I iterate quickly, test rigorously, and document relentlessly — whether I’m flashing STM32s, routing PCBs, or
-            negotiating manufacturing timelines.
-          </p>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="grid grid--two">
-          <article class="card">
-            <span class="pill">Projects</span>
-            <h2>Low-level engineering</h2>
-            <p>
-              I explore firmware, tooling, and design through my technical projects, including the BLT, a high precision end to end latency testing device for PCs, ARMv8 CPU work, and
-              bare-metal Cortex builds tuned for deterministic performance.
-            </p>
-          </article>
-          <article class="card">
-            <span class="pill">Keyboards</span>
-            <h2>Hands-on craftsmanship</h2>
-            <p>
-              My keyboard builds show my passion for precision and quality, demonstrating my commitment to creating the best for my clients.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="callout">
-          <h3>Let’s collaborate</h3>
-          <p>
-            Have a project that needs dependable firmware, measurement automation, or a hands-on architecture partner?
-            Reach out and let’s build it.
-          </p>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="site-footer__inner">
-        <span>© <span id="current-year"></span> Jacen Li. All rights reserved.</span>
-        <div class="site-footer__links">
-          <a href="mailto:jacenli@icloud.com">jacenli@icloud.com</a>
-          <a href="https://www.linkedin.com/in/jacen-li/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href="https://github.com/jtl06" target="_blank" rel="noreferrer">GitHub</a>
-        </div>
-      </div>
-    </footer>
-
-    <script>
-      const yearTarget = document.getElementById("current-year");
-      if (yearTarget) {
-        yearTarget.textContent = new Date().getFullYear();
-      }
-    </script>
-  </body>
-</html>
+      <script>
+        const yearTarget = document.getElementById("current-year");
+        if (yearTarget) {
+          yearTarget.textContent = new Date().getFullYear();
+        }
+      </script>
+    </body>
+  </html>
