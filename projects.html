@@ -49,8 +49,25 @@
               <li class="list__item">Batch USB-triggered runs with onboard logging, Python GUI, and CSV exports.</li>
               <li class="list__item">Sample CS2 data shows Reflex shaving ~3 ms at 240 Hz; ideal for comparative testing.</li>
             </ul>
-            <p style="margin-top: 1.25rem;">
+          <p style="margin-top: 1.25rem;">
               <a class="cta-link" href="https://github.com/jtl06/BLT" target="_blank" rel="noreferrer">View BLT on GitHub</a>
+            </p>
+          </article>
+          <article class="card">
+            <span class="pill">Embedded Systems</span>
+            <h2>Overlain code overlays</h2>
+            <p>
+              Explores flash-to-SRAM overlays on an STM32G031K8 to keep bare-metal firmware small while running heavyweight
+              crypto and benchmark routines at SRAM speeds. Custom linker sections map overlayable code segments, which are
+              relocated right before execution for deterministic performance experiments.
+            </p>
+            <ul class="list" style="margin-top: 1rem;">
+              <li class="list__item">Benchmarks RSA-2048 verify and Miller-Rabin tests with and without overlays.</li>
+              <li class="list__item">Shows 1.34x speedup from executing latency-sensitive code from SRAM.</li>
+              <li class="list__item">Documents overlay loader, linker script, and measurement workflow for reuse.</li>
+            </ul>
+            <p style="margin-top: 1.25rem;">
+              <a class="cta-link" href="https://github.com/jtl06/overlain" target="_blank" rel="noreferrer">View overlain on GitHub</a>
             </p>
           </article>
           <article class="card">
