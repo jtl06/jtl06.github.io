@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex, nofollow" />
+
     <title>About — Jacen Li</title>
     <link rel="stylesheet" href="styles/main.css" />
   </head>
@@ -23,6 +23,7 @@
           <a href="projects.html">Projects</a>
           <a href="keyboards.html">Keyboards</a>
           <a class="active" aria-current="page" href="about.html">About</a>
+          <a href="https://docs.google.com/document/d/17ZXuYeBCd1xlnoa4w62w2i6dX0L4njB9sND8Ley_FxY/edit?usp=sharing" target="_blank" rel="noreferrer">Resume</a>
         </nav>
       </div>
     </header>
@@ -39,8 +40,8 @@
             <div>
               <div class="content-intro">
                 <p>
-                  I’m an undergraduate ECE student at the University of Washington, Seattle, splitting time between
-                  classes. I enjoy building things, and computers, and keep up with the latest news on hardware and software.
+                  I’m an undergraduate ECE student at the University of Washington, Seattle.
+                  I enjoy building things, and computers, and keep up with the latest news on hardware and software.
                 </p>
                 <p>
                   In my spare time, I play with my dog Mocha, who I adore, as well as chasing birds for bird photography. 
@@ -50,26 +51,38 @@
             </div>
           </div>
         </div>
+        <div style="margin-top: 2rem;">
+          <a class="button button--primary" href="https://docs.google.com/document/d/17ZXuYeBCd1xlnoa4w62w2i6dX0L4njB9sND8Ley_FxY/edit?usp=sharing" target="_blank" rel="noreferrer">View my resume</a>
+        </div>
         <div class="grid grid--stack" style="margin-top: 2.5rem;">
           <article class="card">
-            <h2>Experience</h2>
-            <ul class="list">
-              <li class="list__item">
-                <strong>NIST Sensor Science Division · 2023</strong> — Built a Raspberry Pi data acquisition platform with
-                61 I²C sensors, uncovering five hotspot regions and cutting chamber temperature uncertainty by 38%.
-              </li>
-              <li class="list__item">
-                <strong>Aeus Keyboards · 2020 – Present</strong> — Founded a custom keyboard studio (> $20K revenue),
-                designing ATMega32U4 PCBs, writing C firmware, managing overseas manufacturing, and hand-assembling SMD
-                prototypes.
-              </li>
-            </ul>
+            <h2>Arm — Incoming Software Intern, 2026</h2>
+            <p>
+              This summer I’m joining Arm’s performance analysis team in Austin, working on tooling for the
+              Neoverse CSS V3/V4 HPC/AI platform. The role centers on Linux-based profiling, benchmarking, and
+              PMU/perf-style measurement workflows — the kind of low-level performance work I’ve been chasing
+              since I first started timing code paths on STM32.
+            </p>
           </article>
           <article class="card">
-            <h2>Skills snapshot</h2>
+            <h2>NIST Sensor Science Division — Intern, 2023</h2>
             <p>
-              C/C++, ARM &amp; RISC-V assembly, Python, SystemVerilog, MATLAB; Git/GitHub, GCC, GDB, Quartus, Vivado,
-              ModelSim; USB FS, DMA-driven ADC, UART/I²C/SPI/GPIO, timers/ISRs, JTAG, CRC, Zephyr RTOS, Linux/WSL.
+              At NIST I built a 61-node I²C temperature sensor network on Raspberry Pi to profile thermal gradients
+              inside the Tape Tunnel test chamber. The system replaced manual spot-checks with continuous automated
+              monitoring, which uncovered five previously unknown hotspot regions and let the team reduce
+              temperature-induced measurement uncertainty by 38% through targeted procedure updates. I also wrote
+              the calibration routines for the division’s legacy sensor infrastructure.
+            </p>
+          </article>
+          <article class="card">
+            <h2>Aeus Keyboards — Founder, 2020–2025</h2>
+            <p>
+              I started Aeus Keyboards in high school and grew it to over K in revenue across 40+ custom builds
+              for clients worldwide. I handled everything end-to-end: designing cases in CAD, laying out ATmega32U4
+              PCBs in KiCad, writing QMK firmware (matrix scanning, debouncing, USB HID), coordinating CNC
+              machining with overseas manufacturers, and hand-soldering SMD prototypes. Running a small hardware
+              business taught me how to manage timelines, communicate with clients, and ship physical products
+              that have to be right the first time.
             </p>
           </article>
         </div>

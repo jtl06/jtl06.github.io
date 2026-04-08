@@ -1,15 +1,11 @@
 :root {
-  --background: #272822;
-  --surface: #31332a;
-  --text: #f8f8f2;
-  --subtle: #a59f85;
-  --accent: #a6e22e;
-  --accent-pink: #f92672;
-  --accent-light: #3b3d30;
-  --accent-cyan: #66d9ef;
-  --accent-purple: #ae81ff;
-  --accent-pink-light: rgba(249, 38, 114, 0.14);
-  --border: #3f4136;
+  --background: #1a1a1a;
+  --surface: #222222;
+  --text: #e0e0e0;
+  --subtle: #999999;
+  --accent: #6fa3d6;
+  --accent-dim: rgba(111, 163, 214, 0.12);
+  --border: #333333;
   --max-width: 960px;
 }
 
@@ -25,7 +21,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   color: var(--text);
   background: var(--background);
   display: flex;
@@ -45,7 +41,6 @@ a:focus {
 }
 
 .site-header {
-  background: var(--surface);
   border-bottom: 1px solid var(--border);
 }
 
@@ -67,16 +62,17 @@ a:focus {
 }
 
 .brand {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--accent-pink);
+  letter-spacing: 0.02em;
+  color: var(--text);
   text-decoration: none;
 }
 
 .brand:hover,
 .brand:focus {
   text-decoration: none;
+  color: var(--accent);
 }
 
 .site-nav {
@@ -99,23 +95,23 @@ a:focus {
 
 .social-links a:hover,
 .social-links a:focus {
-  color: var(--accent-pink);
+  color: var(--accent);
 }
 
 .site-nav a {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--subtle);
   font-weight: 500;
   padding-bottom: 0.15rem;
-  border-bottom: 2px solid transparent;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
 
 .site-nav a.active,
 .site-nav a:hover,
 .site-nav a:focus {
-  color: var(--accent-pink);
-  border-color: var(--accent-pink);
+  color: var(--text);
+  border-color: var(--text);
   text-decoration: none;
 }
 
@@ -130,27 +126,28 @@ main {
 }
 
 .hero {
-  background: var(--surface);
   border-bottom: 1px solid var(--border);
 }
 
 .hero__inner {
   margin: 0 auto;
   max-width: var(--max-width);
-  padding: 3rem 1.5rem 4rem;
+  padding: 3rem 1.5rem 3.5rem;
 }
 
 .hero h1 {
   margin: 0 0 1rem;
-  font-size: clamp(2.25rem, 4vw, 3rem);
-  line-height: 1.1;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  line-height: 1.15;
+  font-weight: 600;
 }
 
 .hero p {
   margin: 0 0 1.5rem;
   max-width: 620px;
   color: var(--subtle);
-  font-size: 1.05rem;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .hero__actions {
@@ -163,25 +160,24 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1.5rem;
-  border-radius: 999px;
+  padding: 0.6rem 1.25rem;
+  border-radius: 4px;
   border: 1px solid transparent;
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: background 0.15s ease, border-color 0.15s ease;
 }
 
 .button--primary {
   background: var(--accent);
-  color: #1d1e16;
-  box-shadow: 0 10px 30px rgba(166, 226, 46, 0.3);
+  color: #111;
 }
 
 .button--primary:hover,
 .button--primary:focus {
-  transform: translateY(-1px);
-  box-shadow: 0 16px 40px rgba(166, 226, 46, 0.42);
+  background: #5a93c6;
+  text-decoration: none;
 }
 
 .button--ghost {
@@ -192,24 +188,25 @@ main {
 
 .button--ghost:hover,
 .button--ghost:focus {
-  border-color: var(--accent-pink);
-  color: var(--accent-pink);
+  border-color: var(--accent);
+  color: var(--accent);
+  text-decoration: none;
 }
 
 .content-intro {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--subtle);
   max-width: 720px;
   line-height: 1.6;
 }
 
 .content-intro strong {
-  color: var(--accent-pink);
+  color: var(--text);
 }
 
 .grid {
   display: grid;
-  gap: 1.75rem;
+  gap: 1.5rem;
 }
 
 .keyboard-grid {
@@ -218,7 +215,7 @@ main {
 
 .grid--stack {
   margin-top: 2rem;
-  gap: 2.5rem;
+  gap: 2rem;
 }
 
 @media (min-width: 640px) {
@@ -240,10 +237,9 @@ main {
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 1.75rem;
-  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
-  transition: transform 0.24s ease, box-shadow 0.24s ease;
+  border-radius: 6px;
+  padding: 1.5rem;
+  transition: border-color 0.15s ease;
 }
 
 .card--interactive {
@@ -261,24 +257,24 @@ main {
 
 .card h2,
 .card h3 {
-  color: var(--accent);
+  color: var(--text);
 }
 
 .card:hover,
 .card:focus-within {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 38px rgba(0, 0, 0, 0.45);
+  border-color: var(--accent);
 }
 
 .card h2 {
   margin: 0 0 0.75rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .card p {
   margin: 0;
   color: var(--subtle);
   line-height: 1.55;
+  font-size: 0.95rem;
 }
 
 .media-card {
@@ -296,12 +292,12 @@ main {
 }
 
 .media-card__body {
-  padding: 1.5rem;
+  padding: 1.25rem;
 }
 
 .media-card__body h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1.1rem;
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
 }
 
 .media-card__body p {
@@ -310,14 +306,12 @@ main {
 }
 
 .pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  background: var(--accent-pink-light);
-  color: var(--accent-pink);
-  padding: 0.35rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
+  display: inline-block;
+  background: var(--accent-dim);
+  color: var(--accent);
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -333,33 +327,35 @@ main {
 }
 
 .list__item {
-  border-left: 3px solid var(--accent);
+  border-left: 2px solid var(--border);
   padding-left: 1rem;
   color: var(--subtle);
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .callout {
   margin-top: 2.5rem;
-  padding: 1.75rem;
-  border-radius: 16px;
+  padding: 1.5rem;
+  border-radius: 6px;
   border: 1px solid var(--border);
-  background: linear-gradient(135deg, rgba(166, 226, 46, 0.12), rgba(249, 38, 114, 0.14));
+  background: var(--surface);
   color: var(--text);
 }
 
 .callout h3 {
   margin: 0 0 0.5rem;
-  font-size: 1.15rem;
-  color: var(--accent);
+  font-size: 1rem;
+  color: var(--text);
 }
 
 .callout p {
   margin: 0;
   color: var(--subtle);
+  font-size: 0.95rem;
 }
 
 .site-footer {
-  background: var(--surface);
   border-top: 1px solid var(--border);
 }
 
@@ -367,7 +363,7 @@ main {
   margin: 0 auto;
   max-width: var(--max-width);
   padding: 1.25rem 1.5rem 2rem;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--subtle);
   display: flex;
   flex-direction: column;
@@ -392,21 +388,20 @@ main {
 .cta-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  color: var(--accent-cyan);
-  font-weight: 600;
+  gap: 0.3rem;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.9rem;
 }
 
 .cta-link::after {
-  content: "↗";
+  content: "\2197";
   font-size: 0.85em;
-  transform: translateY(-0.05em);
 }
 
 .cta-link:hover,
 .cta-link:focus {
-  color: var(--accent-purple);
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .page-intro {
@@ -421,14 +416,14 @@ main {
 
 @media (min-width: 720px) {
   .profile-card {
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: 300px 1fr;
     align-items: center;
   }
 }
 
 .profile-card__photo {
   width: 100%;
-  border-radius: 20px;
+  border-radius: 6px;
   border: 1px solid var(--border);
   object-fit: cover;
 }
@@ -439,15 +434,15 @@ main {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .meta-list__item {
-  background: var(--accent-light);
+  background: var(--accent-dim);
   color: var(--accent);
-  padding: 0.35rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -467,11 +462,11 @@ main {
 
 .gallery__image {
   width: 100%;
-  border-radius: 16px;
+  border-radius: 6px;
   border: 1px solid var(--border);
   object-fit: cover;
   display: block;
-  background: #1c1d18;
+  background: #151515;
 }
 
 .muted {

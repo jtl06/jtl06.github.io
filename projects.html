@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex, nofollow" />
+
     <title>Projects — Jacen Li</title>
     <link rel="stylesheet" href="styles/main.css" />
   </head>
@@ -23,6 +23,7 @@
           <a class="active" aria-current="page" href="projects.html">Projects</a>
           <a href="keyboards.html">Keyboards</a>
           <a href="about.html">About</a>
+          <a href="https://docs.google.com/document/d/17ZXuYeBCd1xlnoa4w62w2i6dX0L4njB9sND8Ley_FxY/edit?usp=sharing" target="_blank" rel="noreferrer">Resume</a>
         </nav>
       </div>
     </header>
@@ -68,6 +69,29 @@
             </ul>
             <p style="margin-top: 1.25rem;">
               <a class="cta-link" href="https://github.com/jtl06/overlain" target="_blank" rel="noreferrer">View overlain on GitHub</a>
+            </p>
+          </article>
+          <article class="card">
+            <span class="pill">FPGA &amp; PCIe</span>
+            <h2>PNVMe — FPGA NVMe device</h2>
+            <p>
+              Built a custom NVMe SSD controller on an Artix-7 FPGA that enumerates as a PCIe NVMe Linux block device.
+              Substantiated the NVMe BAR and wrote a custom XDMA-to-NVMe harness backed by onboard DDR3.
+            </p>
+            <p style="margin-top: 1.25rem;">
+              <a class="cta-link" href="https://github.com/jtl06/PNVMe" target="_blank" rel="noreferrer">View PNVMe on GitHub</a>
+            </p>
+          </article>
+          <article class="card">
+            <span class="pill">Software &amp; AI</span>
+            <h2>Nycticorax — Discord bot</h2>
+            <p>
+              Built a Discord bot using Claude Code and Codex for iterative implementation and debugging. Features
+              selective memory, hybrid retrieval, and Postgres storage while controlling latency and cost. Modularized
+              the codebase so different AI tools and multi-agent routines could contribute coherently.
+            </p>
+            <p style="margin-top: 1.25rem;">
+              <a class="cta-link" href="https://github.com/jtl06/Nycticorax" target="_blank" rel="noreferrer">View Nycticorax on GitHub</a>
             </p>
           </article>
           <article class="card">

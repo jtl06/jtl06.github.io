@@ -1,11 +1,3 @@
-WIP, Personal website.
+Personal portfolio site — [jtl06.github.io](https://jtl06.github.io)
 
-TODO:
-Fix home page
-
-Fix academics
-
-Fix about
-
-DONE: 
-Keyboards
+Static HTML + CSS, hosted on GitHub Pages.
