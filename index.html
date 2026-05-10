@@ -2,12 +2,112 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0; url=projects.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="canonical" href="projects.html" />
+
     <title>Jacen Li</title>
+    <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body>
-    <p><a href="projects.html">Projects</a></p>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <div class="brand-group">
+          <a class="brand" href="index.html">Jacen Li</a>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/jacen-li/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://github.com/jtl06" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+        <nav class="site-nav">
+          <a class="active" aria-current="page" href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a href="open-source.html">Open Source</a>
+          <a href="keyboards.html">Keyboards</a>
+          <a href="about.html">About</a>
+          <a href="resume.html">Resume</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="section">
+        <div class="content-intro">
+          <p>
+            ECE student at the University of Washington working on low-level hardware/software systems.
+          </p>
+        </div>
+        <section class="index-section">
+          <h2>Projects</h2>
+          <div class="index-list">
+            <a class="index-row" href="projects/swiftfix.html">
+              <span class="index-row__date">2026</span>
+              <span class="index-row__title">projects/swiftfix</span>
+              <span class="index-row__desc">C++20 / AVX2 FIX pre-parser</span>
+            </a>
+            <a class="index-row" href="projects/blt.html">
+              <span class="index-row__date">2026</span>
+              <span class="index-row__title">projects/blt</span>
+              <span class="index-row__desc">STM32 input-to-photon latency tester</span>
+            </a>
+            <a class="index-row" href="projects/pnvme.html">
+              <span class="index-row__date">2025</span>
+              <span class="index-row__title">projects/pnvme</span>
+              <span class="index-row__desc">FPGA NVMe device</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="index-section">
+          <h2>Open Source</h2>
+          <div class="index-list">
+            <a class="index-row" href="oss/libdivide.html">
+              <span class="index-row__date">2026</span>
+              <span class="index-row__title">oss/libdivide</span>
+              <span class="index-row__desc">ARM SVE/SVE2 vector division</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="index-section">
+          <h2>Keyboards</h2>
+          <div class="index-list">
+            <a class="index-row" href="keyboards.html">
+              <span class="index-row__date">2020-25</span>
+              <span class="index-row__title">keyboards</span>
+              <span class="index-row__desc">Selected custom keyboard builds</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="index-section">
+          <h2>Other</h2>
+          <div class="index-list">
+            <a class="index-row" href="about.html">
+              <span class="index-row__date">/</span>
+              <span class="index-row__title">about</span>
+              <span class="index-row__desc">Bio and contact context</span>
+            </a>
+            <a class="index-row" href="resume.html">
+              <span class="index-row__date">PDF</span>
+              <span class="index-row__title">resume</span>
+              <span class="index-row__desc">Experience, skills, and projects</span>
+            </a>
+          </div>
+        </section>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>© <span id="current-year"></span> Jacen Li. All rights reserved.</span>
+        <div class="site-footer__links">
+          <a href="mailto:jacenli@icloud.com">jacenli@icloud.com</a>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const yearTarget = document.getElementById("current-year");
+      if (yearTarget) {
+        yearTarget.textContent = new Date().getFullYear();
+      }
+    </script>
   </body>
 </html>

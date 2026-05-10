@@ -11,7 +11,7 @@
     <header class="site-header">
       <div class="site-header__inner">
         <div class="brand-group">
-          <a class="brand" href="projects.html">Jacen Li</a>
+          <a class="brand" href="index.html">Jacen Li</a>
           <div class="social-links">
             <a href="https://www.linkedin.com/in/jacen-li/" target="_blank" rel="noreferrer">LinkedIn</a>
             <span aria-hidden="true">·</span>
@@ -19,6 +19,7 @@
           </div>
         </div>
         <nav class="site-nav">
+          <a href="index.html">Home</a>
           <a class="active" aria-current="page" href="projects.html">Projects</a>
           <a href="open-source.html">Open Source</a>
           <a href="keyboards.html">Keyboards</a>
@@ -33,38 +34,34 @@
         <div class="content-intro">
           <p>Work in progress. This page will eventually hold longer project writeups.</p>
         </div>
-        <div class="grid grid--two grid--stack">
-          <a class="card card--interactive" href="projects/blt.html">
-            <span class="pill">Firmware &amp; Tooling</span>
+        <div class="entry-list">
+          <a class="entry" href="projects/blt.html">
             <h2>BLT latency measurement platform</h2>
-            <div class="card__meta">2026</div>
+            <div class="entry__meta">2026</div>
             <p>
               STM32 input-to-photon latency measurement device for benchmarking gaming PC responsiveness.
               Uses timers, circular DMA, and ISRs for microsecond-level resolution.
             </p>
           </a>
-          <a class="card card--interactive" href="projects/swiftfix.html">
-            <span class="pill">C++ &amp; SIMD</span>
+          <a class="entry" href="projects/swiftfix.html">
             <h2>SwiftFIX — SIMD FIX pre-parser</h2>
-            <div class="card__meta">2026</div>
+            <div class="entry__meta">2026</div>
             <p>
               C++20 FIX tag-value pre-parser with single-pass structural scanning, header indexing,
               body-length validation, and AVX2 frame splitting.
             </p>
           </a>
-          <a class="card card--interactive" href="projects/pnvme.html">
-            <span class="pill">FPGA &amp; PCIe</span>
+          <a class="entry" href="projects/pnvme.html">
             <h2>PNVMe — FPGA NVMe device</h2>
-            <div class="card__meta">2025</div>
+            <div class="entry__meta">2025</div>
             <p>
               Built a custom NVMe SSD controller on an Artix-7 FPGA that enumerates as a PCIe NVMe Linux block device.
               Substantiated the NVMe BAR and wrote a custom XDMA-to-NVMe harness backed by onboard DDR3.
             </p>
           </a>
-          <a class="card card--interactive" href="projects/nycticorax.html">
-            <span class="pill">Software &amp; AI</span>
+          <a class="entry" href="projects/nycticorax.html">
             <h2>Nycticorax — Discord bot</h2>
-            <div class="card__meta">2026</div>
+            <div class="entry__meta">2026</div>
             <p>
               Built a Discord bot using Claude Code and Codex for iterative implementation and debugging. Features
               selective memory, hybrid retrieval, and Postgres storage while controlling latency and cost. Modularized
@@ -72,7 +69,7 @@
             </p>
           </a>
         </div>
-        <div class="callout">
+        <div class="callout callout--plain">
           <h3>Miscellaneous work</h3>
           <p>
             Smaller projects, coursework, and experiments are collected separately.

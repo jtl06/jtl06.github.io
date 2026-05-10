@@ -11,7 +11,7 @@
     <header class="site-header">
       <div class="site-header__inner">
         <div class="brand-group">
-          <a class="brand" href="projects.html">Jacen Li</a>
+          <a class="brand" href="index.html">Jacen Li</a>
           <div class="social-links">
             <a href="https://www.linkedin.com/in/jacen-li/" target="_blank" rel="noreferrer">LinkedIn</a>
             <span aria-hidden="true">·</span>
@@ -19,6 +19,7 @@
           </div>
         </div>
         <nav class="site-nav">
+          <a href="index.html">Home</a>
           <a href="projects.html">Projects</a>
           <a href="open-source.html">Open Source</a>
           <a href="keyboards.html">Keyboards</a>
@@ -34,25 +35,25 @@
           <a class="button button--primary" href="Jacen_Li_Resume.pdf" target="_blank" rel="noreferrer">View full resume (PDF)</a>
         </div>
 
-        <div class="grid grid--stack">
-          <article class="card">
+        <div class="plain-stack">
+          <section class="plain-section">
             <h2>Education</h2>
             <h3>University of Washington — BSECE, Firmware and Embedded Systems</h3>
             <p>Expected 2028 &middot; GPA 3.88</p>
             <p style="margin-top: 0.75rem;">
               <strong>Selected Coursework:</strong> Hardware/Software Interface, Computer Architecture, Embedded Systems, Data Structures and Algorithms
             </p>
-          </article>
+          </section>
 
-          <article class="card">
+          <section class="plain-section">
             <h2>Skills</h2>
             <ul class="list">
               <li class="list__item"><strong>Languages:</strong> C++/C++20, C, Assembly (x86-64, ARM), Python, Shell (Bash/Zsh), SVE, AVX2</li>
               <li class="list__item"><strong>Tools:</strong> Linux (Debian/Ubuntu), Codex/Claude Code, Git/GitHub, perf, GCC/Clang, GDB, objdump, Make/CMake</li>
             </ul>
-          </article>
+          </section>
 
-          <article class="card">
+          <section class="plain-section">
             <h2>Experience</h2>
 
             <h3>Arm — Software Intern (Incoming), 2026</h3>
@@ -74,9 +75,9 @@
               <li class="list__item">Founded custom keyboard company to &gt;$40K revenue; led design, manufacturing, and fulfillment.</li>
               <li class="list__item">Designed ATmega32U4 PCBs in KiCad and wrote QMK firmware in C for matrix scan, debouncing, and USB HID.</li>
             </ul>
-          </article>
+          </section>
 
-          <article class="card">
+          <section class="plain-section">
             <h2>Technical Projects</h2>
             <ul class="list">
               <li class="list__item"><strong>BLT — Better Latency Tester:</strong> STM32 input-to-photon latency tester using timers, circular DMA, and ISRs for microsecond-level resolution; quantified DMA ISR jitter at &plusmn;8 &mu;s.</li>
@@ -86,7 +87,7 @@
               <li class="list__item"><strong>PNVMe:</strong> Custom NVMe SSD controller on Artix-7 FPGA, enumerated as PCIe NVMe Linux block device.</li>
               <li class="list__item"><strong>ARMv8 CPU:</strong> 5-stage pipelined processor in SystemVerilog with hazard detection and forwarding.</li>
             </ul>
-          </article>
+          </section>
         </div>
       </section>
     </main>

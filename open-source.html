@@ -11,7 +11,7 @@
     <header class="site-header">
       <div class="site-header__inner">
         <div class="brand-group">
-          <a class="brand" href="projects.html">Jacen Li</a>
+          <a class="brand" href="index.html">Jacen Li</a>
           <div class="social-links">
             <a href="https://www.linkedin.com/in/jacen-li/" target="_blank" rel="noreferrer">LinkedIn</a>
             <span aria-hidden="true">·</span>
@@ -19,6 +19,7 @@
           </div>
         </div>
         <nav class="site-nav">
+          <a href="index.html">Home</a>
           <a href="projects.html">Projects</a>
           <a class="active" aria-current="page" href="open-source.html">Open Source</a>
           <a href="keyboards.html">Keyboards</a>
@@ -35,11 +36,10 @@
             Contributions to external projects, mostly around low-level performance and architecture-specific optimization.
           </p>
         </div>
-        <div class="grid grid--two grid--stack">
-          <a class="card card--interactive" href="oss/libdivide.html">
-            <span class="pill">ARM SVE</span>
+        <div class="entry-list">
+          <a class="entry" href="oss/libdivide.html">
             <h2>libdivide ARM SVE</h2>
-            <div class="card__meta">2026</div>
+            <div class="entry__meta">2026</div>
             <p>
               Added and optimized ARM SVE/SVE2 vector division paths for libdivide, with tests,
               docs, CMake integration, and Graviton4 benchmarks.
