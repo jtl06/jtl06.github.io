@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Overlain — Jacen Li</title>
+    <title>BLT — Jacen Li</title>
     <link rel="stylesheet" href="../styles/main.css" />
   </head>
   <body>
@@ -30,25 +30,25 @@
     <main>
       <section class="section">
         <div class="page-intro">
-          <span class="pill">Embedded Systems</span>
-          <h1>Overlain code overlays</h1>
+          <h1>BLT latency measurement platform</h1>
           <div class="content-intro">
-            <p>Flash-to-SRAM code overlays on an STM32G031K8 for deterministic performance experiments.</p>
+            <p>
+              STM32 input-to-photon latency measurement device for benchmarking gaming PC responsiveness.
+            </p>
           </div>
         </div>
         <article class="card">
           <p>
-            Overlain keeps bare-metal firmware small while running heavyweight crypto and benchmark routines
-            at SRAM speeds. Custom linker sections map overlayable code segments, which are relocated right
-            before execution.
+            Built around an STM32 Nucleo board, BLT combines USB HID emulation, timers,
+            circular DMA, and ISRs for microsecond-level timing.
           </p>
           <ul class="list">
-            <li class="list__item">Benchmarks RSA-2048 verify and Miller-Rabin tests with and without overlays.</li>
-            <li class="list__item">Shows 1.34x speedup from executing latency-sensitive code from SRAM.</li>
-            <li class="list__item">Documents overlay loader, linker script, and measurement workflow for reuse.</li>
+            <li class="list__item">Quantified DMA ISR jitter at &plusmn;8 microseconds at 2.5 kHz.</li>
+            <li class="list__item">Scripted OpenOCD and GDB flash/debug workflow with Make.</li>
+            <li class="list__item">Built Python GUI for data collection and CSV export.</li>
           </ul>
           <p style="margin-top: 1.25rem;">
-            <a class="cta-link" href="https://github.com/jtl06/overlain" target="_blank" rel="noreferrer">View overlain on GitHub</a>
+            <a class="cta-link" href="https://github.com/jtl06/BLT" target="_blank" rel="noreferrer">View BLT on GitHub</a>
           </p>
         </article>
       </section>

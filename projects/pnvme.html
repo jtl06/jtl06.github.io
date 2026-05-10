@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Air Quality Monitor — Jacen Li</title>
+    <title>PNVMe — Jacen Li</title>
     <link rel="stylesheet" href="../styles/main.css" />
   </head>
   <body>
@@ -30,16 +30,18 @@
     <main>
       <section class="section">
         <div class="page-intro">
-          <span class="pill">Validation</span>
-          <h1>Air quality monitor</h1>
+          <h1>PNVMe — FPGA NVMe device</h1>
           <div class="content-intro">
-            <p>A CO2, temperature, and humidity monitor built around the SCD41 sensor.</p>
+            <p>A custom NVMe SSD controller on an Artix-7 FPGA.</p>
           </div>
         </div>
         <article class="card">
           <p>
-            Developed SD card logging via FatFs, designed the SPI storage pipeline, handled sensor
-            calibration, and built a minimal UI for quick analytics.
+            PNVMe enumerates as a PCIe NVMe Linux block device. The project substantiates the
+            NVMe BAR and uses a custom XDMA-to-NVMe harness backed by onboard DDR3.
+          </p>
+          <p style="margin-top: 1.25rem;">
+            <a class="cta-link" href="https://github.com/jtl06/PNVMe" target="_blank" rel="noreferrer">View PNVMe on GitHub</a>
           </p>
         </article>
       </section>

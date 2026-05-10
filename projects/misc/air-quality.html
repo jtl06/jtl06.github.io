@@ -4,14 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>ARMv8 Microarchitecture — Jacen Li</title>
-    <link rel="stylesheet" href="../styles/main.css" />
+    <title>Air Quality Monitor — Jacen Li</title>
+    <link rel="stylesheet" href="../../styles/main.css" />
   </head>
   <body>
     <header class="site-header">
       <div class="site-header__inner">
         <div class="brand-group">
-          <a class="brand" href="../projects.html">Jacen Li</a>
+          <a class="brand" href="../../projects.html">Jacen Li</a>
           <div class="social-links">
             <a href="https://www.linkedin.com/in/jacen-li/" target="_blank" rel="noreferrer">LinkedIn</a>
             <span aria-hidden="true">·</span>
@@ -19,28 +19,26 @@
           </div>
         </div>
         <nav class="site-nav">
-          <a class="active" aria-current="page" href="../projects.html">Projects</a>
-          <a href="../open-source.html">Open Source</a>
-          <a href="../keyboards.html">Keyboards</a>
-          <a href="../about.html">About</a>
-          <a href="../resume.html">Resume</a>
+          <a class="active" aria-current="page" href="../../projects.html">Projects</a>
+          <a href="../../open-source.html">Open Source</a>
+          <a href="../../keyboards.html">Keyboards</a>
+          <a href="../../about.html">About</a>
+          <a href="../../resume.html">Resume</a>
         </nav>
       </div>
     </header>
     <main>
       <section class="section">
         <div class="page-intro">
-          <span class="pill">Architecture</span>
-          <h1>ARMv8 microarchitecture study</h1>
+          <h1>Air quality monitor</h1>
           <div class="content-intro">
-            <p>A SystemVerilog CPU study moving from single-cycle execution to a 5-stage pipeline.</p>
+            <p>A CO2, temperature, and humidity monitor built around the SCD41 sensor.</p>
           </div>
         </div>
         <article class="card">
           <p>
-            Implemented an ARM-style RISC CPU with hazard detection and forwarding. Integrated a
-            direct-mapped cache and used ModelSim benches to measure CPI impacts from branch
-            penalties and cache misses.
+            Developed SD card logging via FatFs, designed the SPI storage pipeline, handled sensor
+            calibration, and built a minimal UI for quick analytics.
           </p>
         </article>
       </section>

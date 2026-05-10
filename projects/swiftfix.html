@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>PNVMe — Jacen Li</title>
+    <title>SwiftFIX — Jacen Li</title>
     <link rel="stylesheet" href="../styles/main.css" />
   </head>
   <body>
@@ -30,19 +30,25 @@
     <main>
       <section class="section">
         <div class="page-intro">
-          <span class="pill">FPGA &amp; PCIe</span>
-          <h1>PNVMe — FPGA NVMe device</h1>
+          <h1>SwiftFIX — SIMD FIX pre-parser</h1>
           <div class="content-intro">
-            <p>A custom NVMe SSD controller on an Artix-7 FPGA.</p>
+            <p>
+              C++20 FIX tag-value pre-parser for fast structural scanning before QuickFIX parsing.
+            </p>
           </div>
         </div>
         <article class="card">
           <p>
-            PNVMe enumerates as a PCIe NVMe Linux block device. The project substantiates the
-            NVMe BAR and uses a custom XDMA-to-NVMe harness backed by onboard DDR3.
+            SwiftFIX performs single-pass structural scanning, header indexing, body-length
+            validation, and field-boundary extraction into a reusable zero-allocation offset table.
           </p>
+          <ul class="list">
+            <li class="list__item">Improved frame-splitting throughput from 146 MiB/s in QuickFIX to 1.60 GiB/s scalar.</li>
+            <li class="list__item">Reached 2.19 GiB/s with AVX2.</li>
+            <li class="list__item">Reduced cycles per message from 3,999 to 257 while nearly eliminating L1D misses.</li>
+          </ul>
           <p style="margin-top: 1.25rem;">
-            <a class="cta-link" href="https://github.com/jtl06/PNVMe" target="_blank" rel="noreferrer">View PNVMe on GitHub</a>
+            <a class="cta-link" href="https://github.com/jtl06/SwiftFIX" target="_blank" rel="noreferrer">View SwiftFIX on GitHub</a>
           </p>
         </article>
       </section>
