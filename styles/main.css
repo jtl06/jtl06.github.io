@@ -27,8 +27,9 @@
   --surface: #151715;
   --text: #d8d2c5;
   --subtle: #8a867d;
-  --accent: #b8a36a;
-  --accent-dim: rgba(184, 163, 106, 0.12);
+  --accent: #a8b35f;
+  --accent-hover: #bdc875;
+  --accent-dim: rgba(168, 179, 95, 0.12);
   --border: #2a2d2a;
   --max-width: 880px;
   --page-gutter: clamp(1.25rem, 7vw, 7rem);
@@ -207,7 +208,7 @@ main {
 
 .button--primary:hover,
 .button--primary:focus {
-  background: #5a93c6;
+  background: var(--accent-hover);
   text-decoration: none;
 }
 
