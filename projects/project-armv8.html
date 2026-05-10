@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Koi65 — Jacen Li</title>
+    <title>ARMv8 Microarchitecture — Jacen Li</title>
     <link rel="stylesheet" href="../styles/main.css" />
   </head>
   <body>
@@ -19,8 +19,8 @@
           </div>
         </div>
         <nav class="site-nav">
-          <a href="../projects.html">Projects</a>
-          <a class="active" aria-current="page" href="../keyboards.html">Keyboards</a>
+          <a class="active" aria-current="page" href="../projects.html">Projects</a>
+          <a href="../keyboards.html">Keyboards</a>
           <a href="../blog.html">Blog</a>
           <a href="../about.html">About</a>
           <a href="../resume.html">Resume</a>
@@ -30,25 +30,19 @@
     <main>
       <section class="section">
         <div class="page-intro">
-          <h1>Koi65</h1>
-          <p class="content-intro">
-            Koi65, featuring two namesake Koi on the weight, has two variants created, one in navy and copper, and another in light blue and stainless. 
+          <span class="pill">Architecture</span>
+          <h1>ARMv8 microarchitecture study</h1>
+          <div class="content-intro">
+            <p>A SystemVerilog CPU study moving from single-cycle execution to a 5-stage pipeline.</p>
+          </div>
+        </div>
+        <article class="card">
+          <p>
+            Implemented an ARM-style RISC CPU with hazard detection and forwarding. Integrated a
+            direct-mapped cache and used ModelSim benches to measure CPI impacts from branch
+            penalties and cache misses.
           </p>
-          <ul class="meta-list">
-            <li class="meta-list__item">2023</li>
-            <li class="meta-list__item">65% layout</li>
-            <li class="meta-list__item">Sandwich gasket</li>
-            <li class="meta-list__item">6063 Al · C110 copper · stainless 304</li>
-          </ul>
-        </div>
-        <div class="gallery">
-          <img class="gallery__image" src="../Media/Koi65/Koi65Closeback.jpg" alt="Close-up of Koi65 rear weight and finish" />
-          <img class="gallery__image" src="../Media/Koi65/Koi65%20Rear.jpg" alt="Rear view of Koi65 keyboard showing koi engraving" />
-          <img class="gallery__image" src="../Media/Koi65/Koi65_alt.jpg" alt="Stainless steel Koi65 variant with alternate weight design" />
-        </div>
-        <p style="margin-top: 2rem;">
-          <a href="../keyboards.html">← Back to keyboard gallery</a>
-        </p>
+        </article>
       </section>
     </main>
     <footer class="site-footer">
