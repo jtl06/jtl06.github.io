@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>About — Jacen Li</title>
+    <title>Open Source — Jacen Li</title>
     <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body>
@@ -20,36 +20,30 @@
         </div>
         <nav class="site-nav">
           <a href="projects.html">Projects</a>
-          <a href="open-source.html">Open Source</a>
+          <a class="active" aria-current="page" href="open-source.html">Open Source</a>
           <a href="keyboards.html">Keyboards</a>
-          <a class="active" aria-current="page" href="about.html">About</a>
+          <a href="about.html">About</a>
           <a href="resume.html">Resume</a>
         </nav>
       </div>
     </header>
     <main>
       <section class="section">
-        <h1>About me</h1>
-        <div class="grid grid--stack">
-          <div class="profile-card">
-            <img
-              class="profile-card__photo"
-              src="Media/mocha.jpeg"
-              alt="Mocha"
-            />
-            <div>
-              <div class="content-intro">
-                <p>
-                  I’m an undergraduate ECE student at the University of Washington, Seattle.
-                  I like building hardware and software systems that sit close to the machine, especially
-                  embedded systems, firmware, measurement tools, and performance-focused projects.
-                </p>
-                <p>
-                  Outside of technical work, I spend time with my dog, Mocha, take bird photos, and cook.
-                </p>
-              </div>
-            </div>
-          </div>
+        <h1>Open source contributions</h1>
+        <div class="content-intro">
+          <p>
+            Contributions to external projects, mostly around low-level performance and architecture-specific optimization.
+          </p>
+        </div>
+        <div class="grid grid--two grid--stack">
+          <a class="card card--interactive" href="projects/project-libdivide-sve.html">
+            <span class="pill">ARM SVE</span>
+            <h2>libdivide ARM SVE</h2>
+            <p>
+              Added and optimized ARM SVE/SVE2 vector division paths for libdivide, with tests,
+              docs, CMake integration, and Graviton4 benchmarks.
+            </p>
+          </a>
         </div>
       </section>
     </main>
