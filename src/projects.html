@@ -1,0 +1,54 @@
+---
+layout: base.njk
+title: "Projects — Jacen Li"
+permalink: "/projects/"
+nav: "projects"
+---
+<section class="section">
+        <h1>Projects</h1>
+        <div class="content-intro">
+          <p>Work in progress. This page will eventually hold longer project writeups.</p>
+        </div>
+        <div class="entry-list">
+          <a class="entry" href="/projects/blt/">
+            <h2>BLT latency measurement platform</h2>
+            <div class="entry__meta">2026</div>
+            <p>
+              STM32 input-to-photon latency measurement device for benchmarking gaming PC responsiveness.
+              Uses timers, circular DMA, and ISRs for microsecond-level resolution.
+            </p>
+          </a>
+          <a class="entry" href="/projects/swiftfix/">
+            <h2>SwiftFIX — SIMD FIX pre-parser</h2>
+            <div class="entry__meta">2026</div>
+            <p>
+              C++20 FIX tag-value pre-parser with single-pass structural scanning, header indexing,
+              body-length validation, and AVX2 frame splitting.
+            </p>
+          </a>
+          <a class="entry" href="/projects/pnvme/">
+            <h2>PNVMe — FPGA NVMe device</h2>
+            <div class="entry__meta">2025</div>
+            <p>
+              Built a custom NVMe SSD controller on an Artix-7 FPGA that enumerates as a PCIe NVMe Linux block device.
+              Substantiated the NVMe BAR and wrote a custom XDMA-to-NVMe harness backed by onboard DDR3.
+            </p>
+          </a>
+          <a class="entry" href="/projects/nycticorax/">
+            <h2>Nycticorax — Discord bot</h2>
+            <div class="entry__meta">2026</div>
+            <p>
+              Built a Discord bot using Claude Code and Codex for iterative implementation and debugging. Features
+              selective memory, hybrid retrieval, and Postgres storage while controlling latency and cost. Modularized
+              the codebase so different AI tools and multi-agent routines could contribute coherently.
+            </p>
+          </a>
+        </div>
+        <div class="callout callout--plain">
+          <h3>Miscellaneous work</h3>
+          <p>
+            Smaller projects, coursework, and experiments are collected separately.
+            <a class="cta-link" href="/projects/misc/">View misc projects</a>
+          </p>
+        </div>
+      </section>

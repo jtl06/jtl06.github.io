@@ -1,0 +1,30 @@
+---
+layout: base.njk
+title: "BLT — Jacen Li"
+permalink: "/projects/blt/"
+nav: "projects"
+---
+<section class="section">
+        <div class="page-intro">
+          <h1>BLT latency measurement platform</h1>
+          <div class="content-intro">
+            <p>
+              STM32 input-to-photon latency measurement device for benchmarking gaming PC responsiveness.
+            </p>
+          </div>
+        </div>
+        <section class="plain-section">
+          <p>
+            Built around an STM32 Nucleo board, BLT combines USB HID emulation, timers,
+            circular DMA, and ISRs for microsecond-level timing.
+          </p>
+          <ul class="list">
+            <li class="list__item">Quantified DMA ISR jitter at &plusmn;8 microseconds at 2.5 kHz.</li>
+            <li class="list__item">Scripted OpenOCD and GDB flash/debug workflow with Make.</li>
+            <li class="list__item">Built Python GUI for data collection and CSV export.</li>
+          </ul>
+          <p style="margin-top: 1.25rem;">
+            <a class="cta-link" href="https://github.com/jtl06/BLT" target="_blank" rel="noreferrer">View BLT on GitHub</a>
+          </p>
+        </section>
+      </section>

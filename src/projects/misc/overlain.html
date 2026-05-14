@@ -1,0 +1,29 @@
+---
+layout: base.njk
+title: "Overlain — Jacen Li"
+permalink: "/projects/misc/overlain/"
+nav: "projects"
+---
+<section class="section">
+        <div class="page-intro">
+          <h1>Overlain code overlays</h1>
+          <div class="content-intro">
+            <p>Flash-to-SRAM code overlays on an STM32G031K8 for deterministic performance experiments.</p>
+          </div>
+        </div>
+        <section class="plain-section">
+          <p>
+            Overlain keeps bare-metal firmware small while running heavyweight crypto and benchmark routines
+            at SRAM speeds. Custom linker sections map overlayable code segments, which are relocated right
+            before execution.
+          </p>
+          <ul class="list">
+            <li class="list__item">Benchmarks RSA-2048 verify and Miller-Rabin tests with and without overlays.</li>
+            <li class="list__item">Shows 1.34x speedup from executing latency-sensitive code from SRAM.</li>
+            <li class="list__item">Documents overlay loader, linker script, and measurement workflow for reuse.</li>
+          </ul>
+          <p style="margin-top: 1.25rem;">
+            <a class="cta-link" href="https://github.com/jtl06/overlain" target="_blank" rel="noreferrer">View overlain on GitHub</a>
+          </p>
+        </section>
+      </section>

@@ -1,2 +1,4 @@
 .DS_Store
 agents.md
+node_modules/
+_site/

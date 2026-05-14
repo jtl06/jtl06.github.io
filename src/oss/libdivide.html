@@ -1,0 +1,39 @@
+---
+layout: base.njk
+title: "libdivide ARM SVE contribution — Jacen Li"
+permalink: "/oss/libdivide/"
+nav: "open-source"
+---
+<section class="section">
+        <div class="page-intro">
+          <h1>libdivide ARM SVE contribution</h1>
+          <div class="content-intro">
+            <p>
+              Contributions to the upstream libdivide project adding ARM SVE support
+              for its vector division paths.
+            </p>
+          </div>
+        </div>
+        <section class="plain-section">
+          <p>
+            I implemented and submitted SVE vector division paths for all widths, with
+            tests, documentation, and Graviton4 benchmarks against the existing NEON
+            implementation.
+          </p>
+          <ul class="list">
+            <li class="list__item">Around 5x faster 16-bit division vs NEON from wider scalable vectors and native lane operations.</li>
+            <li class="list__item">Around 3x faster 64-bit division vs NEON from SVE native vector multiply-high instructions.</li>
+          </ul>
+          <h2 style="margin-top: 1.5rem;">Pull requests</h2>
+          <ul class="list">
+            <li class="list__item"><strong>PR #158:</strong> Added the initial ARM SVE backend for 16/32/64-bit signed and unsigned vector division, wired into CMake, tests, benchmarks, and documentation.</li>
+            <li class="list__item"><strong>PR #159:</strong> Optimized the SVE backend and added an optional SVE2 path using predicated merge-adds and SVE2 halving-add instructions where they improved Graviton4 performance.</li>
+          </ul>
+          <p style="margin-top: 1.25rem;">
+            <a class="cta-link" href="https://github.com/ridiculousfish/libdivide/pull/158" target="_blank" rel="noreferrer">View PR #158</a>
+          </p>
+          <p style="margin-top: 0.75rem;">
+            <a class="cta-link" href="https://github.com/ridiculousfish/libdivide/pull/159" target="_blank" rel="noreferrer">View PR #159</a>
+          </p>
+        </section>
+      </section>

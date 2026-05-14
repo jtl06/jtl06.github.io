@@ -1,0 +1,23 @@
+---
+pagination:
+  data: redirects
+  size: 1
+  alias: redirect
+permalink: "{{ redirect.from }}"
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting — Jacen Li</title>
+    <link rel="canonical" href="{{ redirect.to }}" />
+    <meta http-equiv="refresh" content="0; url={{ redirect.to }}" />
+    <script>
+      window.location.replace("{{ redirect.to }}");
+    </script>
+  </head>
+  <body>
+    <a href="{{ redirect.to }}">Redirecting</a>
+  </body>
+</html>
