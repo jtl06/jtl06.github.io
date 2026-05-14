@@ -1,0 +1,18 @@
+---
+layout: base.njk
+title: "404 — Jacen Li"
+permalink: "/404.html"
+nav: ""
+---
+<section class="section">
+  <h1>404</h1>
+  <div class="content-intro">
+    <p>This page does not exist. Redirecting home in 5 seconds.</p>
+    <p><a class="cta-link" href="/">Return home</a></p>
+  </div>
+</section>
+<script>
+  window.setTimeout(() => {
+    window.location.href = "/";
+  }, 5000);
+</script>
