@@ -1,0 +1,28 @@
+---
+layout: base.njk
+title: "EdgeCase — Jacen Li"
+permalink: "/projects/edgecase/"
+nav: "projects"
+---
+<section class="section">
+  <div class="page-intro">
+    <h1>EdgeCase — hardware-in-the-loop debugger</h1>
+    <div class="content-intro">
+      <p>Multi-agent firmware debugging system built for TreeHacks 2026.</p>
+    </div>
+  </div>
+  <section class="plain-section">
+    <p>
+      EdgeCase runs local NVIDIA NIM agents against real RP2350 UART evidence,
+      keeping hardware access isolated behind a build, flash, and serial-capture runner.
+    </p>
+    <ul class="list">
+      <li class="list__item">Automates firmware build, flashing, USB serial discovery, and timestamped UART capture.</li>
+      <li class="list__item">Stores reproducible evidence bundles with firmware artifacts, logs, metrics, and triage output.</li>
+      <li class="list__item">Streams agent activity, run state, UART output, and validator confidence to a live dashboard.</li>
+    </ul>
+    <p style="margin-top: 1.25rem;">
+      <a class="cta-link" href="https://github.com/jtl06/hard-itl" target="_blank" rel="noreferrer">View EdgeCase on GitHub</a>
+    </p>
+  </section>
+</section>

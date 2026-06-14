@@ -1,0 +1,28 @@
+---
+layout: base.njk
+title: "PTF — Jacen Li"
+permalink: "/projects/ptf/"
+nav: "projects"
+---
+<section class="section">
+  <div class="page-intro">
+    <h1>PTF — Linux performance lab</h1>
+    <div class="content-intro">
+      <p>C++ profiling puzzles built around measurement, optimization, and correctness.</p>
+    </div>
+  </div>
+  <section class="plain-section">
+    <p>
+      PTF presents correct but intentionally slow programs, then grades optimized
+      implementations against output checks and repeatable speedup targets.
+    </p>
+    <ul class="list">
+      <li class="list__item">Syscall Storm uses strace to find excessive read calls, targeting at least 100x speedup.</li>
+      <li class="list__item">Cache Maze uses perf to diagnose poor locality in a 4096 by 4096 image filter, targeting 4x speedup.</li>
+      <li class="list__item">Branch Lottery measures hardware branch counters and targets a 1.5x speedup without changing output.</li>
+    </ul>
+    <p style="margin-top: 1.25rem;">
+      <a class="cta-link" href="https://github.com/jtl06/ptf" target="_blank" rel="noreferrer">View PTF on GitHub</a>
+    </p>
+  </section>
+</section>

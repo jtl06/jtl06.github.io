@@ -2,7 +2,7 @@
 layout: base.njk
 title: "libdivide ARM SVE contribution — Jacen Li"
 permalink: "/oss/libdivide/"
-nav: "open-source"
+nav: "projects"
 ---
 <section class="section">
         <div class="page-intro">
@@ -28,12 +28,20 @@ nav: "open-source"
           <ul class="list">
             <li class="list__item"><strong>PR #158:</strong> Added the initial ARM SVE backend for 16/32/64-bit signed and unsigned vector division, wired into CMake, tests, benchmarks, and documentation.</li>
             <li class="list__item"><strong>PR #159:</strong> Optimized the SVE backend and added an optional SVE2 path using predicated merge-adds and SVE2 halving-add instructions where they improved Graviton4 performance.</li>
+            <li class="list__item"><strong>PR #161:</strong> Updated the Windows GitHub Actions CI matrix from the deprecated Windows 2019 runner to Windows 2025 and moved the Visual Studio generator to 2022.</li>
+            <li class="list__item"><strong>PR #162:</strong> Fixed Windows CI failures by tightening MSVC warning handling, adding MSVC bit-scan helpers, and using a Windows timer path in the division benchmark.</li>
           </ul>
           <p style="margin-top: 1.25rem;">
             <a class="cta-link" href="https://github.com/ridiculousfish/libdivide/pull/158" target="_blank" rel="noreferrer">View PR #158</a>
           </p>
           <p style="margin-top: 0.75rem;">
             <a class="cta-link" href="https://github.com/ridiculousfish/libdivide/pull/159" target="_blank" rel="noreferrer">View PR #159</a>
+          </p>
+          <p style="margin-top: 0.75rem;">
+            <a class="cta-link" href="https://github.com/ridiculousfish/libdivide/pull/161" target="_blank" rel="noreferrer">View PR #161</a>
+          </p>
+          <p style="margin-top: 0.75rem;">
+            <a class="cta-link" href="https://github.com/ridiculousfish/libdivide/pull/162" target="_blank" rel="noreferrer">View PR #162</a>
           </p>
         </section>
       </section>
