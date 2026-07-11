@@ -8,7 +8,6 @@
   { "from": "/resume.html", "to": "/resume/" },
   { "from": "/blog.html", "to": "/writings/" },
   { "from": "/blog/", "to": "/writings/" },
-  { "from": "/writings/core-to-core-is-not-core-to-core.html", "to": "/writings/core-to-core-is-not-core-to-core/" },
   { "from": "/projects/swiftfix.html", "to": "/projects/swiftfix/" },
   { "from": "/projects/blt.html", "to": "/projects/blt/" },
   { "from": "/projects/edgecase.html", "to": "/projects/edgecase/" },

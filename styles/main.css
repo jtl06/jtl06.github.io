@@ -133,7 +133,12 @@ a:focus {
   transition: color 0.15s ease, border-color 0.15s ease;
 }
 
-.site-nav a.active,
+.site-nav a.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
 .site-nav a:hover,
 .site-nav a:focus {
   color: var(--text);
@@ -496,8 +501,30 @@ main {
 
 @media (max-width: 720px) {
   .index-row {
-    grid-template-columns: 1fr;
-    gap: 0.15rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "title date"
+      "desc desc";
+    gap: 0.15rem 0.75rem;
+    align-items: baseline;
+  }
+
+  .index-row__date {
+    grid-area: date;
+    font-size: 0.75rem;
+  }
+
+  .index-row__title {
+    grid-area: title;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-weight: 600;
+  }
+
+  .index-row__desc {
+    grid-area: desc;
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 }
 
