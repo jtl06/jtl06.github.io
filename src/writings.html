@@ -6,5 +6,17 @@ nav: "writings"
 ---
 <section class="section">
   <h1>Writings</h1>
-  <p class="muted">Nothing published yet.</p>
+  {% if collections.writings and collections.writings.length %}
+    <div class="entry-list reading-list">
+      {% for writing in collections.writings | sortByDateDescending %}
+        <a class="entry" href="{{ writing.url }}">
+          <h3>{{ writing.data.listingTitle }}</h3>
+          <div class="entry__meta">{{ writing.date | readableDate }}</div>
+          <p>{{ writing.data.summary }}</p>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="muted">Technical notes and project write-ups are coming soon.</p>
+  {% endif %}
 </section>

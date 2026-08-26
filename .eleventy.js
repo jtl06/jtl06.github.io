@@ -1,4 +1,19 @@
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addFilter("sortByOrder", (items) =>
+    [...items].sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0)),
+  );
+  eleventyConfig.addFilter("sortByDateDescending", (items) =>
+    [...items].sort((a, b) => b.date - a.date),
+  );
+  eleventyConfig.addFilter("readableDate", (date) =>
+    new Intl.DateTimeFormat("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      timeZone: "UTC",
+    }).format(date),
+  );
+
   eleventyConfig.addPassthroughCopy("CNAME");
   eleventyConfig.addPassthroughCopy("robots.txt");
   eleventyConfig.addPassthroughCopy("styles");

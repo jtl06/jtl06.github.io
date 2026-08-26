@@ -39,8 +39,8 @@
   --accent-hover: #bdc875;
   --accent-dim: rgba(168, 179, 95, 0.12);
   --border: #2a2d2a;
-  --max-width: 880px;
-  --page-gutter: clamp(1.25rem, 7vw, 7rem);
+  --max-width: 1080px;
+  --page-gutter: clamp(1.25rem, 4vw, 4rem);
   --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-interface: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   --font-secondary: "Ioskeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -85,7 +85,7 @@ a:focus {
 
 .site-header__inner {
   width: min(var(--max-width), calc(100% - (var(--page-gutter) * 2)));
-  margin: 0 auto 0 var(--page-gutter);
+  margin: 0 auto;
   padding: 1rem 0;
   display: flex;
   flex-wrap: wrap;
@@ -153,7 +153,7 @@ main {
 
 .section {
   width: min(var(--max-width), calc(100% - (var(--page-gutter) * 2)));
-  margin: 0 auto 0 var(--page-gutter);
+  margin: 0 auto;
   padding: 1rem 0 2.5rem;
 }
 
@@ -180,7 +180,7 @@ main {
 
 .hero__inner {
   width: min(var(--max-width), calc(100% - (var(--page-gutter) * 2)));
-  margin: 0 auto 0 var(--page-gutter);
+  margin: 0 auto;
   padding: 3rem 0 3.5rem;
 }
 
@@ -246,7 +246,7 @@ main {
 .content-intro {
   font-size: 1rem;
   color: var(--subtle);
-  max-width: 720px;
+  max-width: 70ch;
   line-height: 1.6;
 }
 
@@ -261,11 +261,38 @@ main {
 
 .keyboard-grid {
   grid-template-columns: minmax(0, 1fr);
+  margin-top: 1.5rem;
+}
+
+.project-keyboard-grid {
+  margin-top: 1rem;
+}
+
+.section-action {
+  margin: 1rem 0 0;
 }
 
 .grid--stack {
   margin-top: 2rem;
   gap: 2rem;
+}
+
+@media (max-width: 560px) {
+  .site-header__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .site-nav {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .site-nav a {
+    font-size: 0.85rem;
+  }
 }
 
 @media (min-width: 640px) {
@@ -532,6 +559,24 @@ main {
   margin-top: 2rem;
   display: grid;
   gap: 2rem;
+  max-width: 72ch;
+}
+
+.plain-section {
+  max-width: 72ch;
+}
+
+.resume-download {
+  margin: 0 0 2rem;
+}
+
+.detail-copy,
+.detail-list {
+  margin-top: 0.75rem;
+}
+
+.detail-heading {
+  margin-top: 1.5rem;
 }
 
 .plain-section h2 {
@@ -590,7 +635,7 @@ main {
 
 .site-footer__inner {
   width: min(var(--max-width), calc(100% - (var(--page-gutter) * 2)));
-  margin: 0 auto 0 var(--page-gutter);
+  margin: 0 auto;
   padding: 1.25rem 0 2rem;
   font-size: 0.85rem;
   color: var(--subtle);

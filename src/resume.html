@@ -5,63 +5,64 @@ permalink: "/resume/"
 nav: "resume"
 ---
 <section class="section">
-        <h1>Resume</h1>
-        <div style="margin-bottom: 2rem;">
-          <a class="button button--primary" href="/Jacen_Li_Resume.pdf" target="_blank" rel="noreferrer">View full resume (PDF)</a>
-        </div>
+  <h1>Resume</h1>
+  <p class="resume-download">
+    <a class="button button--primary" href="/Jacen_Li_Resume.pdf" target="_blank" rel="noreferrer">View full resume (PDF)</a>
+  </p>
 
-        <div class="plain-stack">
-          <section class="plain-section">
-            <h2>Education</h2>
-            <h3>University of Washington — BSECE, Firmware and Embedded Systems</h3>
-            <p>Expected 2028 &middot; GPA 3.88</p>
-            <p style="margin-top: 0.75rem;">
-              <strong>Selected Coursework:</strong> Hardware/Software Interface, Computer Architecture, Embedded Systems, Data Structures and Algorithms
-            </p>
-          </section>
+  <div class="plain-stack">
+    <section class="plain-section">
+      <h2>Education</h2>
+      <h3>University of Washington — Seattle — BSECE, Embedded Systems</h3>
+      <p>Expected Spring 2028 &middot; GPA 3.85/4.0</p>
+      <p class="detail-copy">
+        <strong>Selected Coursework:</strong> Computer Architecture I &amp; II, Hardware/Software Interface, Embedded Systems, Digital Design I &amp; II, Data Structures and Algorithms
+      </p>
+    </section>
 
-          <section class="plain-section">
-            <h2>Skills</h2>
-            <ul class="list">
-              <li class="list__item"><strong>Languages:</strong> C++/C++20, C, Assembly (x86-64, ARM), Python, Shell (Bash/Zsh), SVE, AVX2</li>
-              <li class="list__item"><strong>Tools:</strong> Linux (Debian/Ubuntu), Codex/Claude Code, Git/GitHub, perf, GCC/Clang, GDB, objdump, Make/CMake</li>
-            </ul>
-          </section>
+    <section class="plain-section">
+      <h2>Skills</h2>
+      <ul class="list">
+        <li class="list__item"><strong>Languages:</strong> C++23, C, Python, Assembly (x86-64, ARM, RISC-V), Shell (Bash/Zsh)</li>
+        <li class="list__item"><strong>Tools:</strong> Linux, Git/GitHub, perf, strace, GCC/Clang, GDB/objdump, Codex/Claude Code, Compiler Explorer</li>
+      </ul>
+    </section>
 
-          <section class="plain-section">
-            <h2>Experience</h2>
+    <section class="plain-section">
+      <h2>Experience</h2>
 
-            <h3>Arm — Software Intern (Incoming), 2026</h3>
-            <p>Austin, TX</p>
-            <ul class="list" style="margin-top: 0.5rem;">
-              <li class="list__item">Incoming software intern on platform performance tooling for Neoverse CSS HPC/AI platform.</li>
-              <li class="list__item">Will work with Linux-based profiling, benchmarking, and PMU/perf-style measurement workflows.</li>
-            </ul>
+      <h3>Arm — Software Engineering Intern, System Performance &amp; Infra Tooling Solutions — Summer 2026</h3>
+      <p>Austin, TX &middot; Developed microbenchmarks for <a href="https://github.com/Arm/asct" target="_blank" rel="noreferrer">ASCT, the Arm System Characterization Tool</a></p>
+      <ul class="list detail-list">
+        <li class="list__item">Evaluated more than 20 core-to-core latency benchmarks across seven Intel and Arm systems, comparing measurement semantics, stability, sampling strategy, topology coverage, and susceptibility to prefetching.</li>
+        <li class="list__item">Designed directional dependent-pointer-chase and CAS microbenchmarks; used PMU and CMN counters to separate cache-line transfer latency from atomic contention, instruction overhead, and prefetcher effects.</li>
+        <li class="list__item">Mapped multimodal core-to-core latency distributions to physical-address-dependent home-node selection and coherence-path distance, validating the relationship with mesh PMU counters and watchpoints.</li>
+        <li class="list__item">Reworked single-cache-line measurements to sample across multiple cache lines, reducing standard deviation from 4.0 to 0.8 ns on Intel 8275CL and from 4.7 to 0.1 ns on Graviton4 without shifting median latency.</li>
+        <li class="list__item">Developed a homing-aware core-to-core latency benchmark that exposes home-node placement as a third variable and generates heatmaps across source-core, target-core, and home-node combinations.</li>
+      </ul>
 
-            <h3 style="margin-top: 1.5rem;">NIST Sensor Science Division — Intern, 2023</h3>
-            <p>Gaithersburg, MD</p>
-            <ul class="list" style="margin-top: 0.5rem;">
-              <li class="list__item">Deployed a 61-node ADT7410 I2C temperature sensor network with Linux on Raspberry Pi to profile thermal gradients in the Tape Tunnel test chamber.</li>
-              <li class="list__item">Quantified error propagation with Monte Carlo simulation and reduced temperature-induced uncertainty by 38%.</li>
-            </ul>
+      <h3 class="detail-heading">National Institute of Standards and Technology — Sensor Science Division Intern, 2023</h3>
+      <p>Gaithersburg, MD</p>
+      <ul class="list detail-list">
+        <li class="list__item">Deployed a Raspberry Pi temperature-sensor network to profile thermal gradients in the Tape Tunnel test chamber.</li>
+        <li class="list__item">Quantified calibration-error propagation with Monte Carlo simulation and reduced temperature-induced uncertainty by 38%.</li>
+      </ul>
 
-            <h3 style="margin-top: 1.5rem;">Aeus Keyboards — Founder &amp; Operator, 2020–2025</h3>
-            <ul class="list" style="margin-top: 0.5rem;">
-              <li class="list__item">Founded custom keyboard company to &gt;$40K revenue; led design, manufacturing, and fulfillment.</li>
-              <li class="list__item">Designed ATmega32U4 PCBs in KiCad and wrote QMK firmware in C for matrix scan, debouncing, and USB HID.</li>
-            </ul>
-          </section>
+      <h3 class="detail-heading">Aeus Keyboards — Founder &amp; Operator, 2020–2025</h3>
+      <ul class="list detail-list">
+        <li class="list__item">Founded a custom keyboard company with over $40K in revenue; handled design, manufacturing, and logistics.</li>
+        <li class="list__item">Designed PCBs in KiCad, developed C firmware, and designed custom CNC-milled cases for manufacturing.</li>
+      </ul>
+    </section>
 
-          <section class="plain-section">
-            <h2>Technical Projects</h2>
-            <ul class="list">
-              <li class="list__item"><strong>BLT — Better Latency Tester:</strong> STM32 input-to-photon latency tester using timers, circular DMA, and ISRs for microsecond-level resolution; quantified DMA ISR jitter at &plusmn;8 &mu;s.</li>
-              <li class="list__item"><strong>SwiftFIX:</strong> C++20 SIMD FIX pre-parser improving frame-splitting throughput from 146 MiB/s in QuickFIX to 1.60 GiB/s scalar and 2.19 GiB/s with AVX2.</li>
-              <li class="list__item"><strong>libdivide ARM SVE:</strong> Implemented ARM SVE vector division paths for libdivide with tests and docs; benchmarked around 5x faster 16-bit division vs NEON on Graviton4.</li>
-              <li class="list__item"><strong>Nycticorax:</strong> Discord agentic chatbot using Claude Code and Codex with modular architecture, selective memory, hybrid retrieval, and Postgres storage.</li>
-              <li class="list__item"><strong>PNVMe:</strong> Custom NVMe SSD controller on Artix-7 FPGA, enumerated as PCIe NVMe Linux block device.</li>
-              <li class="list__item"><strong>ARMv8 CPU:</strong> 5-stage pipelined processor in SystemVerilog with hazard detection and forwarding.</li>
-            </ul>
-          </section>
-        </div>
-      </section>
+    <section class="plain-section">
+      <h2>Technical Projects</h2>
+      <ul class="list">
+        <li class="list__item"><strong>BLT — Better Latency Tester:</strong> Built an STM32 input-to-photon latency measurement device using timers, circular DMA, and ISRs for microsecond-level resolution; quantified DMA ISR jitter at &plusmn;8 &mu;s at 2.5 kHz.</li>
+        <li class="list__item"><strong>libdivide OSS contribution — Fast Division with ARM SVE:</strong> Implemented ARM SVE/SVE2 SIMD paths with tests, documentation, and GitHub CI fixes; achieved approximately 5x higher 16-bit and 3x higher 64-bit division throughput than NEON on AWS Graviton4.</li>
+        <li class="list__item"><strong>SwiftFIX — SIMD FIX pre-parser for QuickFIX:</strong> Developed a C++20 FIX pre-parser that scans, indexes, validates, and extracts into a zero-allocation offset table; improved frame-splitting throughput from 146 MiB/s to 1.60 GiB/s scalar and 2.19 GiB/s with AVX2.</li>
+        <li class="list__item"><strong>Nycticorax — Discord AI Agent:</strong> Built a bounded agentic control loop with semantic memory, context, tools, recovery, and budgets; designed self-evaluation benchmarks with PostgreSQL telemetry for tool and token use, latency, and failure logs.</li>
+      </ul>
+    </section>
+  </div>
+</section>
