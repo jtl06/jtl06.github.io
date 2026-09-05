@@ -4,20 +4,27 @@ title: "Projects — Jacen Li"
 permalink: "/projects/"
 nav: "projects"
 ---
-<section class="section">
+<section class="section project-index">
   <h1>Projects</h1>
-  <h2 class="section-heading">Selected projects</h2>
-  <div class="entry-list">
+  <nav class="section-nav" aria-label="Project sections">
+    <a href="#systems">Systems &amp; software</a>
+    <a href="#keyboards">Keyboard design</a>
+    <a href="#open-source">Open source</a>
+  </nav>
+  <h2 class="section-heading" id="systems">Systems &amp; software</h2>
+  <div class="entry-list project-list">
     {% for project in collections.selectedProjects | sortByOrder %}
       <a class="entry" href="{{ project.url }}">
-        <h2>{{ project.data.listingTitle }}</h2>
-        <div class="entry__meta">{{ project.data.listingLabel }}</div>
+        <div class="entry__heading">
+          <h3>{{ project.data.listingTitle }}</h3>
+          <div class="entry__meta">{{ project.data.listingLabel }}</div>
+        </div>
         <p>{{ project.data.summary }}</p>
       </a>
     {% endfor %}
   </div>
 
-  <h2 class="section-heading">Keyboard design</h2>
+  <h2 class="section-heading" id="keyboards">Keyboard design</h2>
   <div class="content-intro">
     <p>Selected custom keyboards from more than 40 builds across 14 designs.</p>
   </div>
@@ -35,12 +42,14 @@ nav: "projects"
   </div>
   <p class="section-action"><a class="cta-link" href="/keyboards/">View all keyboard projects</a></p>
 
-  <h2 class="section-heading">Open source</h2>
-  <div class="entry-list">
+  <h2 class="section-heading" id="open-source">Open source</h2>
+  <div class="entry-list project-list">
     {% for project in collections.openSourceProjects | sortByOrder %}
       <a class="entry" href="{{ project.url }}">
-        <h2>{{ project.data.listingTitle }}</h2>
-        <div class="entry__meta">{{ project.data.listingLabel }}</div>
+        <div class="entry__heading">
+          <h3>{{ project.data.listingTitle }}</h3>
+          <div class="entry__meta">{{ project.data.listingLabel }}</div>
+        </div>
         <p>{{ project.data.summary }}</p>
       </a>
     {% endfor %}

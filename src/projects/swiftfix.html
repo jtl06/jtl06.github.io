@@ -13,27 +13,98 @@ summary: "C++20 FIX tag-value pre-parser with single-pass structural scanning, h
 homeSummary: "C++20 / AVX2 FIX pre-parser"
 order: 10
 ---
-<section class="section">
-        <div class="page-intro">
-          <h1>SwiftFIX — SIMD FIX pre-parser</h1>
-          <div class="content-intro">
-            <p>
-              C++20 FIX tag-value pre-parser for fast structural scanning before QuickFIX parsing.
-            </p>
+<section class="section project-detail">
+  <div class="page-intro">
+    <h1>SwiftFIX — SIMD FIX pre-parser</h1>
+    <div class="content-intro">
+      <p>C++20 structural scanning for FIX tag-value streams, with scalar and AVX2 paths.</p>
+    </div>
+  </div>
+
+  <div class="plain-stack">
+    <section class="plain-section">
+      <h2>The work before parsing</h2>
+      <p>
+        Before QuickFIX can interpret a message, it has to extract it from an incoming
+        byte stream. Its stock splitter creates a string for each message and moves
+        the remaining buffer on each dequeue. SwiftFIX replaces that allocation and
+        copying with a linear scan into reusable, caller-owned storage. QuickFIX still
+        handles message semantics, session state, and downstream validation.
+      </p>
+    </section>
+
+    <section class="plain-section">
+      <h2>Frame-splitting throughput</h2>
+      <p>
+        The scalar path already delivers most of the improvement. AVX2 raises throughput
+        further, reaching about 15&times; the stock splitter on this corpus.
+      </p>
+      <figure class="benchmark">
+        <figcaption>Throughput · higher is faster</figcaption>
+        <dl class="benchmark__rows">
+          <div class="benchmark__row">
+            <dt>QuickFIX</dt>
+            <dd>
+              <span class="benchmark__track" aria-hidden="true"><span class="benchmark__bar benchmark__bar--baseline" style="--bar-width: 6.51%;"></span></span>
+              <span>146 MiB/s</span>
+            </dd>
           </div>
-        </div>
-        <section class="plain-section">
-          <p>
-            SwiftFIX performs single-pass structural scanning, header indexing, body-length
-            validation, and field-boundary extraction into a reusable zero-allocation offset table.
-          </p>
-          <ul class="list">
-            <li class="list__item">Improved frame-splitting throughput from 146 MiB/s in QuickFIX to 1.60 GiB/s scalar.</li>
-            <li class="list__item">Reached 2.19 GiB/s with AVX2.</li>
-            <li class="list__item">Reduced cycles per message from 3,999 to 257 while nearly eliminating L1D misses.</li>
-          </ul>
-          <p style="margin-top: 1.25rem;">
-            <a class="cta-link" href="https://github.com/jtl06/SwiftFIX" target="_blank" rel="noreferrer">View SwiftFIX on GitHub</a>
-          </p>
-        </section>
-      </section>
+          <div class="benchmark__row">
+            <dt>SwiftFIX · scalar</dt>
+            <dd>
+              <span class="benchmark__track" aria-hidden="true"><span class="benchmark__bar" style="--bar-width: 73.06%;"></span></span>
+              <span>1.60 GiB/s</span>
+            </dd>
+          </div>
+          <div class="benchmark__row">
+            <dt>SwiftFIX · AVX2</dt>
+            <dd>
+              <span class="benchmark__track" aria-hidden="true"><span class="benchmark__bar" style="--bar-width: 100%;"></span></span>
+              <span>2.19 GiB/s</span>
+            </dd>
+          </div>
+        </dl>
+      </figure>
+      <p class="project-note">
+        Release build on an Intel Core i7-12650H; 1,190 synthetic FIX messages from
+        <code>corpus/bulk.stream</code>. Bars share a linear scale, with MiB/s converted
+        to GiB/s. CPU frequency scaling was enabled. These measurements cover stream
+        splitting, not end-to-end application throughput.
+      </p>
+    </section>
+
+    <section class="plain-section">
+      <h2>Keep offsets, reuse the scan</h2>
+      <p>
+        SwiftFIX locates field boundaries, validates the fixed header and body length,
+        and records compact offsets into an output table. Keeping positions in the
+        original bytes avoids repeated string extraction. A QuickFIX integration shim
+        consumes the precomputed field index so parsing can reuse that structural work.
+      </p>
+    </section>
+
+    <section class="plain-section">
+      <h2>Where SIMD pays off</h2>
+      <p>
+        The AVX2 scanner compares 32 bytes at a time to find SOH delimiters across the
+        message body, then parses tag digits between those known boundaries. Short
+        fixed-header fields stay scalar: their scan is too small to justify SIMD
+        setup. Runtime CPU dispatch selects AVX2 when available, with a scalar fallback.
+      </p>
+      <ul class="list">
+        <li class="list__item">Cycles per message: 3,999 for QuickFIX, 353 for scalar SwiftFIX, and 257 for AVX2.</li>
+        <li class="list__item">L1 data-cache misses per message: 911 for QuickFIX and 0.35 for AVX2, despite AVX2 executing more instructions.</li>
+      </ul>
+      <p class="section-action">
+        The hardware counters point to the value of reducing memory traffic alongside
+        vectorizing the scan.
+      </p>
+      <p class="section-action">
+        <a class="cta-link" href="https://github.com/jtl06/SwiftFIX#results" target="_blank" rel="noreferrer">Benchmark setup and results</a>
+      </p>
+      <p class="section-action">
+        <a class="cta-link" href="https://github.com/jtl06/SwiftFIX" target="_blank" rel="noreferrer">View SwiftFIX on GitHub</a>
+      </p>
+    </section>
+  </div>
+</section>
