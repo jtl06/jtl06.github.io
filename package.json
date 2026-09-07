@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "render:cachemoney": "sh scripts/render-cachemoney.sh",
     "build": "eleventy",
     "serve": "eleventy --serve"
   },
