@@ -10,6 +10,22 @@ format:
     include-in-header:
       text: |
         <meta name="robots" content="noindex, nofollow">
+        <meta name="description" content="An illustrated introduction to CPU caches, interconnects, and why data placement affects performance.">
+        <meta property="og:type" content="article">
+        <meta property="og:site_name" content="Jacen Li">
+        <meta property="og:title" content="Caches &amp; Interconnects">
+        <meta property="og:description" content="An illustrated introduction to CPU caches, interconnects, and why data placement affects performance.">
+        <meta property="og:url" content="https://jacen.li/cachemoney/">
+        <meta property="og:image" content="https://jacen.li/cachemoney/share-v1.png">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:image:alt" content="Caches &amp; Interconnects by Jacen Li, with diagrams comparing fully connected, ring, and mesh networks.">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Caches &amp; Interconnects">
+        <meta name="twitter:description" content="An illustrated introduction to CPU caches, interconnects, and why data placement affects performance.">
+        <meta name="twitter:image" content="https://jacen.li/cachemoney/share-v1.png">
+        <meta name="twitter:image:alt" content="Caches &amp; Interconnects by Jacen Li, with diagrams comparing fully connected, ring, and mesh networks.">
     include-before-body:
       text: |
         <nav class="preview-nav" aria-label="Preview navigation"><a href="/">Jacen Li</a><span>Temporary preview</span></nav>

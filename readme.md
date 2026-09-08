@@ -27,7 +27,7 @@ Editable pages live in `src/`. Generated output is written to `_site/` and deplo
 ## Temporary Quarto preview
 
 `/cachemoney/` is an unlisted preview of **Caches & Interconnects**. The source
-snapshot and its six diagrams live in `quarto/cachemoney/`. The original authoring
+snapshot and its diagrams live in `quarto/cachemoney/`. The original authoring
 file is `/Users/jacenli/Jacen/cachemoney.qmd`; edits there are not automatically synced.
 
 After updating the repo snapshot, use Quarto 1.6.40 to render it:
@@ -41,3 +41,10 @@ Commit the refreshed `quarto/cachemoney/index.html` alongside source changes. Th
 self-contained HTML embeds the styles and diagrams, so GitHub Pages builds do not
 need Quarto. The page requests no search-engine indexing and is outside the Writings
 collection and site navigation. It is still publicly accessible at its URL.
+
+The snapshot front matter also contains Open Graph and Twitter share metadata.
+Preserve it when syncing the article body. `share-v1.png` is a separate public PNG
+for link previews; regenerate it with `node scripts/render-cachemoney-share.cjs`
+using Node.js with `sharp` available. Commit the generated image. The robots rules
+allow crawling only `/cachemoney/` so preview services can fetch the article and
+image; the article retains `noindex`.
