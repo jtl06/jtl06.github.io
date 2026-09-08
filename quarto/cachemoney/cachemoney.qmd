@@ -89,9 +89,9 @@ Another way of scaling the interconnect is to organize it in levels. Within one 
 
 ## Homing
 
-How does a CPU core know which slice of L3 is responsible for the address it is requesting? In a system with distributed home nodes, each physical address maps to a home that coordinates coherence for that address. This mapping is often done by a hash, which spreads addresses across the homes and associated cache slices. How evenly traffic is distributed still depends on which addresses the cores access.
+How does a CPU core know which slice of L3 is responsible for the address it is requesting? In a system with distributed home nodes, each physical address maps to a home that coordinates coherence for that address. This mapping is often done by a hash, which spreads addresses across the homes and associated cache slices. While typical accesses are designed to be evenly distributed, certain access patterns may have have to travel shorter or longer distances.
 
-The home tells us where to send the request, but that doesn't mean the latest copy of the data is there. Rather than requiring each core to track copies across the system, the home coordinates that tracking for the addresses assigned to it.
+The address map tells the CPU core which home to send the request to, but the home may not have the data. The home thus has to track the state of the cache lines assigned to it - their MESI/MOESI/MESIF status.
 
 What does this look like in practice? A core issues a read for an address that misses its private caches. The request is then sent to the home node for that address using the address map. The home coordinates the cache lookup and any coherence actions needed to service the request. The coherence system tracks which caches may hold copies of the line and what actions are needed to service the request.
 
@@ -133,7 +133,7 @@ Both layouts connect 24 cores and 24 L3 slices. Each trial uses the same source 
 
 </details>
 
-Another approach is stacking interconnect upon interconnect. AMD's Zen processors, for example, group up to cores around a shared L3 within each CCX, and then communicate to each other via an IO Die. In this manner, communication within a cluster is faster and simple, while communication between clusters would require to jump across silicon. Minimizing the amount of cross cluster communication is important for efficiency.
+Another approach is stacking interconnect upon interconnect. AMD's Zen 3 processors, for example, group up to 8 cores around a shared L3 within each CCX, and then those CCXs communicate to each other via an IO Die. With only 8 cores per cluster, communication within a cluster is simple and fast, but communication between clusters would require a jump across silicon, resulting in a significant latency penalty. Minimizing the amount of cross cluster communication is important for efficiency.
 
 <details>
 
