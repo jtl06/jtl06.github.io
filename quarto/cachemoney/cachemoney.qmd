@@ -45,6 +45,8 @@ Caches store data in fixed size cache lines, commonly 64 bytes, which are the un
 
 L1 caches are often split into Instruction and Data caches and are generally private, meaning each CPU core has its own distinct block of L1 cache. On many modern high performance CPUs, L2 caches are private as well, though some implementations share an L2 cache across a cluster of cores. L3 caches are generally shared amongst multiple CPU cores, allowing them to access data in the shared last level cache without going all the way out to DRAM.
 
+![](images/cache-interconnects/cpu-hierarchy-l2-orange.svg){.cache-layout-diagram fig-alt="Four core clusters with blue cores, orange private L2 caches and yellow shared L3 caches, connected through two I/O dies to DDR memory."}
+
 ## Distributing Cache {#distributing-the-last-level-cache}
 
 For the rest of this article, assume we have a hypothetical 16 core CPU with 16 MiB of shared L3 cache. We will use this as a simple example to illustrate how the cache might be organized and how requests move through the processor.
@@ -75,9 +77,9 @@ How does a CPU core know which slice of L3 is responsible for the address it is 
 
 The home tells us where to send the request, but that doesn't mean the latest copy of the data is there. Rather than requiring each core to track copies across the system, the home coordinates that tracking for the addresses assigned to it.
 
-What does this look like in practice? A core issues a read for an address that misses its private caches. The request is then sent to the home node for that address using the address map. The home coordinates the cache lookup and any coherence actions needed to service the request. The coherence machinery tracks which caches may hold copies of the line and what actions are needed to service the request.
+What does this look like in practice? A core issues a read for an address that misses its private caches. The request is then sent to the home node for that address using the address map. The home coordinates the cache lookup and any coherence actions needed to service the request. The coherence system tracks which caches may hold copies of the line and what actions are needed to service the request.
 
-If the L3 has the latest copy and no further coherence actions are needed, it can supply the data. If another core may hold a modified copy, the home can send a snoop to that core to obtain the latest data. An L3 miss does not necessarily mean a trip to memory, since another cache may still hold a copy. If no cache can supply the data, the request can be sent to the memory controller. The exact behavior is dictated by the cache coherency protocol used.
+If the L3 has the latest copy, then the home can supply the data directly. If the line is modified, and it knows another core is the owner the home can send a snoop to that core to obtain the data. If there is a miss, then a request can be sent to the memory controller to retrieve the data. The exact behavior is dictated by the cache coherency protocol used as well as the implementation, which varies from platform to platform.
 
 Different vendors have different names for this role: Intel's Caching and Home Agent (CHA) and Arm's home nodes (HN-F and HN-S). For this discussion, they serve the same broad purpose: coordinating cache access and coherence for the addresses assigned to them. We will look at specific implementations later.
 
@@ -91,7 +93,7 @@ Two cache accesses to the L3 can take different times because they travel differ
 
 For accesses spread across large arrays, these differences may average out. Prefetching can also hide some latency when the access pattern is predictable. However, for certain use cases involving specific addresses, the difference in access latency across a die may be significant.
 
-Another thing to note is traffic along the interconnect. The interconnect has limited bandwidth, and many cores sending traffic across the die can lead to higher latency. This is one reason larger meshes can require additional hierarchy or locality mechanisms.
+Another thing to note is traffic along the interconnect. The interconnect itself has limited bandwidth, and high traffic across the CPU can lead to higher latency. Designing a mesh that can accommodate this traffic as well as efficiently route under high load is a very difficult task. As such, as systems grow, there are many new ways of reducing interconnect traffic for more manageable systems.
 
 ## Scaling and Locality
 
@@ -115,7 +117,7 @@ Both layouts connect 24 cores and 24 L3 slices. Each trial uses the same source 
 
 </details>
 
-Another approach is clusters upon clusters. AMD's Zen 3 processors, for example, group up to 8 cores around a shared L3 within each CCX. Communication within a cluster can stay local, while communication between clusters uses the broader fabric. Software that keeps related work and data together can reduce how much traffic needs to leave a cluster.
+Another approach is stacking interconnect upon interconnect. AMD's Zen processors, for example, group up to cores around a shared L3 within each CCX, and then communicate to each other via an IO Die. In this manner, communication within a cluster is faster and simple, while communication between clusters would require to jump across silicon. Minimizing the amount of cross cluster communication is important for efficiency.
 
 <details>
 
@@ -123,13 +125,11 @@ Another approach is clusters upon clusters. AMD's Zen 3 processors, for example,
 
 ![](images/cache-interconnects/cluster-hierarchy-paired.svg){.cluster-diagram fig-alt="Four local ring clusters connected through a larger network. Green requests stay within their clusters, while purple requests travel between clusters."}
 
-Local requests stay within the cluster, while requests between clusters also cross the outer network. Green highlights the local paths; purple highlights the paths between clusters.
-
 </details>
 
 ## Implications
 
-Modern manycore processors do not have one uniform cost for accessing data. The structure of the processor, and how data travels between cores and caches, both affect performance. Keeping related work and data together can help software take advantage of that physical structure.
+Modern manycore processors do not have a uniform cost for cache and data access. The physical structure of the processor, and how data travels between cores, caches, and through silicon and across silicon can affect performance. Accounting for this behavior to minimize expensive traffic is something to consider.
 
 More broadly, performance behavior on one CPU may not carry over to others, even from the same vendor and using the same microarchitecture. For example, some Intel Xeon 6 processors use a single compute die, while others use up to three. Requests that cross between dies can incur additional latency. When optimizing code, it is worth checking your assumptions on the target processors.
 
