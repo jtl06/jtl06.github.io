@@ -43,8 +43,10 @@ need Quarto. The page requests no search-engine indexing and is outside the Writ
 collection and site navigation. It is still publicly accessible at its URL.
 
 The snapshot front matter also contains Open Graph and Twitter share metadata.
-Preserve it when syncing the article body. `share-v1.png` is a separate public PNG
+Preserve it when syncing the article body. `share-v2.png` is a separate public PNG
 for link previews; regenerate it with `node scripts/render-cachemoney-share.cjs`
-using Node.js with `sharp` available. Commit the generated image. The robots rules
+using Node.js with Playwright and Chromium available (or set `CHROME_PATH` to a
+Chrome executable). This exports the original diagram without framing and waits
+for its embedded Excalifont to load. Commit the generated image. The robots rules
 allow crawling only `/cachemoney/` so preview services can fetch the article and
 image; the article retains `noindex`.

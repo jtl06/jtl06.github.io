@@ -22,6 +22,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("Jacen_Li_Resume.pdf");
   eleventyConfig.addPassthroughCopy({ "quarto/cachemoney/index.html": "cachemoney/index.html" });
   eleventyConfig.addPassthroughCopy({ "quarto/cachemoney/share-v1.png": "cachemoney/share-v1.png" });
+  eleventyConfig.addPassthroughCopy({ "quarto/cachemoney/share-v2.png": "cachemoney/share-v2.png" });
 
   return {
     dir: {
