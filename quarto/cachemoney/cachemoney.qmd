@@ -61,9 +61,9 @@ The interconnect carries requests and data between cores and cache slices, and i
 
 ## Interconnects
 
-The interconnect is a key part of modern processors, dictating how data flows within a CPU. There are several ways to design one. For small clusters, a fully connected network can give every endpoint a direct link to every other endpoint. A crossbar connects inputs to outputs through switching logic instead. Both become more expensive to build as the number of connections grows.
+The interconnect is a key part of modern processors, dictating how data flows within a CPU. There are several ways to design one. For small clusters, a fully connected network can give every endpoint a direct link to every other endpoint.
 
-A ring reduces the number of links by connecting stops in a loop, with cores and cache slices attached along the way. Requests travel through intermediate stops to reach their destinations. Multiple transfers can be in flight at once, and a bidirectional ring provides paths in both directions. But as the ring grows, the number of hops and contention for its links can increase latency.
+A ring reduces the number of links by connecting stops in a loop, with cores and cache slices attached along the way. Requests travel along the ring, which mean as the ring grows, the number of hops and traffic can result in increased latency.
 
 A mesh connects routers in a 2D grid. Requests travel across horizontal and vertical links, providing more paths for traffic than a single ring. This can help with scaling to larger core counts, at the cost of more routers and links. This makes meshes attractive for larger systems.
 
@@ -81,7 +81,7 @@ What does this look like in practice? A core issues a read for an address that m
 
 If the L3 has the latest copy, then the home can supply the data directly. If the line is modified, and it knows another core is the owner the home can send a snoop to that core to obtain the data. If there is a miss, then a request can be sent to the memory controller to retrieve the data. The exact behavior is dictated by the cache coherency protocol used as well as the implementation, which varies from platform to platform.
 
-Different vendors have different names for this role: Intel's Caching and Home Agent (CHA) and Arm's home nodes (HN-F and HN-S). For this discussion, they serve the same broad purpose: coordinating cache access and coherence for the addresses assigned to them. We will look at specific implementations later.
+Different vendors have different names for this role: Intel's Caching and Home Agent (CHA) and Arm's home nodes (HN-F and HN-S). Nvidia has the Coherent Switch Node For this discussion, they serve the same broad purpose: coordinating cache access and coherence for the addresses assigned to them. We will look at specific implementations later.
 
 ## Nonuniformity
 
