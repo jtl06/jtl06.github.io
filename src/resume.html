@@ -7,14 +7,14 @@ nav: "resume"
 <section class="section">
   <h1>Resume</h1>
   <p class="resume-download">
-    <a class="button button--primary" href="/Jacen_Li_Resume.pdf" target="_blank" rel="noreferrer">View full resume (PDF)</a>
+    <a class="button button--primary" href="/Jacen_Li_Resume.pdf?v=20260906" target="_blank" rel="noreferrer">View full resume (PDF)</a>
   </p>
 
   <div class="plain-stack">
     <section class="plain-section">
       <h2>Education</h2>
       <h3>University of Washington — Seattle — BSECE, Embedded Systems</h3>
-      <p>Expected Spring 2028 &middot; GPA 3.85/4.0</p>
+      <p>Expected June 2028 &middot; GPA 3.85/4.0</p>
       <p class="detail-copy">
         <strong>Selected Coursework:</strong> Computer Architecture I &amp; II, Hardware/Software Interface, Embedded Systems, Digital Design I &amp; II, Data Structures and Algorithms
       </p>
@@ -23,35 +23,35 @@ nav: "resume"
     <section class="plain-section">
       <h2>Skills</h2>
       <ul class="list">
-        <li class="list__item"><strong>Languages:</strong> C++23, C, Python, Assembly (x86-64, ARM, RISC-V), Shell (Bash/Zsh)</li>
-        <li class="list__item"><strong>Tools:</strong> Linux, Git/GitHub, perf, strace, GCC/Clang, GDB/objdump, Codex/Claude Code, Compiler Explorer</li>
+        <li class="list__item"><strong>Languages:</strong> C, C++23, Python, Assembly (x86-64, ARM, RISC-V), Shell (Bash/Zsh)</li>
+        <li class="list__item"><strong>Tools:</strong> Linux, Git/GitHub, perf, strace, GCC, GDB/objdump, Codex/Claude Code, Compiler Explorer</li>
       </ul>
     </section>
 
     <section class="plain-section">
       <h2>Experience</h2>
 
-      <h3>Arm — Software Engineering Intern, System Performance &amp; Infra Tooling Solutions — Summer 2026</h3>
+      <h3>Arm — Software Engineering Intern, System Performance Tooling — Summer 2026</h3>
       <p>Austin, TX &middot; Developed microbenchmarks for <a href="https://github.com/Arm/asct" target="_blank" rel="noreferrer">ASCT, the Arm System Characterization Tool</a></p>
       <ul class="list detail-list">
-        <li class="list__item">Evaluated more than 20 core-to-core latency benchmarks across seven Intel and Arm systems, comparing measurement semantics, stability, sampling strategy, topology coverage, and susceptibility to prefetching.</li>
-        <li class="list__item">Designed directional dependent-pointer-chase and CAS microbenchmarks; used PMU and CMN counters to separate cache-line transfer latency from atomic contention, instruction overhead, and prefetcher effects.</li>
-        <li class="list__item">Mapped multimodal core-to-core latency distributions to physical-address-dependent home-node selection and coherence-path distance, validating the relationship with mesh PMU counters and watchpoints.</li>
-        <li class="list__item">Reworked single-cache-line measurements to sample across multiple cache lines, reducing standard deviation from 4.0 to 0.8 ns on Intel 8275CL and from 4.7 to 0.1 ns on Graviton4 without shifting median latency.</li>
-        <li class="list__item">Developed a homing-aware core-to-core latency benchmark that exposes home-node placement as a third variable and generates heatmaps across source-core, target-core, and home-node combinations.</li>
+        <li class="list__item">Evaluated more than 20 core-to-core latency benchmarks across Intel, AMD, and Arm systems; compared timed operations, cache state, sampling methods, and prefetch sensitivity to guide ASCT benchmark design.</li>
+        <li class="list__item">Developed atomic-handoff (CAS) and directional pointer-chase benchmarks; mitigated prefetch interference and reordered pointer-chase setup to preserve the cache ownership being measured.</li>
+        <li class="list__item">Traced run-to-run variation to physical-address-dependent cache home selection; sampling multiple cache lines reduced standard deviation from 4.0 to 0.8 ns on Intel 8275CL and from 4.7 to 0.1 ns on Graviton4, without shifting median latency.</li>
+        <li class="list__item">Fixed a thread-affinity race that pinned the control thread onto measured CPUs; used Linux scheduler and syscall traces to explain latency spikes and cut maximum observed scheduler delay from 4.0 ms to 78 &mu;s.</li>
+        <li class="list__item">Used firmware source, CMN captures, and PMU data to map physical addresses to cache-home nodes; built a homing-aware benchmark to vary the home for a fixed core pair and measure transfer latency.</li>
       </ul>
 
       <h3 class="detail-heading">National Institute of Standards and Technology — Sensor Science Division Intern, 2023</h3>
       <p>Gaithersburg, MD</p>
       <ul class="list detail-list">
-        <li class="list__item">Deployed a Raspberry Pi temperature-sensor network to profile thermal gradients in the Tape Tunnel test chamber.</li>
-        <li class="list__item">Quantified calibration-error propagation with Monte Carlo simulation and reduced temperature-induced uncertainty by 38%.</li>
+        <li class="list__item">Deployed a 61-node I&sup2;C sensor network in the Tape Tunnel test chamber for dimensional metrology.</li>
+        <li class="list__item">Reduced thermal uncertainty by 38% through denser sampling; quantified error propagation with Monte Carlo simulation.</li>
       </ul>
 
       <h3 class="detail-heading">Aeus Keyboards — Founder &amp; Operator, 2020–2025</h3>
       <ul class="list detail-list">
-        <li class="list__item">Founded a custom keyboard company with over $40K in revenue; handled design, manufacturing, and logistics.</li>
-        <li class="list__item">Designed PCBs in KiCad, developed C firmware, and designed custom CNC-milled cases for manufacturing.</li>
+        <li class="list__item">Founded a custom keyboard business with over $40K in revenue; managed manufacturing and logistics.</li>
+        <li class="list__item">Designed keyboard PCBs in KiCad and cases for CNC machining; developed keyboard firmware in C using QMK.</li>
       </ul>
     </section>
 
@@ -59,9 +59,9 @@ nav: "resume"
       <h2>Technical Projects</h2>
       <ul class="list">
         <li class="list__item"><strong>BLT — Better Latency Tester:</strong> Built an STM32 input-to-photon latency measurement device using timers, circular DMA, and ISRs for microsecond-level resolution; quantified DMA ISR jitter at &plusmn;8 &mu;s at 2.5 kHz.</li>
-        <li class="list__item"><strong>libdivide OSS contribution — Fast Division with ARM SVE:</strong> Implemented ARM SVE/SVE2 SIMD paths with tests, documentation, and GitHub CI fixes; achieved approximately 5x higher 16-bit and 3x higher 64-bit division throughput than NEON on AWS Graviton4.</li>
+        <li class="list__item"><strong>libdivide OSS contribution — Fast Division with ARM SVE:</strong> Contributed merged ARM SVE/SVE2 SIMD paths with tests, documentation, and GitHub CI fixes; achieved approximately 5x higher 16-bit and 3x higher 64-bit division throughput than NEON on AWS Graviton3.</li>
         <li class="list__item"><strong>SwiftFIX — SIMD FIX pre-parser for QuickFIX:</strong> Developed a C++20 FIX pre-parser that scans, indexes, validates, and extracts into a zero-allocation offset table; improved frame-splitting throughput from 146 MiB/s to 1.60 GiB/s scalar and 2.19 GiB/s with AVX2.</li>
-        <li class="list__item"><strong>Nycticorax — Discord AI Agent:</strong> Built a bounded agentic control loop with semantic memory, context, tools, recovery, and budgets; designed self-evaluation benchmarks with PostgreSQL telemetry for tool and token use, latency, and failure logs.</li>
+        <li class="list__item"><strong>Nycticorax — Discord AI Agent:</strong> Developed an AI agent with persistent memory, tool execution, provider recovery, and token/time budgets; built an LLM evaluation harness for model A/B tests, scoring success, token usage, quality, and end-to-end latency.</li>
       </ul>
     </section>
   </div>

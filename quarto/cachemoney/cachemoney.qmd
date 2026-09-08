@@ -23,11 +23,9 @@ L3 caches on many high performance CPUs are distributed in slices across the CPU
 
 ## Introduction
 
-I've been interested in how CPUs are constructed, especially at the interconnect level. Through reading many a technical document, conference slide, and other sources, I've accumulated some knowledge that helped a lot with work I've been doing this summer on developing microbenchmarks for caches and interconnect behavior.
+I've been interested in how CPUs are constructed, especially at the interconnect level. Through reading many a technical document and conference slide, I've accumulated some knowledge that has helped with my work this summer developing microbenchmarks for caches and interconnect behavior.
 
-I've written this article in the hope that it may assist some people in getting a brief understanding of cache organization and design of modern processors. Please let me know if you have any feedback - I'm always learning and would love to receive input.
-
-This article discusses how caches are structured in modern CPUs, and the implications therein. It assumes elementary knowledge of computer architecture. It is part of a series I am planning on writing lead up to microbenchmarking core to core latency.
+I wrote this article as a short introduction to cache organization and interconnects in modern processors. It assumes elementary knowledge of computer architecture and is part of a series leading up to microbenchmarking core to core latency. Please let me know if you have any feedback. I'm always learning and would love to receive input.
 
 ## Cache Organization
 
@@ -53,7 +51,7 @@ To implement this, you might think to stick one big block of cache in the middle
 
 A centralized cache can be divided into banks that service requests in parallel. The L3 can also be spread across the CPU die in slices. Requests to different slices can be serviced in parallel, allowing cache bandwidth to scale more naturally with core count.
 
-![](images/cache-interconnects/cache-layout.svg){.cache-layout-diagram fig-alt="Sixteen cores connected to one central 16 MiB L3, compared with sixteen shared 1 MiB L3 slices connected through a mesh."}
+![](images/cache-interconnects/cache-layout-review.svg){.cache-layout-diagram fig-alt="Sixteen cores connected to one central 16 MiB L3, compared with sixteen shared 1 MiB L3 slices connected through a mesh."}
 
 The interconnect carries requests and data between cores and cache slices, and is a key part of the memory subsystem in modern CPUs.
 
@@ -63,9 +61,9 @@ The interconnect is a key part of modern processors, dictating how data flows wi
 
 A ring reduces the number of links by connecting stops in a loop, with cores and cache slices attached along the way. Requests travel through intermediate stops to reach their destinations. Multiple transfers can be in flight at once, and a bidirectional ring provides paths in both directions. But as the ring grows, the number of hops and contention for its links can increase latency.
 
-A mesh connects routers in a 2D grid. Requests travel across horizontal and vertical links, providing more paths for traffic than a single ring. This can help with scaling to larger core counts, at the cost of more routers and links. This is often the preferred route for more complex systems.
+A mesh connects routers in a 2D grid. Requests travel across horizontal and vertical links, providing more paths for traffic than a single ring. This can help with scaling to larger core counts, at the cost of more routers and links. This makes meshes attractive for larger systems.
 
-![](images/cache-interconnects/interconnects.svg){.interconnect-diagram fig-alt="Fully connected, ring, and mesh interconnects, with blue cores and yellow L3 slices."}
+![](images/cache-interconnects/interconnects-review.svg){.interconnect-diagram fig-alt="Fully connected, ring, and mesh interconnects, with blue cores and yellow L3 slices."}
 
 Another way of scaling the interconnect is to organize it in levels. Within one cluster, you may have a crossbar, ring, or mesh. A separate interconnect then connects multiple clusters with each other. This "tiered" system allows for lower complexity at the local level. We will cover some examples of this in the implementations section.
 
@@ -83,32 +81,52 @@ Different vendors have different names for this role: Intel's Caching and Home A
 
 ## Nonuniformity
 
-Due to the physical layout of the cache, requests sent to closer L3 slices can take less time than requests sent to further slices. For accesses spread across large arrays, these differences may average out, and prefetching can hide some of the latency when the access pattern is predictable. Since the address hash spreads addresses across slices, and physical addresses are not usually available to userspace programs, average latency is often the more useful number.
+The locations of cores, home nodes, and cache slices determine the paths requests take through the interconnect. Requests sent to closer L3 slices can take less time than requests sent to further slices.
 
-However, for certain use cases involving specific addresses, the difference in access latency across a die may be significant.
+![](images/cache-interconnects/mesh-distance-review.svg){.mesh-comparison fig-alt="Two identical 4 by 4 meshes showing a nearby and a distant L3 access from the same core, with paths highlighted in purple."}
 
-![](images/cache-interconnects/mesh-distance.svg){.mesh-comparison fig-alt="Two identical 4 by 4 meshes showing a nearby and a distant L3 access from the same core, with paths highlighted in purple."}
+Two cache accesses to the L3 can take different times because they travel different lengths through the mesh.
+
+For accesses spread across large arrays, these differences may average out. Prefetching can also hide some latency when the access pattern is predictable. However, for certain use cases involving specific addresses, the difference in access latency across a die may be significant.
 
 Another thing to note is traffic along the interconnect. The interconnect has limited bandwidth, and many cores sending traffic across the die can lead to higher latency. Because of this, a larger unified mesh may not always be better.
 
-## Addressing Complexity
-
-There are multiple ways to address this.
+## Scaling and Locality
 
 For certain workloads, keeping accesses within smaller regions of the mesh can reduce both the distance traveled and the overlap between requests.
 
 In the example below, each of the 36 cores sends one request to a random L3 slice. On the left, that slice can be anywhere in the mesh. On the right, each core accesses a random slice within its own 3 by 3 group.
 
-![](images/cache-interconnects/mesh-locality.svg){.mesh-comparison fig-alt="Two 6 by 6 meshes comparing global access with access within four 3 by 3 groups. Purple intensity shows the number of requests using each link."}
+![](images/cache-interconnects/mesh-locality-review.svg){.mesh-comparison fig-alt="Two 6 by 6 meshes comparing global access with access within four 3 by 3 groups. Purple intensity shows the number of requests using each link."}
 
-For this example, the average distance drops from 4.22 to 1.83 mesh hops per request. The average number of requests using each active link drops from 2.62 to 1.69. These counts include only the request paths, with both directions counted together. This shows why keeping traffic local becomes increasingly important as meshes grow.
+For this example, the average distance drops from 4.22 to 1.83 mesh hops per request. The average number of requests using each active link drops from 2.62 to 1.69. Darker purple shows more requests using a link. These counts include only the request paths, routed horizontally then vertically, with both directions counted together. This shows why keeping traffic local becomes increasingly important as meshes grow.
 
 Another option is to attach multiple cores and L3 slices to the same mesh point. By increasing the number of connections at each junction, you can connect the same number of cores and slices with fewer mesh points, reducing the number of hops a request takes. However, this concentrates more traffic at each junction.
 
-![](images/cache-interconnects/mesh-concentration.svg){.mesh-comparison fig-alt="A 6 by 4 mesh with one core and one L3 slice per junction compared with a 4 by 3 mesh with two cores and two slices per junction, using the same 24 requests."}
+<details>
+<summary>Example: fewer mesh junctions</summary>
+
+![](images/cache-interconnects/mesh-concentration-review.svg){.mesh-comparison fig-alt="A 6 by 4 mesh with one core and one L3 slice per junction compared with a 4 by 3 mesh with two cores and two slices per junction, using the same 24 requests."}
+
+Both layouts connect 24 cores and 24 L3 slices. With the same 24 requests and horizontal then vertical routing, average distance drops from 3.62 to 2.54 mesh hops. Average requests per active link rises from 2.35 to 3.59, illustrating the extra traffic concentrated on fewer links. Counts include request paths only, with both directions counted together.
+
+</details>
 
 Another approach is clusters upon clusters. AMD's Zen 3 processors, for example, group up to 8 cores around a shared L3 within each CCX. Communication within a cluster can stay local, while communication between clusters uses the broader fabric. Software that keeps related work and data together can reduce how much traffic needs to leave a cluster.
 
-The same idea can be illustrated with local rings connected through a larger network:
+<details>
+<summary>Example: local rings connected through a larger network</summary>
 
-![](images/cache-interconnects/cluster-hierarchy.svg){.cluster-diagram fig-alt="Four local ring clusters connected through a larger network. A green request stays within one cluster, while a purple request travels between clusters."}
+![](images/cache-interconnects/cluster-hierarchy-review.svg){.cluster-diagram fig-alt="Four local ring clusters connected through a larger network. A green request stays within one cluster, while a purple request travels between clusters."}
+
+The green request stays within one cluster. The purple request uses the network between clusters to reach its destination.
+
+</details>
+
+## What does this all mean?
+
+Modern manycore processors do not have one uniform cost for accessing data. The structure of the processor, and how data travels between cores and caches, both affect performance. Keeping related work and data together can help software take advantage of that physical structure.
+
+More broadly, performance behavior on one CPU may not carry over to others, even from the same vendor and using the same microarchitecture. For example, some Intel Xeon 6 processors use a single compute die, while others use up to three. Requests that cross between dies can incur additional latency. When optimizing code, it is worth checking your assumptions on the target processors.
+
+I hope that this article gives you some insight into modern caches and interconnects. There will be a follow up article explaining the behavior of atomic transactions between cores, leading up to an article on microbenchmarking core to core latency.

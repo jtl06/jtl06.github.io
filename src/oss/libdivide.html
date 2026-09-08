@@ -1,42 +1,93 @@
 ---
 layout: base.njk
-title: "libdivide ARM SVE contribution — Jacen Li"
+title: "libdivide ARM SVE/SVE2 — Jacen Li"
 permalink: "/oss/libdivide/"
 nav: "projects"
 tags:
   - openSourceProjects
   - homeProjects
-listingTitle: "libdivide ARM SVE contribution"
+listingTitle: "libdivide ARM SVE/SVE2 contributions"
 homeTitle: "oss/libdivide"
 listingLabel: "2026"
-summary: "ARM SVE/SVE2 vector division paths, tests, CMake integration, documentation, and Graviton4 benchmarks."
+summary: "ARM SVE/SVE2 vector division paths, merged signed-division optimizations, and benchmarks across Graviton 3/4/5."
 homeSummary: "Upstream ARM SVE/SVE2 contribution"
 order: 60
+homeOrder: -10
 ---
 <section class="section">
         <div class="page-intro">
-          <h1>libdivide ARM SVE contribution</h1>
+          <h1>libdivide ARM SVE/SVE2</h1>
           <div class="content-intro">
             <p>
-              Contributions to the upstream libdivide project adding ARM SVE support
-              for its vector division paths.
+              Scalable vector division for signed and unsigned 16/32/64-bit integers,
+              with SVE and SVE2 backends contributed upstream.
             </p>
           </div>
         </div>
+        <div class="plain-stack">
         <section class="plain-section">
+          <h2>Performance across backends</h2>
           <p>
-            I implemented and submitted SVE vector division paths for all widths, with
-            tests, documentation, and Graviton4 benchmarks against the existing NEON
-            implementation.
+            On this Graviton 4 workload, the SVE and SVE2 backends deliver about
+            2.2&times; and 2.3&times; NEON throughput across the 32/64-bit types.
           </p>
-          <ul class="list">
-            <li class="list__item">Around 5x faster 16-bit division vs NEON from wider scalable vectors and native lane operations.</li>
-            <li class="list__item">Around 3x faster 64-bit division vs NEON from SVE native vector multiply-high instructions.</li>
-          </ul>
+          <!-- Source: libdivide review, work/backend-results-g4/strict-l1-gcc.csv.
+               Arithmetic mean ns/division across case medians for each type/backend.
+               Speedups are ratios of those unrounded means. Headline is the geometric
+               mean across u32, s32, u64, s64; excludes NEON16 fallback. -->
+          <table class="benchmark-table" aria-describedby="backend-benchmark-note">
+            <caption>Nanoseconds per division · lower is faster</caption>
+            <thead>
+              <tr><th scope="col">Type</th><th scope="col">NEON</th><th scope="col">SVE</th><th scope="col">SVE2</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">u16*</th><td>0.548</td><td>0.067<span class="benchmark-table__ratio">8.19&times;</span></td><td>0.054<span class="benchmark-table__ratio">10.08&times;</span></td></tr>
+              <tr><th scope="row">s16*</th><td>0.803</td><td>0.097<span class="benchmark-table__ratio">8.24&times;</span></td><td>0.097<span class="benchmark-table__ratio">8.24&times;</span></td></tr>
+              <tr><th scope="row">u32</th><td>0.182</td><td>0.141<span class="benchmark-table__ratio">1.29&times;</span></td><td>0.111<span class="benchmark-table__ratio">1.64&times;</span></td></tr>
+              <tr><th scope="row">s32</th><td>0.283</td><td>0.194<span class="benchmark-table__ratio">1.46&times;</span></td><td>0.194<span class="benchmark-table__ratio">1.46&times;</span></td></tr>
+              <tr><th scope="row">u64</th><td>0.884</td><td>0.276<span class="benchmark-table__ratio">3.20&times;</span></td><td>0.277<span class="benchmark-table__ratio">3.20&times;</span></td></tr>
+              <tr><th scope="row">s64</th><td>1.398</td><td>0.392<span class="benchmark-table__ratio">3.56&times;</span></td><td>0.392<span class="benchmark-table__ratio">3.56&times;</span></td></tr>
+            </tbody>
+          </table>
+          <p class="project-note" id="backend-benchmark-note">
+            Graviton 4 · GCC 15.2 · 128-bit vectors · 16 KiB inputs.<br />
+            Multipliers show throughput vs NEON. u = unsigned; s = signed.<br />
+            *NEON16 uses a scalar-per-lane fallback, excluded from the overall summary.
+          </p>
+          <details class="benchmark-method">
+            <summary>Measurement details</summary>
+            <p>
+              Times are arithmetic means of matched per-divisor medians, including
+              branchfull and branchfree algorithms. Multipliers divide the mean NEON
+              time by the mean SVE or SVE2 time before rounding. The overall summary
+              geometrically averages those multipliers across the four 32/64-bit types.
+              Nine samples per case; automatic vectorization disabled. Timings measure
+              array-loop throughput per element, not individual instruction latency.
+              SVE and SVE2 refer to the selected library backends, both including the
+              predicated-negation optimization and compiled for the native CPU; the SVE
+              column is not an SVE-only instruction-set limit. NEON was restricted to
+              Armv8-A. These are fixed-divisor array-loop measurements; individual cases
+              can favor NEON.
+            </p>
+          </details>
+          <p style="margin-top: 1.25rem;">
+            <a class="cta-link" href="https://github.com/ridiculousfish/libdivide/pull/169#issuecomment-5548089062" target="_blank" rel="noreferrer">More benchmarks across Graviton 3/4/5</a>
+          </p>
+        </section>
+        <section class="plain-section">
+          <h2>Implementation</h2>
+          <p>
+            SVE provides native vector operations for 16-bit division and vector
+            multiply-high instructions for 64-bit division. The SVE2 backend adds
+            halving-add instructions for unsigned 16/32-bit corrections; signed paths
+            use predicated bias and sign adjustments. The work includes both division
+            algorithms, tests, CMake integration, and documentation.
+          </p>
           <h2 style="margin-top: 1.5rem;">Pull requests</h2>
           <ul class="list">
             <li class="list__item"><strong>PR #158:</strong> Added the initial ARM SVE backend for 16/32/64-bit signed and unsigned vector division, wired into CMake, tests, benchmarks, and documentation.</li>
             <li class="list__item"><strong>PR #159:</strong> Optimized the SVE backend and added an optional SVE2 path using predicated merge-adds and SVE2 halving-add instructions where they improved Graviton4 performance.</li>
+            <li class="list__item"><strong>PR #169 (merged):</strong> Replaced signed XOR/subtract corrections with predicated negation and added mixed-sign and boundary-value tests.</li>
             <li class="list__item"><strong>PR #161:</strong> Updated the Windows GitHub Actions CI matrix from the deprecated Windows 2019 runner to Windows 2025 and moved the Visual Studio generator to 2022.</li>
             <li class="list__item"><strong>PR #162:</strong> Fixed Windows CI failures by tightening MSVC warning handling, adding MSVC bit-scan helpers, and using a Windows timer path in the division benchmark.</li>
           </ul>
@@ -47,10 +98,14 @@ order: 60
             <a class="cta-link" href="https://github.com/ridiculousfish/libdivide/pull/159" target="_blank" rel="noreferrer">View PR #159</a>
           </p>
           <p style="margin-top: 0.75rem;">
+            <a class="cta-link" href="https://github.com/ridiculousfish/libdivide/pull/169" target="_blank" rel="noreferrer">View PR #169</a>
+          </p>
+          <p style="margin-top: 0.75rem;">
             <a class="cta-link" href="https://github.com/ridiculousfish/libdivide/pull/161" target="_blank" rel="noreferrer">View PR #161</a>
           </p>
           <p style="margin-top: 0.75rem;">
             <a class="cta-link" href="https://github.com/ridiculousfish/libdivide/pull/162" target="_blank" rel="noreferrer">View PR #162</a>
           </p>
         </section>
+        </div>
       </section>

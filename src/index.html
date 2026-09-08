@@ -12,18 +12,18 @@ nav: "home"
   <section class="index-section">
     <h2><a href="/projects/">Projects</a></h2>
     <div class="index-list">
-      {% for project in collections.homeProjects | sortByOrder %}
+      <a class="index-row" href="/keyboards/">
+        <span class="index-row__date">2020-25</span>
+        <span class="index-row__title">projects/keyboards</span>
+        <span class="index-row__desc">Selected custom keyboard designs and builds</span>
+      </a>
+      {% for project in collections.homeProjects | sortByOrder("homeOrder") %}
         <a class="index-row" href="{{ project.url }}">
           <span class="index-row__date">{{ project.data.homeLabel or project.data.listingLabel }}</span>
           <span class="index-row__title">{{ project.data.homeTitle }}</span>
           <span class="index-row__desc">{{ project.data.homeSummary }}</span>
         </a>
       {% endfor %}
-      <a class="index-row" href="/keyboards/">
-        <span class="index-row__date">2020-25</span>
-        <span class="index-row__title">projects/keyboards</span>
-        <span class="index-row__desc">Selected custom keyboard designs and builds</span>
-      </a>
     </div>
   </section>
 

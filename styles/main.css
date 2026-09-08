@@ -738,6 +738,73 @@ main {
   font-size: 0.85rem;
 }
 
+.benchmark-table {
+  width: 100%;
+  max-width: 34rem;
+  margin: 1.25rem 0 0.75rem;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+
+.benchmark-table caption {
+  text-align: left;
+  color: var(--description);
+  margin-bottom: 0.5rem;
+}
+
+.benchmark-table th,
+.benchmark-table td {
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  text-align: right;
+}
+
+.benchmark-table th {
+  font-weight: 500;
+}
+
+.benchmark-table th:first-child {
+  padding-left: 0;
+  text-align: left;
+}
+
+.benchmark-table th:last-child,
+.benchmark-table td:last-child {
+  padding-right: 0;
+}
+
+.benchmark-table td {
+  color: var(--text);
+  vertical-align: top;
+}
+
+.benchmark-table tbody th {
+  vertical-align: top;
+}
+
+.benchmark-table__ratio {
+  display: block;
+  color: var(--accent);
+  font-size: 0.75rem;
+}
+
+.benchmark-method {
+  margin-top: 0.75rem;
+  color: var(--description);
+  font-size: 0.85rem;
+}
+
+.benchmark-method summary {
+  cursor: pointer;
+  color: var(--accent);
+}
+
+.benchmark-method p {
+  padding-top: 0.75rem;
+}
+
 .project-detail .section-action {
   margin-top: 1.25rem;
 }
