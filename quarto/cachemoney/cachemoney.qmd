@@ -97,7 +97,7 @@ What does this look like in practice? A core issues a read for an address that m
 
 If the L3 has the latest copy, then the home can supply the data directly. If the line is modified, and it knows another core is the owner, the home can send a snoop to that core to obtain the data. If there is a miss, then a request can be sent to the memory controller to retrieve the data. The exact behavior is dictated by the cache coherency protocol used as well as the implementation, which varies from platform to platform.
 
-Different vendors have different names for this role: Intel's Caching and Home Agent (CHA) and Arm's home nodes (HN-F and HN-S). Nvidia has the Coherent Switch Node For this discussion, they serve the same broad purpose: coordinating cache access and coherence for the addresses assigned to them. We will look at specific implementations later.
+Different vendors have different names for this role: Intel's Caching and Home Agent (CHA) and Arm's home nodes (HN-F and HN-S). Nvidia has the Coherent Switch Node. For this discussion, they serve the same broad purpose: coordinating cache access and coherence for the addresses assigned to them.
 
 ## Nonuniformity
 
