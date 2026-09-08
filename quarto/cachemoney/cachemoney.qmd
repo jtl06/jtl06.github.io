@@ -63,6 +63,8 @@ L1 caches are often split into Instruction and Data caches and are generally pri
 
 ![](images/cache-interconnects/cpu-hierarchy-l2-orange.svg){.cache-layout-diagram fig-alt="Four core clusters with blue cores, orange private L2 caches and yellow shared L3 caches, connected through two I/O dies to DDR memory."}
 
+On some CPUs, the L2 cache is the interface from which the CPU connects to the rest of the system - from the POV of the interconnect, CPUs are merely L2 caches that can issue instructions to the mesh.
+
 ## Distributing Cache {#distributing-the-last-level-cache}
 
 For the rest of this article, assume we have a hypothetical 16 core CPU with 16 MiB of shared L3 cache. We will use this as a simple example to illustrate how the cache might be organized and how requests move through the processor.
