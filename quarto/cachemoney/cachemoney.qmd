@@ -45,7 +45,7 @@ On CPUs with a private L2, the core often connects to the rest of the system thr
 
 ## Distributing Cache {#distributing-the-last-level-cache}
 
-For the rest of this article, assume we have a hypothetical 16 core CPU with 16 MiB of shared L3 cache. We will use this as a simple example to illustrate how the cache might be organized and how requests move through the processor.
+For the next example, assume we have a hypothetical 16 core CPU with 16 MiB of shared L3 cache. We will use this as a simple example to illustrate how the cache might be organized and how requests move through the processor.
 
 To implement this, you might think to stick one big block of cache in the middle of the CPU and connect all the cores to it. But as the number of cores grows, this creates challenges for achieving suitable latency and bandwidth. If many cores want to access the L3 at the same time, that central cache needs enough bandwidth and routing capacity to service all of those requests. The cache would also need enough connections to each core. Keeping all of those resources in one region of the die becomes harder as the processor grows.
 
@@ -73,7 +73,7 @@ How does a CPU core know which slice of L3 is responsible for the address it is 
 
 The address map tells the CPU core which home to send the request to, but the home may not have the data. The home coordinates coherence for the addresses assigned to it, using information about where copies may exist and which cache may hold the latest data.
 
-What does this look like in practice? A core issues a read for an address that misses its private caches. The request is then sent to the home node for that address using the address map. The home coordinates the cache lookup and any coherence actions needed to service the request. The coherence system tracks which caches may hold copies of the line and what actions are needed to service the request.
+What does this look like in practice? A core issues a read for an address that misses its private caches. The request is then sent to the home node, which coordinates the cache lookup and any coherence actions needed to service it.
 
 If the L3 has the latest copy and no further coherence actions are needed, it can supply the data. If another core may hold a modified copy, the home can send a snoop to obtain the latest data. An L3 miss can still find the data in another core’s cache. If no cache can supply it, the request can go to the memory controller. The exact behavior depends on the coherence protocol and implementation. Intel describes this coordination in its [core to core communications overview](https://www.intel.com/content/www/us/en/developer/articles/technical/fast-core-to-core-communications.html).
 
