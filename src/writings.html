@@ -10,7 +10,7 @@ nav: "writings"
     <div class="entry-list reading-list">
       {% for writing in collections.writings | sortByDateDescending %}
         <a class="entry" href="{{ writing.url }}">
-          <h3>{{ writing.data.listingTitle }}</h3>
+          <h2>{{ writing.data.listingTitle | escape }}</h2>
           <div class="entry__meta">{{ writing.date | readableDate }}</div>
           <p>{{ writing.data.summary }}</p>
         </a>

@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="/styles/main.css?v=20260907a" />
+    <link rel="stylesheet" href="/styles/main.css?v=20260908a" />
+    {% if isCacheArticle %}{% include "cache-article-meta.njk" %}{% endif %}
   </head>
   <body>
     <header class="site-header">

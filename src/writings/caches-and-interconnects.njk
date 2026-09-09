@@ -1,0 +1,12 @@
+<section class="section">
+  <article class="writing">
+    <header class="writing__header">
+      <p class="writing__back"><a href="/writings/">← Writings</a></p>
+      <h1>{{ listingTitle | escape }}</h1>
+      <p class="writing__meta"><time datetime="2026-09-08">{{ page.date | readableDate }}</time> · Jacen Li</p>
+    </header>
+    <div class="writing__body">
+      {% cacheArticle %}
+    </div>
+  </article>
+</section>

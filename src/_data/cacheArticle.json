@@ -1,0 +1,7 @@
+{
+  "title": "Caches & Interconnects",
+  "summary": "An illustrated introduction to CPU caches, interconnects, and why data placement affects performance.",
+  "url": "https://jacen.li/writings/caches-and-interconnects/",
+  "image": "https://jacen.li/cachemoney/share-v2.png",
+  "imageAlt": "Original Excalidraw diagram comparing fully connected, ring, and mesh networks, with handwritten labels."
+}

@@ -27,6 +27,21 @@ nav: "home"
     </div>
   </section>
 
+  {% if collections.writings and collections.writings.length %}
+    <section class="index-section">
+      <h2><a href="/writings/">Writings</a></h2>
+      <div class="index-list">
+        {% for writing in collections.writings | sortByDateDescending %}
+          <a class="index-row" href="{{ writing.url }}">
+            <span class="index-row__date">{{ writing.data.homeLabel or (writing.date | readableDate) }}</span>
+            <span class="index-row__title">{{ writing.data.listingTitle | escape }}</span>
+            <span class="index-row__desc">{{ writing.data.summary }}</span>
+          </a>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
   <section class="index-section">
     <h2>Other</h2>
     <div class="index-list">

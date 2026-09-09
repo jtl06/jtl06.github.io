@@ -1,0 +1,22 @@
+---
+permalink: "/cachemoney/"
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ cacheArticle.title | escape }} — Jacen Li</title>
+    <meta name="robots" content="noindex, follow" />
+    {% include "cache-article-meta.njk" %}
+    <meta http-equiv="refresh" content="0; url=/writings/caches-and-interconnects/" />
+    <script>
+      const destination = new URL("/writings/caches-and-interconnects/", window.location.origin);
+      destination.search = window.location.search;
+      destination.hash = window.location.hash;
+      window.location.replace(destination.href);
+    </script>
+  </head>
+  <body><p>This article has moved to <a href="/writings/caches-and-interconnects/">Caches &amp; Interconnects</a>.</p></body>
+</html>
