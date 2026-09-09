@@ -77,7 +77,7 @@ What does this look like in practice? A core issues a read for an address that m
 
 If the L3 has the latest copy and no further coherence actions are needed, it can supply the data. If another core may hold a modified copy, the home can send a snoop to obtain the latest data. An L3 miss can still find the data in another core’s cache. If no cache can supply it, the request can go to the memory controller. The exact behavior depends on the coherence protocol and implementation. Intel describes this coordination in its [core to core communications overview](https://www.intel.com/content/www/us/en/developer/articles/technical/fast-core-to-core-communications.html).
 
-Examples of this role include Intel's Caching and Home Agent (CHA) and Arm's [home nodes (HN-F and HN-S)](https://documentation-service.arm.com/static/647de4cb3071ab482ad1060e). NVIDIA Grace also has [Cache Switch Nodes (CSNs)](https://docs.nvidia.com/dccpu/grace-perf-tuning-guide/index.html#scale-cores-and-bandwidth-with-nvidia-scalable-coherency-fabric), which route traffic and connect cores, cache partitions, and system I/O through its coherent fabric.
+Examples of this role include Intel's Caching and Home Agent (CHA) and Arm's [home nodes (HN-F and HN-S)](https://developer.arm.com/documentation/108055/0301). NVIDIA Grace also has [Cache Switch Nodes (CSNs)](https://docs.nvidia.com/dccpu/grace-perf-tuning-guide/index.html#scale-cores-and-bandwidth-with-nvidia-scalable-coherency-fabric), which route traffic and connect cores, cache partitions, and system I/O through its coherent fabric.
 
 ## Nonuniformity
 
@@ -129,6 +129,6 @@ The diagram below illustrates the hierarchy with local rings and a shared outer 
 
 Modern manycore processors do not have a uniform cost for cache and data access. The physical structure of the processor, and how data travels between cores, caches, and dies, can affect performance. Keeping related work and data together can help minimize expensive traffic.
 
-More broadly, performance behavior on one CPU may not carry over to others, even from the same vendor and using the same microarchitecture. For example, [Intel Xeon 6 with P-cores](https://cdrdv2-public.intel.com/852810/HPC-and-AI-Workloads-with-Intel-Xeon-6-Processors.pdf#page=6) includes designs with one, two, or three compute dies. Requests that cross between dies can incur additional latency. When optimizing code, it is worth checking your assumptions on the target processors.
+More broadly, performance behavior on one CPU may not carry over to others, even from the same vendor and using the same microarchitecture. For example, [Intel Xeon 6 with P-cores](https://www.intel.com/content/www/us/en/content-details/852810/hpc-and-ai-workloads-with-intel-xeon-6-processors.html) includes designs with one, two, or three compute dies. Requests that cross between dies can incur additional latency. When optimizing code, it is worth checking your assumptions on the target processors.
 
 Thanks for reading!
