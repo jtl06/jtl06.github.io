@@ -65,7 +65,7 @@ A mesh connects routers in a 2D grid. Requests travel across horizontal and vert
 
 ![](images/cache-interconnects/interconnects-paired.svg){.interconnect-diagram fig-alt="Fully connected, ring, and mesh interconnects, with blue cores and yellow L3 slices."}
 
-Another way of scaling the interconnect is to organize it in levels. Within one cluster, you may have a crossbar, ring, or mesh. A separate interconnect then connects multiple clusters with each other. This "tiered" system allows for lower complexity at the local level. We will return to this in [Scaling and Locality](#scaling-and-locality).
+Another way of scaling the interconnect is to organize it in levels. Within one cluster, you may have a crossbar, ring, or mesh. A separate interconnect then connects multiple clusters with each other. This "tiered" system allows for lower complexity at the local level.
 
 ## Homing
 
