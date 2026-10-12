@@ -8,6 +8,9 @@ listingTitle: "Air quality monitor"
 listingLabel: "2024"
 summary: "CO2, temperature, and humidity monitor with SCD41 sensing and SD card logging."
 order: 30
+stack:
+  - "SCD41"
+  - "SPI"
 ---
 <section class="section">
         <div class="page-intro">
@@ -15,6 +18,7 @@ order: 30
           <div class="content-intro">
             <p>A CO2, temperature, and humidity monitor built around the SCD41 sensor.</p>
           </div>
+          {% include "spec.njk" %}
         </div>
         <section class="plain-section">
           <p>

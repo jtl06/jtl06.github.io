@@ -1,0 +1,42 @@
+---
+layout: base.njk
+title: "Site Index — Jacen Li"
+permalink: "/tree/"
+nav: ""
+---
+{%- macro row(prefix, name, url, desc = "") -%}
+<div class="tree__row"><span class="tree__name"><span class="tree__branch" aria-hidden="true">{{ prefix }}</span><a href="{{ url }}">{{ name }}</a></span><span class="tree__desc">{{ desc }}</span></div>
+{%- endmacro -%}
+{%- macro branch(last) %}{{ "└── " if last else "├── " }}{% endmacro -%}
+{%- set selected = collections.selectedProjects | sortByOrder -%}
+{%- set misc = collections.miscProjects | sortByOrder -%}
+<section class="section">
+  <h1>Site index</h1>
+  <div class="tree">
+    {{ row("", "~/", "/") }}
+    {{ row("├── ", "projects/", "/projects/") }}
+    {%- for item in selected %}
+    {{ row("│   ├── ", item.url | replace("/projects/", "") , item.url, item.data.homeSummary or item.data.summary) }}
+    {%- endfor %}
+    {{ row("│   └── ", "misc/", "/projects/misc/") }}
+    {%- for item in misc %}
+    {{ row("│       " + branch(loop.last), item.url | replace("/projects/misc/", ""), item.url, item.data.summary) }}
+    {%- endfor %}
+    {{ row("├── ", "oss/", "/projects/#open-source") }}
+    {%- for item in collections.openSourceProjects | sortByOrder %}
+    {{ row("│   " + branch(loop.last), item.url | replace("/oss/", ""), item.url, item.data.homeSummary or item.data.summary) }}
+    {%- endfor %}
+    {{ row("├── ", "keyboards/", "/keyboards/") }}
+    {%- for item in collections.keyboardProjects | sortByOrder %}
+    {{ row("│   " + branch(loop.last), item.url | replace("/keyboards/", ""), item.url, item.data.summary) }}
+    {%- endfor %}
+    {{ row("├── ", "writings/", "/writings/") }}
+    {%- for item in collections.writings | sortByDateDescending %}
+    {{ row("│   " + branch(loop.last), item.url | replace("/writings/", ""), item.url, item.data.summary) }}
+    {%- endfor %}
+    {{ row("├── ", "machines/", "/machines/", "Home lab hardware") }}
+    {{ row("├── ", "about/", "/about/", "Bio and contact") }}
+    {{ row("├── ", "resume/", "/resume/", "Experience, skills, and projects") }}
+    {{ row("└── ", "resume.pdf", "/Jacen_Li_Resume.pdf", "PDF") }}
+  </div>
+</section>

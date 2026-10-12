@@ -1,0 +1,95 @@
+{
+  "checked": "2026-10-12",
+  "machines": [
+    {
+      "name": "Aethia",
+      "cpu": "AMD Ryzen 7 7735U",
+      "cores": "8 cores, 16 threads",
+      "memory": "32 GB LPDDR5",
+      "storage": "512 GB + 256 GB NVMe",
+      "os": "Ubuntu 26.04.1 LTS",
+      "pcie": [
+        {
+          "device": "Samsung PM981 512 GB NVMe",
+          "link": "Gen3 x4"
+        },
+        {
+          "device": "HP EX920 256 GB NVMe",
+          "link": "Gen3 x4"
+        },
+        {
+          "device": "2× Realtek RTL8111 1 GbE",
+          "link": "Gen1 x1 each"
+        },
+        {
+          "device": "Intel AX200 Wi-Fi 6",
+          "link": "Gen2 x1"
+        },
+        {
+          "device": "AMD Radeon 680M",
+          "link": "integrated"
+        }
+      ]
+    },
+    {
+      "name": "Alcidae",
+      "cpu": "Intel Core i7-12650H",
+      "cores": "6P + 4E cores, 16 threads",
+      "memory": "24 GB LPDDR5",
+      "storage": "512 GB + 256 GB NVMe",
+      "os": "Ubuntu 26.04.1 LTS",
+      "pcie": [
+        {
+          "device": "Samsung PM981 512 GB NVMe",
+          "link": "Gen3 x4"
+        },
+        {
+          "device": "HP EX920 256 GB NVMe",
+          "link": "Gen3 x4"
+        },
+        {
+          "device": "2× Realtek RTL8111 1 GbE",
+          "link": "Gen1 x1 each"
+        },
+        {
+          "device": "Intel CNVi Wi-Fi",
+          "link": "integrated"
+        },
+        {
+          "device": "Intel UHD Graphics",
+          "link": "integrated"
+        }
+      ]
+    },
+    {
+      "name": "Diomedea",
+      "cpu": "Intel Xeon Gold 6314U",
+      "cores": "32 cores, 64 threads",
+      "memory": "128 GB DDR4",
+      "storage": "1 TB + 256 GB NVMe",
+      "os": "Ubuntu 26.04.1 LTS",
+      "pcie": [
+        {
+          "device": "Mellanox ConnectX-4 Lx, 2 ports",
+          "link": "Gen3 x8"
+        },
+        {
+          "device": "Intel X710 10GBASE-T, 2 ports",
+          "link": "Gen3 x4"
+        },
+        {
+          "device": "Samsung 970 EVO Plus 1 TB NVMe",
+          "link": "Gen3 x4"
+        },
+        {
+          "device": "HP EX920 256 GB NVMe",
+          "link": "Gen3 x4"
+        },
+        {
+          "device": "ASPEED BMC graphics",
+          "link": "onboard"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+<dl class="spec">
+  {%- if stack %}
+  <dt>stack</dt>
+  <dd class="spec__tags">{{ stack | join(" · ") }}</dd>
+  {%- endif %}
+  <dt>date</dt>
+  <dd>{{ listingLabel }}</dd>
+  {%- if repo %}
+  <dt>repo</dt>
+  <dd><a href="{{ repo }}" target="_blank" rel="noreferrer">{{ repo | replace("https://", "") }}</a></dd>
+  {%- endif %}
+</dl>

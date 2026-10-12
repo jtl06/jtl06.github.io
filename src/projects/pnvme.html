@@ -12,6 +12,12 @@ listingLabel: "2025"
 summary: "Built a custom NVMe SSD controller on an Artix-7 FPGA that enumerates as a PCIe NVMe Linux block device, with a custom XDMA-to-NVMe harness backed by onboard DDR3."
 homeSummary: "FPGA NVMe device"
 order: 50
+stack:
+  - "Artix-7"
+  - "PCIe"
+  - "XDMA"
+  - "DDR3"
+repo: "https://github.com/jtl06/PNVMe"
 ---
 <section class="section">
         <div class="page-intro">
@@ -19,6 +25,7 @@ order: 50
           <div class="content-intro">
             <p>A custom NVMe SSD controller on an Artix-7 FPGA.</p>
           </div>
+          {% include "spec.njk" %}
         </div>
         <section class="plain-section">
           <p>

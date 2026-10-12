@@ -4,33 +4,35 @@ title: "Reading — Jacen Li"
 permalink: "/reading/"
 nav: "reading"
 ---
+{%- macro entries(items) -%}
+<div class="entry-list reading-list">
+  {%- for item in items %}
+  {%- set meta = [item.by, item.source, item.year] | select | join(" · ") %}
+  {%- if item.url %}
+  <a class="entry" href="{{ item.url }}" target="_blank" rel="noreferrer">
+    <h3>{{ item.title }}</h3>
+    <div class="entry__meta">{{ meta }}</div>
+  </a>
+  {%- else %}
+  <article class="entry">
+    <h3>{{ item.title }}</h3>
+    <div class="entry__meta">{{ meta }}</div>
+  </article>
+  {%- endif %}
+  {%- endfor %}
+</div>
+{%- endmacro -%}
 <section class="section">
-  <h1>Selected texts</h1>
+  <h1>Reading</h1>
 
-  <div class="entry-list reading-list">
-    <article class="entry">
-      <h3>Operating Systems: Principles and Practice</h3>
-      <div class="entry__meta">Thomas Anderson and Michael Dahlin</div>
-    </article>
+  {% cmd "ls -l articles/", "Articles", { path: "~/reading/" } %}
+  {{ entries(reading.articles) }}
 
-    <article class="entry">
-      <h3>The Algorithm Design Manual</h3>
-      <div class="entry__meta">Steven Skiena</div>
-    </article>
+  {% cmd "ls -l books/", "Books and textbooks", { path: "~/reading/" } %}
+  {{ entries(reading.books) }}
 
-    <article class="entry">
-      <h3>Computer Organization and Design</h3>
-      <div class="entry__meta">David Patterson and John Hennessy</div>
-    </article>
-
-    <article class="entry">
-      <h3>Computer Systems: A Programmer's Perspective</h3>
-      <div class="entry__meta">Randal Bryant and David O'Hallaron</div>
-    </article>
-
-    <article class="entry">
-      <h3>Complex Variables and Applications</h3>
-      <div class="entry__meta">Ruel Churchill and James Brown</div>
-    </article>
-  </div>
+  {%- if reading.fun.length %}
+  {% cmd "ls -l fun/", "For fun", { path: "~/reading/" } %}
+  {{ entries(reading.fun) }}
+  {%- endif %}
 </section>

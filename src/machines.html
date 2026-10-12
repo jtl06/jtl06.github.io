@@ -1,0 +1,40 @@
+---
+layout: base.njk
+title: "Machines — Jacen Li"
+permalink: "/machines/"
+nav: ""
+---
+<section class="section">
+  <h1>Machines</h1>
+  <div class="content-intro">
+    <p>Linux machines I use for coding and benchmarks. Hardware last checked {{ machines.checked }}.</p>
+  </div>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Machine specifications">
+    <table class="data-table">
+      <thead>
+        <tr><th scope="col">machine</th><th scope="col">cpu</th><th scope="col">cores</th><th scope="col">memory</th><th scope="col">storage</th><th scope="col">os</th></tr>
+      </thead>
+      <tbody>
+        {%- for m in machines.machines %}
+        <tr><th scope="row">{{ m.name }}</th><td>{{ m.cpu }}</td><td>{{ m.cores }}</td><td>{{ m.memory }}</td><td>{{ m.storage }}</td><td>{{ m.os }}</td></tr>
+        {%- endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  {% cmd "lspci", "PCIe devices", { path: "~/machines/" } %}
+  <div class="table-scroll" tabindex="0" role="region" aria-label="PCIe devices">
+    <table class="data-table data-table--fit">
+      <thead>
+        <tr><th scope="col">machine</th><th scope="col">device</th><th scope="col">link</th></tr>
+      </thead>
+      <tbody>
+        {%- for m in machines.machines %}
+        {%- for dev in m.pcie %}
+        <tr{% if loop.first %} class="data-table__group"{% endif %}>{% if loop.first %}<th scope="rowgroup" rowspan="{{ m.pcie.length }}">{{ m.name }}</th>{% endif %}<td>{{ dev.device }}</td><td>{{ dev.link }}</td></tr>
+        {%- endfor %}
+        {%- endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>

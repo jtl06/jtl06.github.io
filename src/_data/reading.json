@@ -1,0 +1,38 @@
+{
+  "articles": [
+    {
+      "title": "Benchmarking: It's About Time",
+      "by": "Matt Godbolt",
+      "source": "C++Now",
+      "year": 2026,
+      "url": "https://hudson-trading.github.io/its-about-time/"
+    },
+    {
+      "title": "CPU Isolation: Introduction (part 1)",
+      "by": "Frederic Weisbecker",
+      "source": "SUSE Labs",
+      "year": 2022,
+      "url": "https://www.suse.com/c/cpu-isolation-introduction-part-1/"
+    },
+    {
+      "title": "Networking and high-frequency trading",
+      "by": "Jake Edge",
+      "source": "LWN",
+      "year": 2022,
+      "url": "https://lwn.net/Articles/914992/"
+    },
+    {
+      "title": "Market microstructure guide",
+      "by": "Databento",
+      "url": "https://databento.com/microstructure"
+    }
+  ],
+  "books": [
+    { "title": "Operating Systems: Principles and Practice", "by": "Thomas Anderson and Michael Dahlin" },
+    { "title": "The Algorithm Design Manual", "by": "Steven Skiena" },
+    { "title": "Computer Organization and Design", "by": "David Patterson and John Hennessy" },
+    { "title": "Computer Systems: A Programmer's Perspective", "by": "Randal Bryant and David O'Hallaron" },
+    { "title": "Complex Variables and Applications", "by": "Ruel Churchill and James Brown" }
+  ],
+  "fun": []
+}

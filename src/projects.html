@@ -11,7 +11,7 @@ nav: "projects"
     <a href="#keyboards">Keyboard design</a>
     <a href="#open-source">Open source</a>
   </nav>
-  <h2 class="section-heading" id="systems">Systems &amp; software</h2>
+  {% cmd "ls -l", "Systems and software", { path: "~/projects/", id: "systems" } %}
   <div class="entry-list project-list">
     {% for project in collections.selectedProjects | sortByOrder %}
       <a class="entry" href="{{ project.url }}">
@@ -24,7 +24,7 @@ nav: "projects"
     {% endfor %}
   </div>
 
-  <h2 class="section-heading" id="keyboards">Keyboard design</h2>
+  {% cmd "ls ../keyboards/", "Keyboard design", { path: "~/projects/", id: "keyboards" } %}
   <div class="content-intro">
     <p>Selected custom keyboards from more than 40 builds across 14 designs.</p>
   </div>
@@ -42,7 +42,7 @@ nav: "projects"
   </div>
   <p class="section-action"><a class="cta-link" href="/keyboards/">View all keyboard projects</a></p>
 
-  <h2 class="section-heading" id="open-source">Open source</h2>
+  {% cmd "ls -l ../oss/", "Open source", { path: "~/projects/", id: "open-source" } %}
   <div class="entry-list project-list">
     {% for project in collections.openSourceProjects | sortByOrder %}
       <a class="entry" href="{{ project.url }}">

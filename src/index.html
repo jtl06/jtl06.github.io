@@ -10,7 +10,7 @@ nav: "home"
   </div>
 
   <section class="index-section">
-    <h2><a href="/projects/">Projects</a></h2>
+    {% cmd "ls -l projects/", "Projects", { href: "/projects/" } %}
     <div class="index-list">
       <a class="index-row" href="/keyboards/">
         <span class="index-row__date">2020-25</span>
@@ -29,7 +29,7 @@ nav: "home"
 
   {% if collections.writings and collections.writings.length %}
     <section class="index-section">
-      <h2><a href="/writings/">Writings</a></h2>
+      {% cmd "ls -l writings/", "Writings", { href: "/writings/" } %}
       <div class="index-list">
         {% for writing in collections.writings | sortByDateDescending %}
           <a class="index-row" href="{{ writing.url }}">
@@ -43,12 +43,22 @@ nav: "home"
   {% endif %}
 
   <section class="index-section">
-    <h2>Other</h2>
+    {% cmd "ls -l ~", "Other" %}
     <div class="index-list">
       <a class="index-row" href="/about/">
         <span class="index-row__date">/</span>
         <span class="index-row__title">about</span>
         <span class="index-row__desc">Bio and contact context</span>
+      </a>
+      <a class="index-row" href="/machines/">
+        <span class="index-row__date">/</span>
+        <span class="index-row__title">machines</span>
+        <span class="index-row__desc">Home lab hardware</span>
+      </a>
+      <a class="index-row" href="/tree/">
+        <span class="index-row__date">/</span>
+        <span class="index-row__title">tree</span>
+        <span class="index-row__desc">Site index</span>
       </a>
       <a class="index-row" href="/resume/">
         <span class="index-row__date">PDF</span>
