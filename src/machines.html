@@ -2,7 +2,7 @@
 layout: base.njk
 title: "Machines — Jacen Li"
 permalink: "/machines/"
-nav: ""
+nav: "machines"
 ---
 <section class="section">
   <h1>Machines</h1>
@@ -16,7 +16,7 @@ nav: ""
       </thead>
       <tbody>
         {%- for m in machines.machines %}
-        <tr><th scope="row">{{ m.name }}</th><td>{{ m.cpu }}</td><td>{{ m.cores }}</td><td>{{ m.memory }}</td><td>{{ m.storage }}</td><td>{{ m.os }}</td></tr>
+        <tr><th scope="row">{{ m.name }}</th><td class="hw">{{ m.cpu }}</td><td class="qty">{{ m.cores }}</td><td class="qty">{{ m.memory }}</td><td class="qty">{{ m.storage }}</td><td>{{ m.os }}</td></tr>
         {%- endfor %}
       </tbody>
     </table>
@@ -31,7 +31,7 @@ nav: ""
       <tbody>
         {%- for m in machines.machines %}
         {%- for dev in m.pcie %}
-        <tr{% if loop.first %} class="data-table__group"{% endif %}>{% if loop.first %}<th scope="rowgroup" rowspan="{{ m.pcie.length }}">{{ m.name }}</th>{% endif %}<td>{{ dev.device }}</td><td>{{ dev.link }}</td></tr>
+        <tr{% if loop.first %} class="data-table__group"{% endif %}>{% if loop.first %}<th scope="rowgroup" rowspan="{{ m.pcie.length }}">{{ m.name }}</th>{% endif %}<td class="hw">{{ dev.device }}</td><td class="qty">{{ dev.link }}</td></tr>
         {%- endfor %}
         {%- endfor %}
       </tbody>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="/styles/main.css?v=20261012b" />
+    <link rel="stylesheet" href="/styles/main.css?v=20261012c" />
     {% if isCacheArticle %}{% include "cache-article-meta.njk" %}{% endif %}
   </head>
   <body>
@@ -13,7 +13,7 @@
       <div class="site-header__inner">
         <a class="brand" href="/">[jacenli]</a>
         <nav class="site-nav" aria-label="Site">
-          {%- set windows = [["home", "/", "home"], ["projects", "/projects/", "projects"], ["keyboards", "/keyboards/", "keyboards"], ["writings", "/writings/", "writings"], ["about", "/about/", "about"]] %}
+          {%- set windows = [["home", "/", "home"], ["projects", "/projects/", "projects"], ["machines", "/machines/", "machines"], ["writings", "/writings/", "writings"], ["about", "/about/", "about"]] %}
           {%- for name, href, key in windows %}
           <a{% if nav == key %} class="active" aria-current="page"{% endif %} href="{{ href }}"><span class="site-nav__index" aria-hidden="true">{{ loop.index0 }}:</span>{{ name }}</a>
           {%- endfor %}
@@ -49,7 +49,7 @@
         const load = () =>
           (loading ||= new Promise((resolve, reject) => {
             const script = document.createElement("script");
-            script.src = "/js/console.js?v=20261011a";
+            script.src = "/js/console.js?v=20261012a";
             script.onload = resolve;
             script.onerror = reject;
             document.head.append(script);

@@ -19,6 +19,7 @@
   --bar: #141714;
   /* Secondary roles, borrowed from Emacs wheatgrass faces */
   --heading: #b4dba5;
+  --keyword: #fff3c4;
   --date: #b0a873;
   --code: #6fc9be;
   --tag: #a3b6cf;
@@ -245,14 +246,19 @@ main {
   color: var(--caption);
 }
 
+.cmd__path,
+.cmd__arg { color: var(--accent); }
+.cmd__name { color: var(--keyword); }
+.cmd__flag { color: var(--code); }
+
 .cmd a {
   color: inherit;
 }
 
 .cmd a:hover,
 .cmd a:focus {
-  color: var(--accent);
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
 }
 
 .project-index .cmd {
@@ -1024,6 +1030,10 @@ main {
   color: var(--tag);
 }
 
+.spec__date {
+  color: var(--date);
+}
+
 .profile-card {
   display: grid;
   gap: 1.5rem;
@@ -1225,7 +1235,10 @@ html.console-open {
 }
 
 .console__prompt { color: var(--caption); }
-.console__path { color: var(--text); }
+.console__path { color: var(--accent); }
+.console__name { color: var(--keyword); }
+.console__flag { color: var(--code); }
+.console__arg { color: var(--accent); }
 .console__dir { color: var(--heading); }
 .console__file { color: var(--text); }
 .console__date { color: var(--date); }
@@ -1317,6 +1330,9 @@ html.console-open {
 .data-table td {
   color: var(--description);
 }
+
+.data-table td.hw { color: var(--tag); }
+.data-table td.qty { color: var(--code); }
 
 .data-table tbody tr:not(.data-table__group) td {
   border-top: 0;

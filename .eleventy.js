@@ -15,7 +15,12 @@ module.exports = function (eleventyConfig) {
   // The plain-language label stays available to screen readers.
   eleventyConfig.addShortcode("cmd", (command, label, { path = "~/", href = "", tag = "h2", id = "" } = {}) => {
     const escape = (text) => String(text).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
-    const text = href ? `<a href="${escape(href)}">${escape(command)}</a>` : escape(command);
+    // Color like the wheatgrass theme colors code: command as keyword, flags as constants, paths as variables.
+    const tokens = command.split(" ").map((token, i) => {
+      const kind = i === 0 ? "cmd__name" : token.startsWith("-") ? "cmd__flag" : "cmd__arg";
+      return `<span class="${kind}">${escape(token)}</span>`;
+    });
+    const text = href ? `<a href="${escape(href)}">${tokens.join(" ")}</a>` : tokens.join(" ");
     const idAttr = id ? ` id="${escape(id)}"` : "";
     return `<${tag} class="cmd"${idAttr} aria-label="${escape(label)}"><span class="cmd__path" aria-hidden="true">${escape(path)}</span><span class="cmd__line" aria-hidden="true"><span class="cmd__sigil">$</span> ${text}</span></${tag}>`;
   });

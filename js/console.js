@@ -108,9 +108,17 @@
 
   const promptLine = () => [span(promptPath(cwd), "console__path")];
 
+  // Same coloring as the page headings: command, flags, then arguments.
+  const highlight = (text) =>
+    text.split(/(\s+)/).map((token, i) => {
+      if (!token.trim()) return token;
+      const kind = i === 0 ? "console__name" : token.startsWith("-") ? "console__flag" : "console__arg";
+      return span(token, kind);
+    });
+
   const echo = (text, comment = "") => {
     line(...promptLine()).classList.add("console__turn");
-    const row = line(span(statusText(), status ? "console__error" : "console__prompt"), text);
+    const row = line(span(statusText(), status ? "console__error" : "console__prompt"), ...highlight(text));
     if (comment) row.append(span(`  # ${comment}`, "console__muted"));
   };
 
