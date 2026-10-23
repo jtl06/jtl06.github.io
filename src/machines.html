@@ -37,4 +37,18 @@ nav: "machines"
       </tbody>
     </table>
   </div>
+
+  {% cmd "ls -l personal/", "Personal devices", { path: "~/machines/" } %}
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Personal devices">
+    <table class="data-table">
+      <thead>
+        <tr><th scope="col">device</th><th scope="col">cpu</th><th scope="col">cores</th><th scope="col">gpu</th><th scope="col">memory</th><th scope="col">storage</th><th scope="col">os</th></tr>
+      </thead>
+      <tbody>
+        {%- for m in machines.personal %}
+        <tr><th scope="row">{{ m.name }}</th><td class="hw">{{ m.cpu }}</td><td class="qty">{{ m.cores }}</td><td class="hw">{{ m.gpu }}</td><td class="qty">{{ m.memory }}</td><td class="qty">{{ m.storage }}</td><td>{{ m.os }}</td></tr>
+        {%- endfor %}
+      </tbody>
+    </table>
+  </div>
 </section>

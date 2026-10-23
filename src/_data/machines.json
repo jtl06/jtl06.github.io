@@ -91,5 +91,25 @@
         }
       ]
     }
+  ],
+  "personal": [
+    {
+      "name": "Desktop",
+      "cpu": "AMD Ryzen 7 7800X3D",
+      "cores": "8 cores, 16 threads",
+      "gpu": "RTX 4070 Super",
+      "memory": "48 GB DDR5",
+      "storage": "2 TB NVMe",
+      "os": "Windows 11 LTSC"
+    },
+    {
+      "name": "MacBook Pro",
+      "cpu": "Apple M3 Pro",
+      "cores": "6P + 6E cores",
+      "gpu": "18-core integrated",
+      "memory": "18 GB unified",
+      "storage": "1 TB SSD",
+      "os": "macOS 27.0"
+    }
   ]
 }
