@@ -5,19 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="/styles/main.css?v=20261012c" />
+    <link rel="stylesheet" href="/styles/main.css?v=20261028a" />
     {% if isCacheArticle %}{% include "cache-article-meta.njk" %}{% endif %}
   </head>
   <body>
     <header class="site-header">
       <div class="site-header__inner">
-        <a class="brand" href="/">[jacenli]</a>
-        <nav class="site-nav" aria-label="Site">
-          {%- set windows = [["home", "/", "home"], ["projects", "/projects/", "projects"], ["machines", "/machines/", "machines"], ["writings", "/writings/", "writings"], ["about", "/about/", "about"]] %}
-          {%- for name, href, key in windows %}
-          <a{% if nav == key %} class="active" aria-current="page"{% endif %} href="{{ href }}"><span class="site-nav__index" aria-hidden="true">{{ loop.index0 }}:</span>{{ name }}</a>
+        <div class="brand-group">
+          <a class="brand" href="/">Jacen Li</a>
+        </div>
+        <nav class="site-nav">
+          {%- set links = [["Home", "/", "home"], ["Projects", "/projects/", "projects"], ["Machines", "/machines/", "machines"], ["Writings", "/writings/", "writings"], ["About", "/about/", "about"]] %}
+          {%- for name, href, key in links %}
+          <a{% if nav == key %} class="active" aria-current="page"{% endif %} href="{{ href }}">{{ name }}</a>
           {%- endfor %}
-          <button class="console-toggle" type="button" aria-label="Open terminal" title="Terminal (`)" hidden>&gt;_</button>
         </nav>
       </div>
     </header>
@@ -40,37 +41,6 @@
       if (yearTarget) {
         yearTarget.textContent = new Date().getFullYear();
       }
-
-      // Terminal: docked on wide screens, so it loads right away there;
-      // on narrow screens it loads when opened, or when it was open on the previous page.
-      (() => {
-        const toggle = document.querySelector(".console-toggle");
-        let loading = null;
-        const load = () =>
-          (loading ||= new Promise((resolve, reject) => {
-            const script = document.createElement("script");
-            script.src = "/js/console.js?v=20261012a";
-            script.onload = resolve;
-            script.onerror = reject;
-            document.head.append(script);
-          }));
-        const openConsole = () => load().then(() => window.siteConsole.toggle());
-
-        toggle.hidden = false;
-        toggle.addEventListener("click", openConsole);
-        document.addEventListener("keydown", (event) => {
-          if (event.key !== "`" || event.ctrlKey || event.metaKey || event.altKey) return;
-          if (event.target.closest("input, textarea, [contenteditable]")) return;
-          event.preventDefault();
-          openConsole();
-        });
-
-        let reopen = false;
-        try {
-          reopen = JSON.parse(sessionStorage.getItem("console:state"))?.open;
-        } catch {}
-        if (window.matchMedia("(min-width: 768px)").matches || reopen) load();
-      })();
     </script>
   </body>
 </html>

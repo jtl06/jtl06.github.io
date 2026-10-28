@@ -25,14 +25,14 @@ nav: "reading"
 <section class="section">
   <h1>Reading</h1>
 
-  {% cmd "ls -l articles/", "Articles", { path: "~/reading/" } %}
+  <h2 class="section-heading">Articles</h2>
   {{ entries(reading.articles) }}
 
-  {% cmd "ls -l books/", "Books and textbooks", { path: "~/reading/" } %}
+  <h2 class="section-heading">Books and textbooks</h2>
   {{ entries(reading.books) }}
 
   {%- if reading.fun.length %}
-  {% cmd "ls -l fun/", "For fun", { path: "~/reading/" } %}
+  <h2 class="section-heading">For fun</h2>
   {{ entries(reading.fun) }}
   {%- endif %}
 </section>
