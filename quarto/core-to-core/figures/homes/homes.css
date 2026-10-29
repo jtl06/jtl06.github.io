@@ -1,0 +1,68 @@
+/* Home picker. Uses the site's tokens; the fallbacks keep it usable alone. */
+.hp {
+  --hp-pick: #fff3c4;
+  font-family: var(--font-mono, "Ioskeley Mono", ui-monospace, monospace);
+  color: var(--text, #e3d6bc);
+  border: 1px solid var(--border, #202320);
+  border-radius: 8px;
+  padding: 14px;
+  margin: 1.5rem 0;
+}
+.hp button, .hp select { font: inherit; color: inherit; }
+.hp-bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: stretch; margin-bottom: 10px; }
+.hp-pairs { display: flex; flex-wrap: wrap; gap: 6px; }
+.hp-chip {
+  display: flex; flex-direction: column; gap: 1px; text-align: left; cursor: pointer;
+  background: none; border: 1px solid var(--border, #202320); border-radius: 6px; padding: 5px 9px;
+}
+.hp-chip-v { font-size: 0.9rem; }
+.hp-chip.is-active { border-color: var(--accent, #a9bd52); background: var(--accent-dim, rgba(169, 189, 82, 0.12)); }
+.hp-chip:focus-visible, .hp-select:focus-visible { outline: 2px solid var(--accent, #a9bd52); outline-offset: 2px; }
+.hp-k { font-size: 0.72rem; color: var(--subtle, #8f8776); }
+.hp-foot { display: flex; gap: 14px; align-items: flex-start; margin: 10px 0 8px; }
+.hp-pick { display: flex; flex-direction: column; gap: 3px; flex: none; }
+.hp-select {
+  background: var(--surface, #111311); border: 1px solid var(--border, #202320); border-radius: 6px;
+  padding: 5px 8px; font-size: 0.85rem; min-width: 12rem;
+}
+.hp-body { display: grid; grid-template-columns: 1.55fr 1fr; gap: 12px; align-items: center; }
+.hp-body svg { width: 100%; height: auto; display: block; }
+.hp-grid { stroke: #1a1d1a; stroke-width: 1; }
+.hp-base { stroke: var(--border, #202320); stroke-width: 1; }
+.hp-tick { fill: var(--subtle, #8f8776); font-size: 14px; }
+.hp-axis { fill: var(--text, #e3d6bc); font-size: 14px; }
+.hp-seg { cursor: pointer; transition: opacity 120ms; }
+.hp.has-pick .hp-seg { opacity: 0.18; }
+.hp.has-pick .hp-seg.is-on { opacity: 1; fill: var(--hp-pick); }
+.hp-lat { stroke: #1c201c; stroke-width: 1.2; }
+.hp-mc { fill: var(--background, #090a09); stroke: #4a463d; stroke-width: 1; }
+.hp-mc-t { fill: var(--subtle, #8f8776); font-size: 8.5px; }
+.hp-tile { cursor: pointer; outline: none; }
+.hp-tile rect { stroke: var(--background, #090a09); stroke-width: 1; transition: opacity 120ms; }
+.hp-tile rect.hp-hit, .hp-tile.is-on rect.hp-hit, .hp-tile.is-core rect.hp-hit { stroke: none; fill: transparent; opacity: 1; }
+.hp-tile.is-core rect { stroke: var(--heading, #b4dba5); stroke-width: 2.4; }
+.hp-num { fill: #1f2512; font-size: 10px; pointer-events: none; }
+.hp-role { fill: #1f2512; font-size: 11px; pointer-events: none; }
+.hp-tile.is-dark .hp-num, .hp-tile.is-dark .hp-role { fill: var(--text, #e3d6bc); }
+.hp-tile.is-on .hp-num, .hp-tile.is-on .hp-role { fill: #1f2512; }
+.hp.has-pick .hp-tile:not(.is-on):not(.is-core) rect { opacity: 0.28; }
+.hp.has-pick .hp-tile:not(.is-on):not(.is-core) .hp-num { fill: var(--subtle, #8f8776); }
+.hp-tile.is-on rect { fill: var(--hp-pick); stroke: var(--hp-pick); }
+.hp-tile:focus-visible rect { stroke: var(--accent, #a9bd52); stroke-width: 2.4; }
+.hp-route { fill: none; stroke: var(--hp-pick); stroke-width: 2.2; stroke-linejoin: round; opacity: 0.9; }
+.hp-out { font-size: 0.85rem; line-height: 1.5; margin: 16px 0 0; min-height: 1.5em; }  /* one line either way: hover must not change the height */
+.hp-out strong { font-weight: 400; color: var(--hp-pick); }
+.hp-hint { color: var(--subtle, #8f8776); }
+.hp-key { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.hp-key-svg { width: 220px; height: auto; }
+.hp-key-svg .hp-tick { font-size: 12px; }
+.hp-key-t { font-size: 0.75rem; color: var(--subtle, #8f8776); }
+@media (max-width: 600px) {
+  .hp { padding: 10px; }
+  .hp-body { grid-template-columns: 1fr; }
+  .hp-foot { flex-direction: column; gap: 6px; }
+  .hp-pick { width: 100%; }
+  .hp-out { margin-top: 0; }
+  .hp-select { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { .hp-seg, .hp-tile rect { transition: none; } }

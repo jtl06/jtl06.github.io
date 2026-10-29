@@ -1,0 +1,36 @@
+/* Pool sweep slider. Uses the site's tokens; the fallbacks keep it usable alone. */
+.ps {
+  font-family: var(--font-mono, "Ioskeley Mono", ui-monospace, monospace);
+  color: var(--text, #e3d6bc);
+  border: 1px solid var(--border, #202320);
+  border-radius: 8px;
+  padding: 14px;
+  margin: 1.5rem 0;
+}
+.ps-bar { margin-bottom: 6px; }
+.ps-lab { display: flex; align-items: center; gap: 12px; }
+.ps-k { font-size: 0.8rem; color: var(--subtle, #8f8776); }
+.ps-n { font-size: 1.05rem; min-width: 3.5em; }
+.ps-slider { flex: 1; accent-color: var(--accent, #a9bd52); }
+.ps-slider:focus-visible { outline: 2px solid var(--accent, #a9bd52); outline-offset: 4px; }
+.ps-ticks { display: flex; justify-content: space-between; padding: 2px 0 0 calc(3.5em + 24px + 9ch); font-size: 0.7rem; color: var(--subtle, #8f8776); }
+.ps-svg { width: 100%; height: auto; display: block; }
+.ps-grid { stroke: #1a1d1a; stroke-width: 1; }
+.ps-base { stroke: var(--border, #202320); stroke-width: 1; }
+.ps-tick { fill: var(--subtle, #8f8776); font-size: 13px; }
+.ps-axis { fill: var(--text, #e3d6bc); font-size: 13px; }
+.ps-raw { fill: var(--subtle, #8f8776); opacity: 0.45; }
+.ps-bar { fill: var(--accent, #a9bd52); opacity: 0.85; }
+.ps-key { display: flex; gap: 18px; flex-wrap: wrap; font-size: 0.75rem; color: var(--subtle, #8f8776); margin-top: 6px; }
+.ps-key span::before { content: ""; display: inline-block; width: 12px; height: 10px; margin-right: 6px; vertical-align: -1px; border-radius: 2px; }
+.ps-key-raw::before { background: var(--subtle, #8f8776); opacity: 0.4; }
+.ps-key-mean::before { background: var(--accent, #a9bd52); }
+.ps-best { stroke: #fff3c4; stroke-width: 1.5; stroke-dasharray: 4 3; }
+.ps-best-t { fill: #fff3c4; font-size: 12px; }
+.ps-mean { stroke: var(--text, #e3d6bc); stroke-width: 1.2; stroke-dasharray: 4 3; opacity: 0.7; }
+.ps-mean-t { fill: var(--text, #e3d6bc); font-size: 12px; }
+.ps-out { font-size: 0.85rem; line-height: 1.5; margin: 8px 0 0; min-height: 3em; color: var(--text, #e3d6bc); }
+@media (max-width: 600px) {
+  .ps { padding: 10px; }
+  .ps-ticks { display: none; }
+}

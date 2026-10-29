@@ -19,7 +19,7 @@ L3 caches on many high performance CPUs are distributed in slices across the CPU
 
 I've been interested in how CPUs are constructed, especially at the interconnect level. Through reading many a technical document and conference slide, I've accumulated some knowledge that has helped with my work this summer developing microbenchmarks for caches and interconnect behavior.
 
-This article is a short introduction to caches and interconnects in modern processors. It assumes elementary knowledge of computer architecture. There will be a follow up article explaining the behavior of atomic transactions between cores, leading up to an article on microbenchmarking core to core latency.
+This article is a short introduction to caches and interconnects in modern processors. It assumes elementary knowledge of computer architecture. The follow-up, [Core to Core is not Core to Core](/writings/core-to-core-is-not-core-to-core/), looks at how data moves between cores through these interconnects and how to microbenchmark it.
 
 If you have feedback, please let me know - I am constantly learning and would love to discuss!
 
@@ -130,5 +130,7 @@ The diagram below illustrates the hierarchy with local rings and a shared outer 
 Modern manycore processors do not have a uniform cost for cache and data access. The physical structure of the processor, and how data travels between cores, caches, and dies, can affect performance. Keeping related work and data together can help minimize expensive traffic.
 
 More broadly, performance behavior on one CPU may not carry over to others, even from the same vendor and using the same microarchitecture. For example, [Intel Xeon 6 with P-cores](https://www.intel.com/content/www/us/en/content-details/852810/hpc-and-ai-workloads-with-intel-xeon-6-processors.html) includes designs with one, two, or three compute dies. Requests that cross between dies can incur additional latency. When optimizing code, it is worth checking your assumptions on the target processors.
+
+Next: [Core to Core is not Core to Core](/writings/core-to-core-is-not-core-to-core/), on how core to core latency depends on where a line is homed.
 
 Thanks for reading!

@@ -1,0 +1,195 @@
+/* Mesh explorer. Uses the site's tokens; the fallbacks keep it usable alone. */
+.mx {
+  --mx-home: #fff3c4;
+  --mx-slow: #1e2318;
+  font-family: var(--font-mono, "Ioskeley Mono", ui-monospace, monospace);
+  color: var(--text, #e3d6bc);
+  border: 1px solid var(--border, #202320);
+  border-radius: 8px;
+  padding: 14px;
+  max-width: 825px;
+  margin: 1.5rem 0;
+}
+.mx [hidden] {
+  display: none !important;
+}
+.mx button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+}
+.mx-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: stretch;
+  margin-bottom: 12px;
+}
+.mx-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+  border: 1px solid var(--border, #202320);
+  border-radius: 6px;
+  padding: 6px 10px;
+  min-width: 7.5rem;
+}
+.mx-chip-k {
+  font-size: 0.75rem;
+  color: var(--subtle, #8f8776);
+}
+.mx-chip-v {
+  font-size: 0.95rem;
+}
+.mx-chip.is-active {
+  border-color: var(--accent, #a9bd52);
+  background: var(--accent-dim, rgba(169, 189, 82, 0.12));
+}
+.mx-modes {
+  display: flex;
+  margin-left: auto;
+  border: 1px solid var(--border, #202320);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.mx-mode {
+  border: 0;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  color: var(--subtle, #8f8776) !important;
+}
+.mx-mode.is-active {
+  color: var(--text, #e3d6bc) !important;
+  background: var(--accent-dim, rgba(169, 189, 82, 0.12));
+}
+.mx-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: manipulation;
+}
+.mx-tile {
+  cursor: pointer;
+  outline: none;
+}
+.mx-tile:focus-visible rect {
+  stroke: var(--accent, #a9bd52);
+  stroke-width: 4;
+}
+.mx-cpu {
+  font-size: 13px;
+}
+.mx-role {
+  font-size: 22px;
+}
+.mx-mc {
+  font-size: 14px;
+}
+.mx-val {
+  font-size: 16px;
+}
+.mx-io {
+  font-size: 15px;
+}
+.mx-out p {
+  margin: 0.35rem 0 0;
+}
+.mx-main {
+  font-size: 1rem;
+  margin-top: 0.75rem !important;
+}
+.mx-detail,
+.mx-sum,
+.mx-ramp,
+.mx-hint,
+.mx-note {
+  font-size: 0.78rem;
+  color: var(--subtle, #8f8776);
+}
+.mx-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+  margin-top: 0.5rem;
+}
+.mx-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border, #202320);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 0.78rem;
+}
+.mx-step i {
+  width: 14px;
+  height: 4px;
+  border-radius: 2px;
+}
+.mx-step.is-dim {
+  opacity: 0.4;
+}
+.mx-step.is-ghost i {
+  background: none !important;
+  border-top: 3px dashed;
+  height: 0;
+  border-radius: 0;
+}
+.mx-play {
+  color: var(--accent, #a9bd52) !important;
+  border-color: var(--accent, #a9bd52);
+}
+.mx-cap {
+  font-size: 0.82rem;
+  color: var(--text, #e3d6bc);
+  min-height: 2.4em;
+}
+.mx-ramp {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: var(--subtle, #8f8776);
+  margin-top: 0.4rem;
+}
+.mx-ramp i {
+  flex: 0 1 140px;
+  height: 8px;
+  border-radius: 4px;
+}
+.mx-note {
+  margin: 0.75rem 0 0;
+}
+.mx-ramp .mx-sum {
+  margin-left: 6px;
+}
+@media (max-width: 560px) {
+  .mx {
+    padding: 10px;
+  }
+  .mx-chip {
+    min-width: 0;
+    flex: 1;
+  }
+  .mx-modes {
+    margin-left: 0;
+    width: 100%;
+  }
+  .mx-mode {
+    flex: 1;
+  }
+  .mx-val {
+    display: none;
+  }
+  .mx-cpu {
+    font-size: 18px;
+  }
+  .mx-role {
+    font-size: 30px;
+  }
+  .mx-mc {
+    font-size: 20px;
+  }
+}

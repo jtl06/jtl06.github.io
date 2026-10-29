@@ -2,3 +2,16 @@
 agents.md
 node_modules/
 _site/
+
+# Core to core article: dev preview and research material (not part of the site)
+quarto/core-to-core/preview.html
+quarto/core-to-core/build_preview.py
+quarto/core-to-core/article_draft.md
+quarto/core-to-core/notes-timing.md
+quarto/core-to-core/INTEGRATION.md
+quarto/core-to-core/figures/*.py
+quarto/core-to-core/figures/.cache/
+quarto/core-to-core/figures/*/index.html
+quarto/core-to-core/figures/*/*.py
+quarto/core-to-core/figures/explorer/v1/
+quarto/core-to-core/figures/explorer/diomedea-pinned.json
