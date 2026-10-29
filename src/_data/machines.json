@@ -10,24 +10,8 @@
       "os": "Ubuntu 26.04.1 LTS",
       "pcie": [
         {
-          "device": "Samsung PM981 512 GB NVMe",
-          "link": "Gen3 x4"
-        },
-        {
-          "device": "HP EX920 256 GB NVMe",
-          "link": "Gen3 x4"
-        },
-        {
           "device": "2× Realtek RTL8111 1 GbE",
           "link": "Gen1 x1 each"
-        },
-        {
-          "device": "Intel AX200 Wi-Fi 6",
-          "link": "Gen2 x1"
-        },
-        {
-          "device": "AMD Radeon 680M",
-          "link": "integrated"
         }
       ]
     },
@@ -40,24 +24,8 @@
       "os": "Ubuntu 26.04.1 LTS",
       "pcie": [
         {
-          "device": "Samsung PM981 512 GB NVMe",
-          "link": "Gen3 x4"
-        },
-        {
-          "device": "HP EX920 256 GB NVMe",
-          "link": "Gen3 x4"
-        },
-        {
           "device": "2× Realtek RTL8111 1 GbE",
           "link": "Gen1 x1 each"
-        },
-        {
-          "device": "Intel CNVi Wi-Fi",
-          "link": "integrated"
-        },
-        {
-          "device": "Intel UHD Graphics",
-          "link": "integrated"
         }
       ]
     },
@@ -76,18 +44,6 @@
         {
           "device": "Intel X710 10GBASE-T, 2 ports",
           "link": "Gen3 x4"
-        },
-        {
-          "device": "Samsung 970 EVO Plus 1 TB NVMe",
-          "link": "Gen3 x4"
-        },
-        {
-          "device": "HP EX920 256 GB NVMe",
-          "link": "Gen3 x4"
-        },
-        {
-          "device": "ASPEED BMC graphics",
-          "link": "onboard"
         }
       ]
     }

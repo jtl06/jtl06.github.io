@@ -10,13 +10,8 @@ nav: "home"
   </div>
 
   <section class="index-section">
-    {% cmd "ls -l projects/", "Projects", { href: "/projects/" } %}
+    <h2><a href="/projects/">Projects</a></h2>
     <div class="index-list">
-      <a class="index-row" href="/keyboards/">
-        <span class="index-row__date">2020-25</span>
-        <span class="index-row__title">projects/keyboards</span>
-        <span class="index-row__desc">Selected custom keyboard designs and builds</span>
-      </a>
       {% for project in collections.homeProjects | sortByOrder("homeOrder") %}
         <a class="index-row" href="{{ project.url }}">
           <span class="index-row__date">{{ project.data.homeLabel or project.data.listingLabel }}</span>
@@ -24,12 +19,17 @@ nav: "home"
           <span class="index-row__desc">{{ project.data.homeSummary }}</span>
         </a>
       {% endfor %}
+      <a class="index-row" href="/keyboards/">
+        <span class="index-row__date">2020-25</span>
+        <span class="index-row__title">projects/keyboards</span>
+        <span class="index-row__desc">Selected custom keyboard designs and builds</span>
+      </a>
     </div>
   </section>
 
   {% if collections.writings and collections.writings.length %}
     <section class="index-section">
-      {% cmd "ls -l writings/", "Writings", { href: "/writings/" } %}
+      <h2><a href="/writings/">Writings</a></h2>
       <div class="index-list">
         {% for writing in collections.writings | sortByDateDescending %}
           <a class="index-row" href="{{ writing.url }}">
@@ -43,7 +43,7 @@ nav: "home"
   {% endif %}
 
   <section class="index-section">
-    {% cmd "ls -l ~", "Other" %}
+    <h2>Other</h2>
     <div class="index-list">
       <a class="index-row" href="/about/">
         <span class="index-row__date">/</span>

@@ -8,10 +8,10 @@ nav: "projects"
   <h1>Projects</h1>
   <nav class="section-nav" aria-label="Project sections">
     <a href="#systems">Systems &amp; software</a>
-    <a href="#keyboards">Keyboard design</a>
     <a href="#open-source">Open source</a>
+    <a href="#keyboards">Keyboard design</a>
   </nav>
-  {% cmd "ls -l", "Systems and software", { path: "~/projects/", id: "systems" } %}
+  <h2 class="section-heading" id="systems">Systems &amp; software</h2>
   <div class="entry-list project-list">
     {% for project in collections.selectedProjects | sortByOrder %}
       <a class="entry" href="{{ project.url }}">
@@ -24,7 +24,20 @@ nav: "projects"
     {% endfor %}
   </div>
 
-  {% cmd "ls ../keyboards/", "Keyboard design", { path: "~/projects/", id: "keyboards" } %}
+  <h2 class="section-heading" id="open-source">Open source</h2>
+  <div class="entry-list project-list">
+    {% for project in collections.openSourceProjects | sortByOrder %}
+      <a class="entry" href="{{ project.url }}">
+        <div class="entry__heading">
+          <h3>{{ project.data.listingTitle }}</h3>
+          <div class="entry__meta">{{ project.data.listingLabel }}</div>
+        </div>
+        <p>{{ project.data.summary }}</p>
+      </a>
+    {% endfor %}
+  </div>
+
+  <h2 class="section-heading" id="keyboards">Keyboard design</h2>
   <div class="content-intro">
     <p>Selected custom keyboards from more than 40 builds across 14 designs.</p>
   </div>
@@ -41,19 +54,6 @@ nav: "projects"
     {% endfor %}
   </div>
   <p class="section-action"><a class="cta-link" href="/keyboards/">View all keyboard projects</a></p>
-
-  {% cmd "ls -l ../oss/", "Open source", { path: "~/projects/", id: "open-source" } %}
-  <div class="entry-list project-list">
-    {% for project in collections.openSourceProjects | sortByOrder %}
-      <a class="entry" href="{{ project.url }}">
-        <div class="entry__heading">
-          <h3>{{ project.data.listingTitle }}</h3>
-          <div class="entry__meta">{{ project.data.listingLabel }}</div>
-        </div>
-        <p>{{ project.data.summary }}</p>
-      </a>
-    {% endfor %}
-  </div>
 
   <div class="callout callout--plain">
     <h3>Miscellaneous work</h3>
