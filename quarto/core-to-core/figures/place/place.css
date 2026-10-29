@@ -1,0 +1,33 @@
+/* Placement widget. Uses the site's tokens; the fallbacks keep it usable alone. */
+.pl {
+  font-family: var(--font-mono, "Ioskeley Mono", ui-monospace, monospace);
+  color: var(--text, #e3d6bc);
+  border: 1px solid var(--border, #202320);
+  border-radius: 8px;
+  padding: 14px;
+  margin: 1.5rem 0;
+}
+.pl button { font: inherit; color: inherit; }
+.pl-bar { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.pl-chip {
+  display: flex; flex-direction: column; gap: 1px; text-align: left; cursor: pointer;
+  background: none; border: 1px solid var(--border, #202320); border-radius: 6px; padding: 5px 9px;
+}
+.pl-chip-v { font-size: 0.9rem; }
+.pl-chip.is-active { border-color: var(--accent, #a9bd52); background: var(--accent-dim, rgba(169, 189, 82, 0.12)); }
+.pl-chip:focus-visible { outline: 2px solid var(--accent, #a9bd52); outline-offset: 2px; }
+.pl-k { font-size: 0.72rem; color: var(--subtle, #8f8776); }
+.pl-svg { width: 100%; height: auto; display: block; }
+.pl-grid { stroke: #1a1d1a; stroke-width: 1; }
+.pl-tick { fill: var(--subtle, #8f8776); font-size: 13px; }
+.pl-axis { fill: var(--text, #e3d6bc); font-size: 13px; }
+.pl-pair { fill: var(--subtle, #8f8776); font-size: 11px; }
+.pl-link { stroke: var(--subtle, #8f8776); stroke-width: 1.5; }
+.pl-def { fill: var(--text, #e3d6bc); }
+.pl-pla { fill: var(--accent, #a9bd52); }
+.pl-row { cursor: pointer; outline: none; }
+.pl-row.is-on .pl-link { stroke: #fff3c4; stroke-width: 2.5; }
+.pl-row.is-on .pl-pair { fill: var(--text, #e3d6bc); }
+.pl-row:focus-visible .pl-pair { fill: var(--accent, #a9bd52); }
+.pl-out { font-size: 0.85rem; line-height: 1.5; margin: 8px 0 0; min-height: 3em; }
+@media (max-width: 600px) { .pl { padding: 10px; } }

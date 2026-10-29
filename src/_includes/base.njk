@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="/styles/main.css?v=20261028a" />
-    {% if isCacheArticle %}{% include "cache-article-meta.njk" %}{% endif %}
+    <link rel="stylesheet" href="/styles/main.css?v=20261029a" />
+    {% if isCacheArticle %}{% include "cache-article-meta.njk" %}{% elif articleMeta %}{% set meta = articleMeta %}{% include "article-meta.njk" %}{% endif %}
+    {%- for w in widgets %}
+    <link rel="stylesheet" href="{{ w }}.css?v={{ widgetVersion }}" />
+    {%- endfor %}
   </head>
   <body>
     <header class="site-header">
@@ -42,5 +45,8 @@
         yearTarget.textContent = new Date().getFullYear();
       }
     </script>
+    {%- for w in widgets %}
+    <script src="{{ w }}.js?v={{ widgetVersion }}"></script>
+    {%- endfor %}
   </body>
 </html>
