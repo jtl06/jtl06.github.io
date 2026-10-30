@@ -9,7 +9,7 @@ module.exports = {
   listingTitle: title,
   summary,
   permalink: "/writings/core-to-core-is-not-core-to-core/",
-  date: "2026-11-01",
+  date: "2026-10-29",
   homeLabel: "2026",
   nav: "writings",
   tags: ["writings"],
@@ -19,10 +19,10 @@ module.exports = {
     url,
     image: "https://jacen.li/c2c/share.png",
     imageWidth: 1200,
-    imageHeight: 628,
-    imageAlt: "Mesh of a 32-core Xeon, each tile labelled with the CPU 4 to CPU 6 handoff latency for a line homed there, from 43.1 to 68.8 ns.",
+    imageHeight: 630,
+    imageAlt: "Histogram of CAS handoff latency for 256 lines between CPUs 0 and 1 on a 32-core Xeon, 41 to 60 ns, with the homes of the fastest, middle and slowest lines marked on the mesh.",
   },
   // Interactive figures: CSS in <head>, JS at the end of <body>, this page only.
-  widgets: ["explorer", "homes", "pool", "place"].map((w) => `/c2c/figures/${w}/${w}`),
-  widgetVersion: "20261029a",
+  widgets: ["explorer", "fit", "homes", "pool", "lottery", "place"].map((w) => `/c2c/figures/${w}/${w}`),
+  widgetVersion: "20261029b",
 };

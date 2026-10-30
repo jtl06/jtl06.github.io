@@ -45,8 +45,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ [`${c2c}/images/*`]: "c2c/figures/images" });
   const widgetFiles = {
     explorer: "explorer.css,explorer.js,diomedea.json",
+    fit: "fit.css,fit.js,fit.json",
     homes: "homes.css,homes.js,homes.json",
     pool: "pool.css,pool.js",
+    lottery: "lottery.css,lottery.js",
     place: "place.css,place.js",
   };
   for (const [w, files] of Object.entries(widgetFiles)) {

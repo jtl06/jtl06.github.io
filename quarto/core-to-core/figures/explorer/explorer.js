@@ -55,8 +55,8 @@
       border: tok("--border", "#202320"),
       text: tok("--text", "#e3d6bc"),
       subtle: tok("--subtle", "#8f8776"),
-      A: tok("--heading", "#b4dba5"),
-      B: tok("--heading", "#b4dba5"),
+      A: tok("--mx-a", "#e8957a"), // writer: orange
+      B: tok("--mx-b", "#4c9fe0"), // reader: blue, both apart from the green shading and the route colours
       H: tok("--mx-home", "#fff3c4"),
       fast: hex(tok("--accent", "#a9bd52")),
       slow: hex(tok("--mx-slow", "#1e2318")),
@@ -150,7 +150,7 @@
         const label = svg("text", { x: x + 5, y: y + 14, class: "mx-cpu" }, textG);
         label.textContent = cpu;
         const roles = svg("text", { x: c * U, y: r * U + 11, class: "mx-role", "text-anchor": "middle" }, textG);
-        const val = null;
+        const val = svg("text", { x: c * U, y: r * U + 6, class: "mx-val", "text-anchor": "middle" }, textG);
         g.addEventListener("click", () => pick(cpu));
         g.addEventListener("keydown", (e) => {
           if (e.key === "Enter" || e.key === " ") {
@@ -412,7 +412,8 @@
     function draw() {
       for (const r of ROLES) {
         chips[r].innerHTML = "";
-        html("span", "mx-chip-k", `${r} · ${NAME[r]}`, chips[r]);
+        html("span", "mx-chip-k", `${r} · ${NAME[r]}`, chips[r]).style.color = C[r];
+        chips[r].style.setProperty("--mx-role", C[r]);
         html("span", "mx-chip-v", st[r] == null ? "–" : "CPU " + st[r], chips[r]);
         chips[r].classList.toggle("is-active", st.active === r);
         chips[r].setAttribute("aria-pressed", st.active === r);
@@ -458,6 +459,10 @@
         o.label.setAttribute("fill", ink);
         o.label.setAttribute("fill-opacity", rs.length || st.hover === c ? 1 : 0.7);
         o.roles.textContent = rs.join("");
+        // latency in the tile, as in the static figure; not on role tiles (the readout has that value)
+        o.val.textContent = v != null && !rs.length ? v.toFixed(1) : "";
+        o.val.setAttribute("fill", ink);
+        o.val.setAttribute("fill-opacity", t ? 0.3 : 0.95);
         o.roles.setAttribute("fill", rs.length ? (ink === C.bg ? C.bg : C[rs[0]]) : "none");
         o.g.setAttribute("aria-label", `CPU ${c}` + (v != null ? `: ${v.toFixed(1)} ns as ${NAME[fr]}` : ""));
       }
@@ -505,7 +510,7 @@
       ramp.hidden = !(fr && vals.length);
       if (fr && vals.length) {
         const mean = vals.reduce((a, b) => a + b, 0) / vals.length;
-        rampLo.textContent = lo.toFixed(1);
+        rampLo.textContent = `${fr} · ${NAME[fr]}  ${lo.toFixed(1)}`;
         rampHi.textContent = `${hi.toFixed(1)} ns`;
         sum.textContent = `best ${best} · mean ${mean.toFixed(1)}`;
       }

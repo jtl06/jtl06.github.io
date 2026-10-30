@@ -1,5 +1,7 @@
 /* Pool sweep: drag the number of lines per trial and watch the 1024 trial means tighten.
-   Data: poolsweep.json (mean and best line per trial, per N). The static figure inside the root
+   Data: poolsweep.json (pool_data.py): per N, each trial's mean and best line, and a histogram of
+   every line measured at that N (the grey layer, scaled to the same area as the 1024 trials, so
+   N = 1 lands on top of it). The static figure inside the root
    stays until the data has loaded. No dependencies. */
 (function () {
   "use strict";
@@ -51,7 +53,7 @@
       "ns per handoff, one trial = one million handoffs over N lines";
     const ylab = el("text", { x: 12, y: (T + B) / 2, "text-anchor": "middle", class: "ps-axis", transform: `rotate(-90 12 ${(T + B) / 2})` }, svg);
     ylab.textContent = "trials";
-    const raw = el("g", {}, svg);      // individual line values, the same for every N
+    const raw = el("g", {}, svg);      // every line measured at this N, scaled to the trials' area
     const bars = el("g", {}, svg);
     const bestG = el("g", {}, svg);
     el("line", { x1: L, x2: R, y1: B, y2: B, class: "ps-base" }, svg);
@@ -66,22 +68,22 @@
       top = Math.max(top, ...c);
     }
     const Y = (k) => B - k / top * (B - T);
-    // raw lines behind: 2048 line values scaled to the 1024 trials, so N = 1 lands on top of them
-    const lines = data.lines || [];
-    if (lines.length) {
-      const c = new Array(nb).fill(0);
-      for (const v of lines) c[Math.min(nb - 1, Math.max(0, Math.floor((v - LO) / BIN)))]++;
-      const w = (R - L) / nb, k = Ns.length && data.trials[Ns[0]].length / lines.length;
-      c.forEach((n, j) => { if (n) el("rect", { x: L + j * w + 0.5, y: Y(n * k), width: Math.max(1, w - 1), height: B - Y(n * k), class: "ps-raw" }, raw); });
+    function drawRaw(n) {
+      raw.innerHTML = "";
+      const c = data.lines && data.lines[n];
+      if (!c) return;
+      const total = c.reduce((a, b) => a + b, 0), k = data.trials[n].length / total, w = (R - L) / nb;
+      c.forEach((m, j) => { if (m) el("rect", { x: L + j * w + 0.5, y: Y(m * k), width: Math.max(1, w - 1), height: B - Y(m * k), class: "ps-raw" }, raw); });
     }
     const key = html("div", "ps-key", root);
-    html("span", "ps-key-raw", key, "individual lines");
+    html("span", "ps-key-raw", key, "individual lines measured at this N");
     html("span", "ps-key-mean", key, "what each trial reports: the mean of N lines");
 
     function show(i) {
       const n = Ns[i];
       val.textContent = n.toLocaleString();
       const rows = data.trials[n];
+      drawRaw(n);
       const means = rows.map((r) => r[0]), bests = rows.map((r) => r[1]);
       const c = new Array(nb).fill(0);
       for (const m of means) c[Math.min(nb - 1, Math.max(0, Math.floor((m - LO) / BIN)))]++;

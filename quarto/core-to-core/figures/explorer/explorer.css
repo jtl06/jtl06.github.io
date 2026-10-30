@@ -1,6 +1,8 @@
 /* Mesh explorer. Uses the site's tokens; the fallbacks keep it usable alone. */
 .mx {
   --mx-home: #fff3c4;
+  --mx-a: #e8957a;
+  --mx-b: #4c9fe0;
   --mx-slow: #1e2318;
   font-family: var(--font-mono, "Ioskeley Mono", ui-monospace, monospace);
   color: var(--text, #e3d6bc);
@@ -44,7 +46,7 @@
   font-size: 0.95rem;
 }
 .mx-chip.is-active {
-  border-color: var(--accent, #a9bd52);
+  border-color: var(--mx-role, var(--accent, #a9bd52));
   background: var(--accent-dim, rgba(169, 189, 82, 0.12));
 }
 .mx-modes {
@@ -155,7 +157,7 @@
   margin-top: 0.4rem;
 }
 .mx-ramp i {
-  flex: 0 1 140px;
+  flex: 0 1 220px;
   height: 8px;
   border-radius: 4px;
 }

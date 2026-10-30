@@ -23,6 +23,10 @@
 .pl-axis { fill: var(--text, #e3d6bc); font-size: 13px; }
 .pl-pair { fill: var(--subtle, #8f8776); font-size: 11px; }
 .pl-link { stroke: var(--subtle, #8f8776); stroke-width: 1.5; }
+.pl-rng { stroke-width: 7; opacity: 0.16; }
+.pl-rng.pl-def { stroke: var(--text, #e3d6bc); }
+.pl-rng.pl-pla { stroke: var(--accent, #a9bd52); }
+.pl-row.is-on .pl-rng { opacity: 0.32; }
 .pl-def { fill: var(--text, #e3d6bc); }
 .pl-pla { fill: var(--accent, #a9bd52); }
 .pl-row { cursor: pointer; outline: none; }
