@@ -9,7 +9,7 @@ Core to core latency is not only a function of cores A and B, but also a functio
 
 Core to core (c2c) latency is critical for multithreaded tasks with handoffs. There are already many existing benchmarks to measure it.[^tools]
 
-However, I believe some of these benchmarks, particularly ones that use a single address, are flawed. Running an example benchmark on a fixed pair of CPUs shows very high run to run variance. Here is a comparison of several "cas" based benchmarks, each run 100 times on CPUs 0 and 1:
+However, some of these benchmarks, particularly ones that use a single address, hide a hardware behavior. Running an example benchmark on a fixed pair of CPUs shows very high run to run variance. Here is a comparison of several "cas" based benchmarks, each run 100 times on CPUs 0 and 1:
 
 ![100 runs of each benchmark on CPUs 0 and 1. The last two rows are c2cbench's individual lines and the mean it reports](figures/compare-100.png)
 
