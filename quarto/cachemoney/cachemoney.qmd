@@ -1,5 +1,5 @@
 ---
-title: "Caches & Interconnects"
+title: "The Physicality of Cache"
 format:
   html:
     theme: none
@@ -97,9 +97,9 @@ For certain workloads, keeping accesses within smaller regions of the mesh can r
 
 In the example below, each of the 36 cores sends one request to a random L3 slice. On the left, that slice can be anywhere in the mesh. On the right, each core accesses a random slice within its own 3 by 3 group.
 
-![](images/cache-interconnects/mesh-locality-paired.svg){.mesh-comparison fig-alt="Two 6 by 6 meshes comparing global access with access within four 3 by 3 groups. Purple intensity shows the number of requests using each link."}
+![](images/cache-interconnects/mesh-locality-paired.svg){.mesh-comparison fig-alt="Two 6 by 6 meshes comparing global access with access within four 3 by 3 groups. The darker shading represents the number of requests using each link."}
 
-Keeping requests local reduces both average distance and traffic overlap. Darker purple shows more requests sharing a link. The figures show example paths; the statistics average 1,000 randomized trials using horizontal then vertical routing. We count request paths only, excluding endpoint connections and combining both link directions.
+By splitting up large meshes into smaller subcomponents, requests are kept local, which reduces both average distance taken and traffic per link. The illustration is for effect: the numbers are calculated via simulation.
 
 Another option is to attach multiple cores and L3 slices to the same mesh point. By increasing the number of connections at each junction, you can connect the same number of cores and slices with fewer mesh points, reducing the number of hops a request takes. However, this concentrates more traffic at each junction.
 
