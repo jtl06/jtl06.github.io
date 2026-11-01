@@ -96,7 +96,7 @@ h2 { margin-top: 28px; }
 <p>L3 caches on many high performance CPUs are distributed in slices across the CPU die, with coherence agents coordinating requests. The interconnect carries requests, cache line data, and coherence messages between cores and caches. The placement of those components and the paths between them can result in nonuniform cache access latency.</p>
 <h2 id="introduction">Introduction</h2>
 <p>I’ve been interested in how CPUs are constructed, especially at the interconnect level. Through reading many a technical document and conference slide, I’ve accumulated some knowledge that has helped with my work this summer developing microbenchmarks for caches and interconnect behavior.</p>
-<p>This article is a short introduction to caches and interconnects in modern processors. It assumes elementary knowledge of computer architecture. The follow-up, <a href="./writings/core-to-core-is-not-core-to-core/">Core to Core is not Core to Core</a>, looks at how data moves between cores through these interconnects and how to microbenchmark it.</p>
+<p>This article is a short introduction to caches and interconnects in modern processors. It assumes elementary knowledge of computer architecture. The follow-up, <a href="../core-to-core-is-not-core-to-core/">Core to Core is not Core to Core</a>, looks at how data moves between cores through these interconnects and how to microbenchmark it.</p>
 <p>If you have feedback, please let me know - I am constantly learning and would love to discuss!</p>
 <h2 id="cache-organization">Cache Organization</h2>
 <p>Caches are the fastest and smallest tiers of the memory subsystem. Their purpose is to keep frequently used data close to the CPU, avoiding slower accesses to DRAM or storage.</p>
@@ -156,7 +156,7 @@ Example: local rings connected through a larger network
 <h2 id="implications">Implications</h2>
 <p>Modern manycore processors do not have a uniform cost for cache and data access. The physical structure of the processor, and how data travels between cores, caches, and dies, can affect performance. Keeping related work and data together can help minimize expensive traffic.</p>
 <p>More broadly, performance behavior on one CPU may not carry over to others, even from the same vendor and using the same microarchitecture. For example, <a href="https://www.intel.com/content/www/us/en/content-details/852810/hpc-and-ai-workloads-with-intel-xeon-6-processors.html">Intel Xeon 6 with P-cores</a> includes designs with one, two, or three compute dies. Requests that cross between dies can incur additional latency. When optimizing code, it is worth checking your assumptions on the target processors.</p>
-<p>Next: <a href="./writings/core-to-core-is-not-core-to-core/">Core to Core is not Core to Core</a>, on how core to core latency depends on where a line is homed.</p>
+<p>Next: <a href="../core-to-core-is-not-core-to-core/">Core to Core is not Core to Core</a>, on how core to core latency depends on where a line is homed.</p>
 <p>Thanks for reading!</p>
 
 

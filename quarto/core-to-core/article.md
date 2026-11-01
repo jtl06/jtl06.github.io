@@ -106,7 +106,7 @@ A: repeat R times: retry CAS(turn, 2r -> 2r+1) until it succeeds
 B: repeat R times: retry CAS(turn, 2r+1 -> 2r+2) until it succeeds
 ```
 
-One round is one change by A and one by B, so one way latency = elapsed / 2R. This is a common approach: `c2clat -w` and `core-to-core-latency` use it too; mine, [c2cbench](https://github.com/jtl06/c2cbench), times each line on its own.
+Each cycle is one successful CAS by A and one by B, so one way latency = elapsed / 2R. Existing core to core latency benchmarks such as `c2clat -w` and `core-to-core-latency` work in this way. [c2cbench](https://github.com/jtl06/c2cbench) works the same, but across many different cache lines with timing for each.
 
 ![The CAS handoff](figures/cas-timeline.png)
 
@@ -114,7 +114,7 @@ Now, the other approach: many lines, once each. This can be done through the cla
 
 ![The pointer chase](figures/chase-timeline.png)
 
-Each of these two benchmarks measures a different thing, an alternating handoff and a dependent read, so don't expect the same number. And they don't. As you may recall from earlier, the graph shows two different slopes: CAS costs 0.91 ns per hop of D, the chase 1.57.
+While both benchmarks nominally measure "core to core latency," they actually end up measuring two different things. The CAS benchmark has a slope of 0.91 ns per hop, while the pointer chase has a slope of 1.57 ns.
 
 ## Why CAS is cheaper per hop
 
