@@ -1,10 +1,11 @@
 {
-  "checked": "2026-10-12",
+  "checked": "2026-11-01",
   "machines": [
     {
       "name": "Aethia",
       "cpu": "AMD Ryzen 7 7735U",
       "cores": "8 cores, 16 threads",
+      "gpu": "Radeon 680M",
       "memory": "32 GB LPDDR5",
       "storage": "512 GB + 256 GB NVMe",
       "os": "Ubuntu 26.04.1 LTS",
@@ -19,6 +20,7 @@
       "name": "Alcidae",
       "cpu": "Intel Core i7-12650H",
       "cores": "6P + 4E cores, 16 threads",
+      "gpu": "UHD Graphics",
       "memory": "24 GB LPDDR5",
       "storage": "512 GB + 256 GB NVMe",
       "os": "Ubuntu 26.04.1 LTS",
@@ -33,6 +35,7 @@
       "name": "Diomedea",
       "cpu": "Intel Xeon Gold 6314U",
       "cores": "32 cores, 64 threads",
+      "gpu": "RTX 3080",
       "memory": "128 GB DDR4",
       "storage": "1 TB + 256 GB NVMe",
       "os": "Ubuntu 26.04.1 LTS",
