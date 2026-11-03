@@ -6,6 +6,7 @@
 
     <title>{{ title }}</title>
     <link rel="stylesheet" href="/styles/main.css?v=20261029a" />
+    <link rel="alternate" type="application/atom+xml" title="Jacen Li" href="/feed.xml" />
     {% if isCacheArticle %}{% include "cache-article-meta.njk" %}{% elif articleMeta %}{% set meta = articleMeta %}{% include "article-meta.njk" %}{% endif %}
     {%- for w in widgets %}
     <link rel="stylesheet" href="{{ w }}.css?v={{ widgetVersion }}" />
