@@ -16,3 +16,4 @@ quarto/core-to-core/figures/*/*.py
 quarto/core-to-core/figures/explorer/v1/
 quarto/core-to-core/figures/explorer/diomedea-pinned.json
 quarto/core-to-core/substack/
+quarto/cachemoney/substack/

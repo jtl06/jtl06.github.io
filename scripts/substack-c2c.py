@@ -8,10 +8,11 @@ usage: python3 scripts/substack-c2c.py   (or npm run substack:c2c)
 """
 import html
 import re
-import subprocess
 from pathlib import Path
 
 import markdown
+
+from substack_page import screenshot, write_page
 
 REPO = Path(__file__).resolve().parent.parent
 ROOT = REPO / "quarto" / "core-to-core"
@@ -19,7 +20,6 @@ OUT = ROOT / "substack"
 SITE = "https://jacen.li"
 URL = SITE + "/writings/core-to-core-is-not-core-to-core/"
 FIG = SITE + "/c2c/figures/"
-CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 TABLE_PNG = "placement-table.png"
 
 src = (ROOT / "article.md").read_text()
@@ -54,13 +54,7 @@ td {{ height: 33px; }}
 th:first-child, td:first-child {{ text-align: left; }}
 .hw {{ color: #a3b6cf; }} .sub {{ color: #8f8776; padding-left: 18px; }} .qty {{ color: #6fc9be; }}
 </style><table><thead><tr>{th}</tr></thead><tbody>{''.join(trs)}</tbody></table>"""
-    tmp = OUT / "table.html"
-    tmp.write_text(page)
-    png = ROOT / "figures" / TABLE_PNG
-    subprocess.run([CHROME, "--headless", "--disable-gpu", "--hide-scrollbars", "--force-device-scale-factor=2",
-                    f"--window-size=825,{height}", f"--screenshot={png}", tmp.as_uri()],
-                   check=True, capture_output=True)
-    tmp.unlink()
+    screenshot(page, ROOT / "figures" / TABLE_PNG, 825, height, OUT)
 
 
 OUT.mkdir(exist_ok=True)
@@ -94,45 +88,11 @@ body = re.sub(r'<div class="footnote">\s*<hr ?/?>\s*<ol>', "<h2>Notes</h2>\n<ol>
 body = re.sub(r"</ol>\s*</div>\s*$", "</ol>", body.strip())
 body = re.sub(r'<li id="fn:[^"]+">', "<li>", body)
 
-intro = f'<p><em>Originally published on <a href="{URL}">jacen.li</a>, with interactive figures.</em></p>'
 summary = re.search(r'const summary =\s*"(.*?)";', (REPO / "src/writings/core-to-core-is-not-core-to-core.11tydata.js").read_text(), flags=re.S).group(1)
 
-missing = []
-for u in set(re.findall(re.escape(FIG) + r'[^"?#]+', body)):
-    if not (ROOT / "figures" / u[len(FIG):]).is_file():
-        missing.append(u)
+missing = [u for u in set(re.findall(re.escape(FIG) + r'[^"?#]+', body)) if not (ROOT / "figures" / u[len(FIG):]).is_file()]
 if missing:
     raise SystemExit("substack-c2c: missing figures " + ", ".join(sorted(missing)))
 
-(OUT / "index.html").write_text(f"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{html.escape(title)} (Substack copy)</title>
-<style>
-body {{ max-width: 46rem; margin: 2rem auto; padding: 0 1rem; font: 17px/1.6 Georgia, serif; color: #222; background: #fff; }}
-.panel {{ font: 14px/1.5 system-ui, sans-serif; background: #f4f1ea; border: 1px solid #ddd5c4; padding: 1rem 1.25rem; margin-bottom: 2rem; }}
-.panel b {{ display: inline-block; min-width: 5.5rem; }}
-button {{ font: inherit; padding: .4rem .9rem; cursor: pointer; }}
-img {{ max-width: 100%; }} figure {{ margin: 1.5rem 0; }} figcaption {{ font-size: 14px; color: #666; }}
-code {{ font-size: 15px; }} pre {{ overflow-x: auto; background: #f6f6f6; padding: .75rem; }}
-</style></head><body>
-<div class="panel">
-<p><b>Title</b> {html.escape(title)}<br><b>Subtitle</b> {html.escape(summary)}</p>
-<p><button id="copy">Copy body</button> <span id="status"></span></p>
-<p>Paste into a new Substack post below the title. Check that every image and caption came through, then set the
-post's social image to <a href="{SITE}/c2c/share.png">share.png</a>.</p>
-</div>
-<article id="body">
-{intro}
-{body}
-</article>
-<script>
-document.getElementById("copy").onclick = () => {{
-  const r = document.createRange(); r.selectNodeContents(document.getElementById("body"));
-  const s = getSelection(); s.removeAllRanges(); s.addRange(r);
-  const ok = document.execCommand("copy");
-  document.getElementById("status").textContent = ok ? "Copied." : "Select the body and copy it by hand.";
-}};
-</script>
-</body></html>
-""")
+write_page(OUT / "index.html", title, summary, URL, SITE + "/c2c/share.png", body, note=", with interactive figures")
 print("wrote", (OUT / "index.html").relative_to(REPO), "and figures/" + TABLE_PNG)

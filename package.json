@@ -6,6 +6,7 @@
     "render:cachemoney": "sh scripts/render-cachemoney.sh",
     "render:c2c": "python3 scripts/render-c2c.py",
     "substack:c2c": "python3 scripts/substack-c2c.py",
+    "substack:cache": "python3 scripts/substack-cache.py",
     "build": "eleventy",
     "serve": "eleventy --serve"
   },
