@@ -44,7 +44,7 @@ def svg_to_png(m: re.Match) -> str:
 src = re.sub(r'!\[\]\((images/[^)]+\.svg)\)\{[^}]*fig-alt="([^"]*)"[^}]*\}', svg_to_png, src)
 
 # <details><summary>Example: ...</summary> ... </details>  ->  a bold lead-in and the content inline
-src = re.sub(r"<details>\s*<summary>(.*?)</summary>\s*(.*?)\s*</details>",
+src = re.sub(r"<details[^>]*>\s*<summary>(.*?)</summary>\s*(.*?)\s*</details>",
              lambda m: f"**{m.group(1)}**\n\n{m.group(2)}", src, flags=re.S)
 
 # Relative links to other articles point at the site.

@@ -97,6 +97,15 @@ a:focus {
   gap: 0.75rem;
 }
 
+.brand-title {
+  margin: 0;
+  font: inherit;
+}
+
+.brand-title .brand {
+  display: block;
+}
+
 .brand {
   font-family: var(--font-interface);
   font-size: 1.2rem;

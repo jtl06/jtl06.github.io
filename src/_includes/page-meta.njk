@@ -1,0 +1,29 @@
+{%- set pageDescription = description or summary %}
+{%- if pageDescription %}
+<meta name="description" content="{{ pageDescription }}" />
+{%- endif %}
+{%- if page.url == "/404.html" %}
+<meta name="robots" content="noindex" />
+{%- else %}
+<link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Jacen Li" />
+<meta property="og:title" content="{{ title }}" />
+<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+{%- if pageDescription %}
+<meta property="og:description" content="{{ pageDescription }}" />
+{%- endif %}
+{%- endif %}
+{%- if nav == "home" %}
+<script type="application/ld+json">
+{{ {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jacen Li",
+  "url": site.url + "/",
+  "description": description,
+  "affiliation": { "@type": "CollegeOrUniversity", "name": "University of Washington" },
+  "sameAs": ["https://github.com/jtl06", "https://www.linkedin.com/in/jacen-li/"]
+} | dump | safe }}
+</script>
+{%- endif %}

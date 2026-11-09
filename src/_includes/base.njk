@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="/styles/main.css?v=20261029a" />
+    <link rel="stylesheet" href="/styles/main.css?v=20261109a" />
     <link rel="alternate" type="application/atom+xml" title="Jacen Li" href="/feed.xml" />
-    {% if isCacheArticle %}{% include "cache-article-meta.njk" %}{% elif articleMeta %}{% set meta = articleMeta %}{% include "article-meta.njk" %}{% endif %}
+    {% if isCacheArticle %}{% include "cache-article-meta.njk" %}{% elif articleMeta %}{% set meta = articleMeta %}{% include "article-meta.njk" %}{% else %}{% include "page-meta.njk" %}{% endif %}
     {%- for w in widgets %}
     <link rel="stylesheet" href="{{ w }}.css?v={{ widgetVersion }}" />
     {%- endfor %}
@@ -16,7 +16,7 @@
     <header class="site-header">
       <div class="site-header__inner">
         <div class="brand-group">
-          <a class="brand" href="/">Jacen Li</a>
+          {% if nav == "home" %}<h1 class="brand-title"><a class="brand" href="/">Jacen Li</a></h1>{% else %}<a class="brand" href="/">Jacen Li</a>{% endif %}
         </div>
         <nav class="site-nav">
           {%- set links = [["Home", "/", "home"], ["Projects", "/projects/", "projects"], ["Machines", "/machines/", "machines"], ["Writings", "/writings/", "writings"], ["About", "/about/", "about"]] %}

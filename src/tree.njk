@@ -3,6 +3,7 @@ layout: base.njk
 title: "Site Index — Jacen Li"
 permalink: "/tree/"
 nav: ""
+description: "Index of every page on Jacen Li's site."
 ---
 {%- macro row(prefix, name, url, desc = "") -%}
 <div class="tree__row"><span class="tree__name"><span class="tree__branch" aria-hidden="true">{{ prefix }}</span><a href="{{ url }}">{{ name }}</a></span><span class="tree__desc">{{ desc }}</span></div>
