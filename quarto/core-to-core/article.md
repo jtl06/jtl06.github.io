@@ -3,7 +3,7 @@
 
 ## Key takeaways
 
-Core to core latency is not only a function of cores A and B, but also a function of physical address. (At least on mesh based and some Intel ringbus based processors.) This is because coherency is handled at "homes" distributed across the interconnect. Especially on modern large processors, changing addresses can result in a best vs worst case latency of 40 ns to 60 ns. In this article, I discuss how I discovered, measured, and exploited this behavior.
+Core to core latency is not only a function of cores A and B, but also a function of physical address. (At least on mesh based and some Intel ringbus based processors.) This is because coherency is handled at "homes" distributed across the interconnect. Especially on modern large processors, changing addresses can result in a best vs worst case latency of 40 ns to 60 ns. In this article, I discuss how I discovered, measured, and exploited this behavior. Unless noted, measurements are from a single-socket Xeon Gold 6314U (Ice Lake-SP, XCC die, 32 cores), bare metal.
 
 ## Core to core latency
 
