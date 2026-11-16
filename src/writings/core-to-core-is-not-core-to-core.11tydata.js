@@ -5,7 +5,8 @@ const url = "https://jacen.li/writings/core-to-core-is-not-core-to-core/";
 
 module.exports = {
   layout: "base.njk",
-  title: `${title} — Jacen Li`,
+  // Search/browser title; the headline on the page stays `title`.
+  title: `${title}: why cache line latency depends on the address — Jacen Li`,
   listingTitle: title,
   summary,
   permalink: "/writings/core-to-core-is-not-core-to-core/",

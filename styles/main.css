@@ -264,12 +264,17 @@ main {
 .writing__body td { white-space: nowrap; }
 .writing__body th { font-weight: 400; color: var(--heading); }
 .widget-nojs { color: var(--subtle); font-size: 0.9rem; }
-.writing__body .footnote { margin-top: 3rem; font-size: 0.9rem; line-height: 1.6; color: var(--description); }
-.writing__body .footnote hr { border: 0; border-top: 1px solid var(--border); margin: 0 0 1.25rem; }
-.writing__body .footnote ol { padding-left: 1.25rem; }
-.writing__body .footnote li { scroll-margin-top: 1.5rem; }
+.writing__body .footnote,
+.writing__body .footnotes { margin-top: 3rem; font-size: 0.9rem; line-height: 1.6; color: var(--description); }
+.writing__body .footnote hr,
+.writing__body .footnotes hr { border: 0; border-top: 1px solid var(--border); margin: 0 0 1.25rem; }
+.writing__body .footnote ol,
+.writing__body .footnotes ol { padding-left: 1.25rem; }
+.writing__body .footnote li,
+.writing__body .footnotes li { scroll-margin-top: 1.5rem; }
 .writing__body .footnote-ref { text-decoration: none; font-family: var(--font-mono); font-size: 0.8em; }
-.writing__body .footnote-backref { text-decoration: none; }
+.writing__body .footnote-backref,
+.writing__body .footnote-back { text-decoration: none; }
 
 .section > h1 + .section-heading {
   margin-top: 1.5rem;

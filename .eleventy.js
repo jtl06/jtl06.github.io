@@ -39,6 +39,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "quarto/cachemoney/share-v1.png": "cachemoney/share-v1.png" });
   eleventyConfig.addPassthroughCopy({ "quarto/cachemoney/share-v2.png": "cachemoney/share-v2.png" });
   eleventyConfig.addPassthroughCopy({ "quarto/cachemoney/figures/*.png": "cachemoney/figures" });
+  // The L3 map widget (not its data script).
+  eleventyConfig.addPassthroughCopy({ "quarto/cachemoney/figures/l3map/{l3map.css,l3map.js,l3map.json}": "cachemoney/figures/l3map" });
   // Core to core article: figures, animations, widget data and the four widgets (not their
   // prototype pages, old versions or the scripts that made the figures).
   const c2c = "quarto/core-to-core/figures";

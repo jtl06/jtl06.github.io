@@ -1,0 +1,47 @@
+/* L3 map. Uses the site's tokens; the fallbacks keep it usable alone. */
+.l3m {
+  --l3m-core: #4c9fe0;
+  font-family: var(--font-mono, "Ioskeley Mono", ui-monospace, monospace);
+  color: var(--text, #e3d6bc);
+  border: 1px solid var(--border, #202320);
+  border-radius: 8px;
+  padding: 14px;
+}
+.l3m button, .l3m select { font: inherit; color: inherit; }
+.l3m-bar { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: flex-end; justify-content: space-between; margin-bottom: 12px; }
+.l3m-modes { display: flex; gap: 6px; }
+.l3m .l3m-mode {
+  cursor: pointer; font-size: 0.85rem; background: none;
+  border: 1px solid var(--border, #202320); border-radius: 6px; padding: 6px 12px;
+}
+.l3m-mode.is-active { border-color: var(--accent, #a9bd52); background: var(--accent-dim, rgba(169, 189, 82, 0.12)); }
+.l3m-mode:focus-visible, .l3m-select:focus-visible { outline: 2px solid var(--accent, #a9bd52); outline-offset: 2px; }
+.l3m-pick { display: flex; align-items: center; gap: 8px; }
+.l3m-k { font-size: 0.75rem; color: var(--subtle, #8f8776); }
+.l3m .l3m-select {
+  background: var(--surface, #111311); border: 1px solid var(--border, #202320); border-radius: 6px;
+  padding: 5px 8px; font-size: 0.85rem;
+}
+.l3m-mesh { display: block; width: 100%; max-width: 540px; height: auto; margin: 0 auto; }
+.l3m-lat { stroke: #1c201c; stroke-width: 1.2; }
+.l3m-mc { fill: var(--background, #090a09); stroke: #4a463d; stroke-width: 1; }
+.l3m-mc-t { fill: var(--subtle, #8f8776); font-size: 12px; }
+.l3m-tile { cursor: pointer; outline: none; }
+.l3m-tile rect { stroke: var(--background, #090a09); stroke-width: 1; }
+.l3m-num { fill: #090a09; font-size: 13px; pointer-events: none; }
+.l3m-tile.is-dark .l3m-num { fill: var(--text, #e3d6bc); }
+.l3m-tile.is-core rect { stroke: var(--l3m-core); stroke-width: 2.6; }
+.l3m-tile:focus-visible rect { stroke: var(--accent, #a9bd52); stroke-width: 2.6; }
+.l3m-key { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px 10px; margin: 12px 0 0; font-size: 0.8rem; }
+.l3m-ramp { width: 200px; max-width: 45%; height: 8px; border-radius: 2px; }
+.l3m-key-t { flex-basis: 100%; text-align: center; font-size: 0.75rem; color: var(--subtle, #8f8776); }
+.l3m-out { font-size: 0.85rem; line-height: 1.5; margin: 10px 0 0; min-height: 3em; text-align: center; }  /* room for two lines: hover must not change the height */
+.writing__body .l3m-out { margin: 10px 0 0; }
+.l3m-out strong { font-weight: 400; color: var(--heading, #b4dba5); }
+.l3m-hint { color: var(--subtle, #8f8776); white-space: nowrap; }
+@media (max-width: 600px) {
+  .l3m { padding: 8px; }
+  .l3m-num { font-size: 15px; }      /* SVG units: keeps the numbers at 11 px or more on a 320 px screen */
+  .l3m-mc-t { font-size: 14.5px; }
+  .l3m-bar { margin-bottom: 10px; }
+}
