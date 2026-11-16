@@ -3,6 +3,7 @@
 data-path.png     one core reading from one slice: the mesh stops whose ring counters saw the data
 l3-distance.png   L3 hit latency from one core to every slice, for a central and a corner core
 l3-cores.png      L3 hit latency of each core, averaged over all slices
+                  (l3-distance-light.png and l3-cores-light.png: the same two on a white page, for Substack)
 ring-traffic.png  data-ring traffic at each tile with all 32 cores loaded: any slice against nearby slices
 
 Data: c2c-research results/diomedea/20261114-l3map (override with L3MAP) and, for data-path,
@@ -10,6 +11,7 @@ results/diomedea/20261020-meshmap (override with MESHMAP). Grid, font and colour
 come from the Core to Core figure script, ../../core-to-core/figures/mesh.py.
 Usage: python3 measured.py
 """
+import contextlib
 import csv
 import gzip
 import importlib.util
@@ -28,12 +30,32 @@ plt = mesh.plt
 L3MAP = Path(os.environ.get("L3MAP", Path.home() / "Documents/c2c-research/results/diomedea/20261114-l3map"))
 MESHMAP = Path(os.environ.get("MESHMAP", Path.home() / "Documents/c2c-research/results/diomedea/20261020-meshmap"))
 BG, TEXT, SUBTLE = mesh.BG, mesh.TEXT, mesh.SUBTLE
+INK_DARK, INK_LIGHT = mesh.BG, mesh.TEXT   # ink on bright and on dark tiles, the same on either page colour
+WHITE_PAGE = dict(BG="#ffffff", TEXT="#1c1f1a", SUBTLE="#6b665a", LATTICE="#d9d6cc")   # for Substack
 LIT = "#3d4523"              # a stop whose ring counters saw traffic
 S = 0.8                      # tile size, in tile pitches
 SMALL, VALUE, LABEL = 7.0, 7.6, 8.6   # pt; 7 pt is 11 CSS px when the 1650 px figure is shown 825 px wide
 BUSY, QUIET = "#e8957a", "#1b1815"    # traffic ramp ends
 LATENCY = ["#a9bd52", "#c99a3e", "#a8452a"]   # latency ramp: fast green, amber, slow rust; lightness falls all the way
 LATENCY_INK = 0.8                     # dark ink on a tile until this far along the latency ramp
+
+
+@contextlib.contextmanager
+def page(colours):
+    """temporarily swap the page colours, here and in mesh.py"""
+    g = globals()
+    old = {k: (g.get(k), getattr(mesh, k)) for k in colours}
+    for k, v in colours.items():
+        if k in g:
+            g[k] = v
+        setattr(mesh, k, v)
+    try:
+        yield
+    finally:
+        for k, (here, there) in old.items():
+            if k in g:
+                g[k] = here
+            setattr(mesh, k, there)
 
 
 def panel(ax, tiles, rows, cols, value, ramp, lo, hi, fmt, mark=None, light=0.45):
@@ -47,7 +69,7 @@ def panel(ax, tiles, rows, cols, value, ramp, lo, hi, fmt, mark=None, light=0.45
         ax.add_patch(mesh.FancyBboxPatch((x - S / 2, y - S / 2), S, S, boxstyle="round,pad=0,rounding_size=0.08",
                                          fc=ramp(f), ec=mesh.ROLE_B if cpu == mark else BG,
                                          lw=2.4 if cpu == mark else 1.0, zorder=3 if cpu == mark else 2))
-        ax.text(x, y - 0.02, fmt(value[cpu]), color=BG if bright else TEXT, fontsize=VALUE, ha="center", va="center", zorder=5)
+        ax.text(x, y - 0.02, fmt(value[cpu]), color=INK_DARK if bright else INK_LIGHT, fontsize=VALUE, ha="center", va="center", zorder=5)
 
 
 def colorbar(fig, ramp, lo, hi, ticks, labels):
@@ -74,7 +96,7 @@ def under(ax, cols, rows, line1, line2):
     ax.set_ylim(-(rows - 0.5) - 1.0, 0.5)
 
 
-def distance(fam, tiles, rows, cols, cpus=(10, 31)):
+def distance(fam, tiles, rows, cols, cpus=(10, 31), suffix=""):
     """L3 hit latency from one core to each slice: a core in the middle of the die and one in a corner."""
     M = np.loadtxt(L3MAP / "map-matrix.csv", delimiter=",")
     lo, hi = M[list(cpus)].min(), M[list(cpus)].max()
@@ -85,13 +107,13 @@ def distance(fam, tiles, rows, cols, cpus=(10, 31)):
         panel(ax, tiles, rows, cols, row, ramp, lo, hi, lambda v: f"{v:.1f}", mark=cpu, light=LATENCY_INK)
         under(ax, cols, rows, f"from CPU {cpu}", f"{row.min():.1f} to {row.max():.1f} ns")
     colorbar(fig, ramp, lo, hi, [lo, hi], [f"{lo:.1f}", f"{hi:.1f} ns"])
-    out = HERE / "l3-distance.png"
+    out = HERE / f"l3-distance{suffix}.png"
     fig.savefig(out, facecolor=BG)
     plt.close(fig)
     print(f"wrote {out}: " + ", ".join(f"CPU {c} {M[c].min():.1f}-{M[c].max():.1f} (spread {M[c].max() - M[c].min():.1f})" for c in cpus))
 
 
-def cores(fam, tiles, rows, cols):
+def cores(fam, tiles, rows, cols, suffix=""):
     """L3 hit latency of each core, averaged over the 32 slices: one panel, centred in the usual canvas."""
     M = np.loadtxt(L3MAP / "map-matrix.csv", delimiter=",")
     mean = M.mean(axis=1)
@@ -105,7 +127,7 @@ def cores(fam, tiles, rows, cols):
     best, worst = int(mean.argmin()), int(mean.argmax())
     under(ax, cols, rows, "average over all 32 slices", f"CPU {best} {lo:.1f} ns, CPU {worst} {hi:.1f} ns")
     colorbar(fig, ramp, lo, hi, [lo, hi], [f"{lo:.1f}", f"{hi:.1f} ns"])
-    out = HERE / "l3-cores.png"
+    out = HERE / f"l3-cores{suffix}.png"
     fig.savefig(out, facecolor=BG)
     plt.close(fig)
     print(f"wrote {out}: core means {lo:.1f} (CPU {best}) to {hi:.1f} (CPU {worst})")
@@ -188,6 +210,9 @@ def main():
     paths(fam, tiles, rows, cols)
     distance(fam, tiles, rows, cols)
     cores(fam, tiles, rows, cols)
+    with page(WHITE_PAGE):   # the same two figures on a white page
+        distance(fam, tiles, rows, cols, suffix="-light")
+        cores(fam, tiles, rows, cols, suffix="-light")
     traffic(fam, tiles, rows, cols)
 
 

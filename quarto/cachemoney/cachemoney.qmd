@@ -104,4 +104,4 @@ Modern manycore processors do not have a uniform cost for cache and data access.
 
 Thanks for reading! The next article, [Core to Core is not Core to Core](https://jacen.li/writings/core-to-core-is-not-core-to-core/), explains some of the resulting impact of homing with regards to core to core communications.
 
-[^method]: Every load is made to miss the L1 and L2 and hit one chosen slice, with the clocks at full speed. The absolute numbers run 2 to 3 ns high because each test keeps a single slice busy; the differences between tiles are the result.
+[^method]: Every load is made to miss the L1 and L2 and hit one chosen slice, with the clocks at full speed. The absolute numbers run 2 to 3 ns high because each test keeps a single slice busy; the relative values between tiles are the relevant portion.

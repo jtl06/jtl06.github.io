@@ -43,14 +43,14 @@ def svg_to_png(m: re.Match) -> str:
 # ![](images/x.svg){.class fig-alt="..."}  ->  hosted PNG
 src = re.sub(r'!\[\]\((images/[^)]+\.svg)\)\{[^}]*fig-alt="([^"]*)"[^}]*\}', svg_to_png, src)
 
-# The interactive L3 map  ->  its static figures, each with its own caption, and a link to the live version.
+# The interactive L3 map  ->  its static figures on a white page (figures/measured.py), each with its own caption.
 def widget_figures(m: re.Match) -> str:
     out = []
     for img in re.findall(r"<img [^>]*>", m.group(0)):
         caption = re.search(r'data-caption="([^"]*)"', img).group(1)
         img = re.sub(r' data-caption="[^"]*"', "", img)
+        img = re.sub(r'(/cachemoney/figures/[\w-]+)\.png', r"\1-light.png", img)
         out.append(f"<figure>\n{img}\n<figcaption>{caption}</figcaption>\n</figure>")
-    out.append(f'<p><em>Interactive: <a href="{meta["url"]}">pick any core</a> on jacen.li</em></p>')
     return "\n\n".join(out)
 
 
@@ -59,6 +59,9 @@ src = re.sub(r'<figure class="wide">\s*<div data-l3map-src=.*?</figure>', widget
 # <details><summary>Example: ...</summary> ... </details>  ->  a bold lead-in and the content inline
 src = re.sub(r"<details[^>]*>\s*<summary>(.*?)</summary>\s*(.*?)\s*</details>",
              lambda m: f"**{m.group(1)}**\n\n{m.group(2)}", src, flags=re.S)
+
+# Quarto heading anchors ({#id}) are site-only.
+src = re.sub(r"[ \t]*\{#[^}\n]*\}[ \t]*$", "", src, flags=re.M)
 
 # Relative links to other articles point at the site.
 src = src.replace("](../core-to-core-is-not-core-to-core/)", f"]({SITE}/writings/core-to-core-is-not-core-to-core/)")
@@ -71,6 +74,7 @@ body = re.sub(r'\s*<a class="footnote-backref"[^>]*>.*?</a>', "", body)
 body = re.sub(r'<div class="footnote">\s*<hr ?/?>\s*<ol>', "<h2>Notes</h2>\n<ol>", body)
 body = re.sub(r"</ol>\s*</div>\s*$", "</ol>", body.strip())
 body = re.sub(r'<li id="fn:[^"]+">', "<li>", body)
+body = body.replace("&#160;</p>", "</p>")
 body = body.replace("<p><figure>", "<figure>").replace("</figure></p>", "</figure>")
 # Measured figures are already PNGs served by the site (figures/measured.py); drop the site-only attributes.
 body = body.replace('<figure class="wide">', "<figure>").replace(' data-external="1"', "")
