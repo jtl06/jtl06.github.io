@@ -2,12 +2,14 @@
 
 Writes quarto/core-to-core/substack/index.html (open it, click "Copy body", paste into the
 Substack editor) and renders the placement table to figures/placement-table.png, since
-Substack has no tables. Widgets become links to the interactive version on jacen.li; figures
-use their published URLs, so the site must be deployed first.
-usage: python3 scripts/substack-c2c.py   (or npm run substack:c2c)
+Substack has no tables. Widgets are left out; figures use the white-page versions (NAME-light.EXT)
+at their published URLs, so the site must be deployed first.
+usage: python3 scripts/substack-c2c.py   (or npm run substack:c2c); C2C_REV=HEAD builds from the committed article
 """
 import html
+import os
 import re
+import subprocess
 from pathlib import Path
 
 import markdown
@@ -22,7 +24,12 @@ URL = SITE + "/writings/core-to-core-is-not-core-to-core/"
 FIG = SITE + "/c2c/figures/"
 TABLE_PNG = "placement-table.png"
 
-src = (ROOT / "article.md").read_text()
+# C2C_REV=HEAD (or any commit): build from the article as committed there, not from the working file.
+if os.environ.get("C2C_REV"):
+    src = subprocess.run(["git", "-C", str(REPO), "show", f"{os.environ['C2C_REV']}:quarto/core-to-core/article.md"],
+                         check=True, capture_output=True, text=True).stdout
+else:
+    src = (ROOT / "article.md").read_text()
 src = re.sub(r"<!--.*?-->\n?", "", src, flags=re.S)
 title = re.search(r"^# (.+)$", src, flags=re.M).group(1)
 src = re.sub(r"^# .+\n", "", src, count=1, flags=re.M)
@@ -44,15 +51,15 @@ def render_table(md_table: str) -> None:
     font = (REPO / "fonts" / "IoskeleyMono-Regular.woff2").as_uri()
     page = f"""<!doctype html><meta charset="utf-8"><style>
 @font-face {{ font-family: Ioskeley; src: url("{font}") format("woff2"); }}
-html, body {{ margin: 0; background: #090a09; }}
+html, body {{ margin: 0; background: #fff; }}
 body {{ width: 825px; height: {height}px; display: flex; justify-content: center; align-items: center;
-  font: 13px/1 Ioskeley, monospace; color: #e3d6bc; }}
+  font: 13px/1 Ioskeley, monospace; color: #1c1f1a; }}
 table {{ border-collapse: collapse; }}
-th, td {{ padding: 0 9px; white-space: nowrap; text-align: right; border-bottom: 1px solid #202320; }}
-th {{ height: 40px; color: #b4dba5; font-weight: 400; }}
+th, td {{ padding: 0 9px; white-space: nowrap; text-align: right; border-bottom: 1px solid #d9d6cc; }}
+th {{ height: 40px; color: #3c6e2b; font-weight: 400; }}
 td {{ height: 33px; }}
 th:first-child, td:first-child {{ text-align: left; }}
-.hw {{ color: #a3b6cf; }} .sub {{ color: #8f8776; padding-left: 18px; }} .qty {{ color: #6fc9be; }}
+.hw {{ color: #3d5f8a; }} .sub {{ color: #6b665a; padding-left: 18px; }} .qty {{ color: #0f7f72; }}
 </style><table><thead><tr>{th}</tr></thead><tbody>{''.join(trs)}</tbody></table>"""
     screenshot(page, ROOT / "figures" / TABLE_PNG, 825, height, OUT)
 
@@ -63,12 +70,8 @@ render_table(table.group(1))
 src = src.replace(table.group(0),
                   f"![Fast address placement on five machines: median round trip, default and placed]({FIG}{TABLE_PNG})")
 
-# --- interactive figures become links to the site -----------------------------------------
-def widget_link(m: re.Match) -> str:
-    label = m.group(1).removeprefix("Explore: ").strip()
-    return f'<p><em>Interactive: <a href="{URL}">{html.escape(label)}</a> on jacen.li</em></p>'
-
-src = re.sub(r'<details class="wide">\s*<summary>(.*?)</summary>.*?</details>', widget_link, src, flags=re.S)
+# --- interactive figures are left out; the static figure before each one stays ------------
+src = re.sub(r'<details class="wide">\s*<summary>(.*?)</summary>.*?</details>\n?', "", src, flags=re.S)
 
 body = markdown.markdown(src, extensions=["footnotes", "tables", "md_in_html", "fenced_code"])
 
@@ -77,6 +80,9 @@ body = re.sub(r'<p><img alt="([^"]*)" src="([^"]+)" ?/?></p>',
               r'<figure><img src="\2" alt="\1"><figcaption>\1</figcaption></figure>', body)
 body = body.replace('<figure class="wide">', "<figure>")
 body = re.sub(r'((?:src|href)=")figures/', r"\1" + FIG, body)  # GIFs stay GIFs (Substack plays them)
+body = re.sub(re.escape(FIG) + r"([\w-]+)\.(png|gif)",
+              lambda m: FIG + (f"{m.group(1)}-light.{m.group(2)}" if (ROOT / "figures" / f"{m.group(1)}-light.{m.group(2)}").is_file()
+                               else f"{m.group(1)}.{m.group(2)}"), body)
 
 # Display math: one line of code.
 body = re.sub(r"<p>\$\$\s*(.*?)\s*\$\$</p>", r"<p><code>\1</code></p>", body, flags=re.S)
