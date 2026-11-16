@@ -27,7 +27,11 @@ module.exports = function (eleventyConfig) {
       month: "short",
       day: "numeric",
       timeZone: "UTC",
-    }).format(date),
+    }).format(new Date(date)),
+  );
+  eleventyConfig.addFilter("isoDateTime", (date) => new Date(date).toISOString());
+  eleventyConfig.addFilter("latestUpdate", (items) =>
+    new Date(Math.max(...items.map((p) => new Date(p.data.updated || p.date)))).toISOString(),
   );
 
   eleventyConfig.addPassthroughCopy("CNAME");

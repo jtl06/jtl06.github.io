@@ -8,6 +8,7 @@ module.exports = {
   summary: article.summary,
   permalink: "/writings/caches-and-interconnects/",
   date: "2026-09-08",
+  updated: "2026-11-15",   // rewritten with the measured L3 map
   homeLabel: "2026",
   nav: "writings",
   tags: ["writings"],

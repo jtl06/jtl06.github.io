@@ -10,7 +10,7 @@ eleventyExcludeFromCollections: true
   <link href="https://jacen.li/feed.xml" rel="self" />
   <link href="https://jacen.li/writings/" />
   <id>https://jacen.li/</id>
-  <updated>{{ posts[0].date.toISOString() }}</updated>
+  <updated>{{ posts | latestUpdate }}</updated>
   <author><name>Jacen Li</name></author>
   {%- for post in posts %}
   <entry>
@@ -18,7 +18,7 @@ eleventyExcludeFromCollections: true
     <link href="https://jacen.li{{ post.url }}" />
     <id>https://jacen.li{{ post.url }}</id>
     <published>{{ post.date.toISOString() }}</published>
-    <updated>{{ post.date.toISOString() }}</updated>
+    <updated>{{ (post.data.updated or post.date) | isoDateTime }}</updated>
     <summary>{{ post.data.summary }}</summary>
   </entry>
   {%- endfor %}

@@ -249,6 +249,12 @@ main {
 .writing__body figure { margin: 1.75rem 0; }
 .writing__body figure.wide { width: min(55rem, 100cqi); max-width: none; }
 .writing__body img { display: block; max-width: 100%; height: auto; background: #fff; border-radius: 4px; }
+/* Hand-drawn diagrams are drawn on white. On this dark page they are shown inverted with their hues kept,
+   as Excalidraw's own dark mode does; 0.965 puts their white on the page background. */
+.writing__body img.cache-layout-diagram,
+.writing__body img.interconnect-diagram,
+.writing__body img.mesh-comparison,
+.writing__body img.cluster-diagram { filter: invert(0.965) hue-rotate(180deg); }
 .writing__body figcaption { margin-top: 0.75rem; }
 .writing__body details { margin: 1.5rem 0; }
 .writing__body summary { cursor: pointer; color: var(--accent); }
