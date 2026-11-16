@@ -7,6 +7,7 @@ description: "Articles on CPU caches, interconnects, and core-to-core latency."
 ---
 <section class="section">
   <h1>Writings</h1>
+  {% include "subscribe.njk" %}
   {% if collections.writings and collections.writings.length %}
     <div class="entry-list reading-list">
       {% for writing in collections.writings | sortByDateDescending %}
